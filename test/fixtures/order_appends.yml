@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  address: MyText
+  enduser_id: 1
+  name: MyString
+  postal_code: MyString
+  subtotal: 1
+  status: 1
+
+two:
+  address: MyText
+  enduser_id: 1
+  name: MyString
+  postal_code: MyString
+  subtotal: 1
+  status: 1
