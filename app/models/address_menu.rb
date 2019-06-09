@@ -1,0 +1,2 @@
+class AddressMenu < ApplicationRecord
+end
