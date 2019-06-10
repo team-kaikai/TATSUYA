@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  namespace :admins do
+    get 'order_appends/show'
+    get 'order_appends/index'
+  end
+  get 'order_appends/new'
+  get 'order_appends/create'
   get 'enduser/show'
   get 'enduser/edit'
   get 'enduser/update'
@@ -71,12 +77,14 @@ Rails.application.routes.draw do
 
  resources :carts,only:[:create,:update,:destroy,:show]
 
- resources :order_appends,only:[:create,:new,:show]
+ resources :order_details, only: [:show]
+
+ # resources :order_appends,only:[:create,:new,:show]
 
  namespace :admins do
  	resources :products, only: [:show, :new, :edit, :index]
 
-	 resources :order_details, only: [:show, :index]
+	 resources :order_details, only: [:index]
 
 	 resources :artists, only: [:create]
 
@@ -87,6 +95,8 @@ Rails.application.routes.draw do
 	 resources :discs, only: [:create]
 
 	 resources :labels, only: [:create]
+
+   resources :order_appends,only:[:show,:index]
  end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
