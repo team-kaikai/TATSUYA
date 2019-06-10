@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'enduser/show'
+  get 'enduser/edit'
+  get 'enduser/update'
+  get 'enduser/destroy'
   # namespace :admins do
   #   get 'discs/create'
   # end
