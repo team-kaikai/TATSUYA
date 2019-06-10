@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
 
+  get 'order_appends/create'
+  get 'order_appends/show'
+  get 'order_appends/new'
   get 'enduser/show'
   get 'enduser/edit'
   get 'enduser/update'
   get 'enduser/destroy'
+  get 'endusers/index'
   # namespace :admins do
   #   get 'discs/create'
   # end
