@@ -55,12 +55,12 @@ Rails.application.routes.draw do
 
 
   devise_for :end_users, controllers: {
-  	sessions: 'end_users/session',
+  	sessions: 'end_users/sessions',
   	passwords: 'end_users/passwords',
   	registrations: 'end_users/registrations'
   }
 
-  resources :products,   only: [:index, :create, :update, :destroy] do
+  resources :products,   only: [:index, :create, :update, :destroy, :show] do
   	resource :comments,  only: [:create, :destroy]
   	resource :favorites, only: [:create, :destroy]
   end
@@ -80,7 +80,7 @@ Rails.application.routes.draw do
 
 	 resources :artists, only: [:create]
 
-	 resources :end_users, only: [:index]
+	 resources :end_users, only:[:index,:edit]
 
 	 resources :genres, only: [:create]
 
