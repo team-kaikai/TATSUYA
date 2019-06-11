@@ -11,11 +11,11 @@ Rails.application.routes.draw do
   get 'enduser/edit'
   get 'enduser/update'
   get 'enduser/destroy'
-<<<<<<< HEAD
+
   get 'endusers/index'
-=======
+
   get 'home/top' => 'home#top'
->>>>>>> master
+
   # namespace :admins do
   #   get 'discs/create'
   # end
