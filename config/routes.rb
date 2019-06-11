@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get 'enduser/edit'
   get 'enduser/update'
   get 'enduser/destroy'
+  get 'home/top' => 'home#top'
   # namespace :admins do
   #   get 'discs/create'
   # end
@@ -61,7 +62,7 @@ Rails.application.routes.draw do
 
 
   devise_for :end_users, controllers: {
-  	sessions: 'end_users/session',
+  	sessions: 'end_users/sessions',
   	passwords: 'end_users/passwords',
   	registrations: 'end_users/registrations'
   }
@@ -88,7 +89,7 @@ Rails.application.routes.draw do
 
 	 resources :artists, only: [:create]
 
-	 resources :end_users, only: [:index]
+	 resources :end_users, only: [:index,:edit]
 
 	 resources :genres, only: [:create]
 
