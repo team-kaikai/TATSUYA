@@ -8,3 +8,4 @@ class AddressMenusController < ApplicationController
   def destroy
   end
 end
+
