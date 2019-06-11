@@ -16,6 +16,95 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
+/*-----top-------------*/
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+.clearfix::after {
+	content: "";
+	display: block;
+	clear: both;
+}
+
+.top-wrapper {
+	width: 100%;
+	height: 700px;
+}
+
+.top-image {
+	background: linear-gradient(-45deg,rgba(228,169,114,0.4),rgba(153,65,216,0.4)),
+	url(/topimage.jpg);
+	background-size: cover;
+	width: 100%;
+	height: 700px;
+}
+
+.sans {
+	font-family: sans-serif;
+}
+
+.white {
+	color: white;
+}
+
+.top-title {
+	width: 100%;
+	height: 200px;
+	margin: 0 auto;
+}
+
+.top-title h2{
+	color: yellow;
+	font-size: 100px;
+	text-align: center;
+	padding-top: 100px;
+}
+
+.top-comment {
+	width: 70%;
+	margin: 0 auto;
+}
+
+.top-comment p{
+	font-size: 25px;
+	letter-spacing: 1.8px;
+}
+
+.btn-position {
+	margin-left: 200px;
+	margin-top: 250px;
+}
+
+.sign {
+	float: left;
+	background-color: #dddddd;
+	height: 40px;
+	width: 300px;
+	border: 0.5px;
+	border-radius: 20px;
+}
+
+.sign:first-child{
+	margin-right: 200px;
+}
+
+.sign a {
+	display: block;
+	text-decoration: none;
+	text-align: center;
+	line-height: 40px;
+}
+
+.sign a:hover {
+	background-color: #aaaaaa;
+	color: yellow;
+	border: 0.5px;
+	border-radius: 20px;
+}
 
 /*------address-menus/show-------*/
 
@@ -41,6 +130,7 @@
 
 /*-------------------------------*/
 
+<<<<<<< HEAD
 /*------header-------*/
 
 header {
@@ -72,3 +162,71 @@ nav{
 	color: yellow;
 }
 
+=======
+/*------admins/order_appends---------*/
+
+.table-list {
+	margin-top: 50px;
+}
+
+.order-tr-box {
+	border-bottom: 3px solid #dddddd;
+	border-radius: 20px;
+	width: 100%;
+}
+
+/*.order-tr-box th {
+	text-align: center;
+}
+*/
+
+.each-list {
+	border: 3px solid #dddddd;
+	border-radius: 20px;
+	height: 100px;
+}
+
+/*----------------------------*/
+
+/*-------------order-appends/show--------*/
+
+.details-box {
+	padding: 10px;
+}
+
+.details-line {
+	width: 100%;
+	border-bottom: 3px solid #dddddd;
+}
+
+.status-box {
+	border: 3px solid #dddddd;
+	border-radius: 20px;
+	padding: 20px;
+	margin-bottom: 10px;
+}
+
+.status-box p {
+	margin-left: 40px;
+}
+
+
+
+
+
+
+
+
+
+
+/*-----------footer----------*/
+
+footer {
+	height: auto;
+	background-color: #bbbbdd;
+	color: white;
+}
+
+
+
+>>>>>>> master
