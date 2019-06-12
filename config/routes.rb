@@ -10,7 +10,12 @@ Rails.application.routes.draw do
   get 'enduser/edit'
   get 'enduser/update'
   get 'enduser/destroy'
+
   get '/' => 'home#top'
+
+
+  get 'home/success' => 'home/success'
+
   # namespace :admins do
   #   get 'discs/create'
   # end
