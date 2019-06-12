@@ -1,2 +1,76 @@
-<h1>OrderAppends#new</h1>
-<p>Find me in app/views/order_appends/new.html.erb</p>
+<div class = "order-new-wrapper">
+	<div class ="container">
+		<div class="row">
+			<div class="col-xs-8 col-xs-offset-2">
+				<h3 style="border-bottom:1.0px solid black; margin-top: 30px;">送付先選択</h3>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-4 col-xs-offset-2">
+				<h4><input type="checkbox" name="order-appnds addres" value="existing address">既存の住所</h4>
+			</div>
+			<div class="col-xs-4">
+				<p>長野県〇〇市×区2−3−4</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-4 col-xs-offset-2">
+					<h4><input type="checkbox" name="order-appnds addres" value="new address">新しい送り先</h4>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-2 col-xs-offset-3">
+				<h3>名前</h3>
+			</div>
+			<div class="col-xs-5 col-xs-offset-2">
+				<input type="new-address-name-textbox">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-2 col-xs-offset-3">
+				<h3>住所</h3>
+			</div>
+			<div class="col-xs-5 col-xs-offset-2">
+				<textarea name="new-addres-textbox"></textarea>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-2 col-xs-offset-3">
+				<h3>郵便番号<br>
+				<span style="font-size:10px;">(ハイフンなし)</span></h3>
+			</div>
+			<div class="col-xs-5 col-xs-offset-2">
+				<input type="new-address-postalcode-textbox">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-8 col-xs-offset-2">
+				<h3 style="border-bottom:1.0px solid black;">支払い方法選択</h3>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-4 col-xs-offset-2">
+				<h4><input type="checkbox" name="method-of-payment" value="cash-on-delivery">代引き</h4>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-4 col-xs-offset-2">
+				<h4><input type="checkbox" name="method-of-payment" value="credit-card">クレジットカード</h4>
+			</div>
+			<div class="col-xs-4 col-xs-offset-1">
+				<input type="credit-card-date">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-4 col-xs-offset-2">
+				<h4><input type="checkbox" name="method of payment" value="bank transfer">銀行振込</h4>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col" style="margin-top: 50px; text-align: center">
+				<button style="width: 60%;"><p>購入</p></button>
+		<!---->
+			</div>
+		</div>
+	</div>
+</div>

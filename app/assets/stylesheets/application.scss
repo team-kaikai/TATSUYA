@@ -257,6 +257,38 @@
 /*-------------------------------*/
 
 
+
+/*------header-------*/
+
+header {
+  width: 100%;
+  padding: 15px 0;
+  margin: 0 auto;
+  background-color: #000080;
+}
+nav{
+	position: relative;
+	width: 90%;
+	padding: 15px 0;
+	margin: 0 auto;
+	text-align: center;
+}
+.nav-list {
+	text-align: center;
+	padding: 10px 0;
+	margin: 0 20px;
+}
+.nav-list-item{
+	list-style: none;
+	display: inline-block;
+	margin: 0 20px;
+	font-size: 30px;
+	font-weight:bolder;
+}
+.header-title {
+	color: yellow;
+}
+
 /*-- product index--*/
 .product {
 	margin: 15px;
@@ -285,6 +317,7 @@ table.product-main td{
 	list-style-type: none;
 }
 /*------------------*/
+
 
 /*------admins/order_appends---------*/
 
@@ -349,3 +382,9 @@ footer {
 	background-color: #bbbbdd;
 	color: white;
 }
+
+
+
+
+
+
