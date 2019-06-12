@@ -6,6 +6,7 @@
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <%= render "devise/shared/error_messages", resource: resource %>
 
+
       <div class="field">
         <%= f.label :性,class: "devise-font" %><br />
         <%= f.text_field :first_name,autofocus: true,class: "devise-box" %>
@@ -67,3 +68,4 @@
     <%= render "end_users/shared/links" %>
   </div>
 </div>
+
