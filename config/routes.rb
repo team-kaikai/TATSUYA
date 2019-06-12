@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   namespace :admins do
     get 'order_appends/show'
     get 'order_appends/index'
@@ -11,11 +12,13 @@ Rails.application.routes.draw do
   get 'enduser/update'
   get 'enduser/destroy'
 
+
   get '/' => 'home#top'
 
 
   get 'home/success' => 'home/success'
   get 'home/master' => 'home/master'
+
 
   # namespace :admins do
   #   get 'discs/create'
