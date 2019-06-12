@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get 'enduser/update'
   get 'enduser/destroy'
   get 'home/top' => 'home#top'
+  get 'home/success' => 'home/success'
   # namespace :admins do
   #   get 'discs/create'
   # end
