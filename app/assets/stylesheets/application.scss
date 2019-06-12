@@ -180,6 +180,36 @@
 
 /*-------------------------------*/
 
+
+/*-- product index--*/
+.product {
+	margin: 15px;
+	float: left;
+	list-style: none;
+}
+/*------------------*/
+
+/*-- product admin/index--*/
+table.admin-product-index td{
+	padding: 1% 0;
+	border-bottom: 1px solid #999;
+}
+/*------------------*/
+
+/*-- product admin/show--*/
+table.product-main thead th{
+	border-bottom: 3px solid #999;
+}
+
+table.product-main td{
+	padding-top: 1%;
+}
+
+.review-list{
+	list-style-type: none;
+}
+/*------------------*/
+
 /*------admins/order_appends---------*/
 
 .table-list {
@@ -243,7 +273,3 @@ footer {
 	background-color: #bbbbdd;
 	color: white;
 }
-
-
-
-
