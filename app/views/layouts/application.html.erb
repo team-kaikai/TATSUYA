@@ -26,6 +26,20 @@
               </li>
             </ul>
           </nav>
+        <% elsif admin_signed_in? %>
+          <nav>
+            <ul class="nav-list">
+              <li class="nav-list-item">
+                <%= link_to "ユーザー一覧", admins_end_users_path,class: "header-title" %>
+              </li>
+              <li class="nav-list-item">
+                <%= link_to "新規登録", end_user_path(current_end_user), class: "header-title" %>
+              </li>
+              <li class="nav-list-item">
+                <%= link_to "アルバム一覧", destroy_end_user_session_path,class: "header-title", method: :delete %>
+              </li>
+            </ul>
+          </nav>
        <% else %>
          <nav>
             <ul class="nav-list">
