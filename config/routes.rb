@@ -71,15 +71,11 @@ devise_for :admins,controllers: {
   # get 'products/create'
   # get 'products/update'
   # get 'products/destroy'
-<<<<<<< HEAD
+
+
 
 
   resources :products,   only: [:index, :create, :update, :destroy, :show] do
-=======
-  
-
-  resources :products,   only: [:index, :show] do
->>>>>>> master
   	resource :comments,  only: [:create, :destroy]
   	resource :favorites, only: [:create, :destroy]
   end
