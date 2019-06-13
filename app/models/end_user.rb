@@ -4,6 +4,9 @@ class EndUser < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_many :cars, dependent: :destroy
+
+
    attr_writer :first_postal_code, :last_postal_code
 
    #validates :postal_code,format: {with: /\A\d{7}\z/}
@@ -23,4 +26,5 @@ class EndUser < ApplicationRecord
    def set_postal_code
    		self.postal_code = [@first_postal_code,@last_postal_code].join
    end
+
 end

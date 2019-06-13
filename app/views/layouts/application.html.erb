@@ -12,6 +12,11 @@
   <body>
 
     <header>
+
+      <% if end_user_signed_in? %>
+        <%= current_end_user.first_name %>がLogin中
+      <% end %>
+
        <% if end_user_signed_in? %>
           <nav>
             <ul class="nav-list">
@@ -55,7 +60,9 @@
             </ul>
           </nav>
         <% end %>
+
     </header>
+
 
     <%= yield %>
 
