@@ -1,0 +1,25 @@
+<div class="artist-new-wrapper">
+  	<div class="container">
+		<div class="row">
+		 <h2>アーティスト登録</h2>
+		 <%= form_for @artist,url: admins_artists_path do |f| %>
+		 	<%= f.text_field :name %>
+		 	<%= f.submit "追加" %>
+		 <% end %>
+		</div>
+		<div class="row">
+		 <h2>ジャンル登録</h2>
+		 <%= form_for @genre,url: admins_genres_path do |f| %>
+		 	<%= f.text_field :name %>
+		 	<%= f.submit "追加" %>
+		 <% end %>
+		</div>
+		<div class="row">
+		 <h2>レーベル登録</h2>
+		 <%= form_for @label,url:admins_labels_path do |f| %>
+		 	<%= f.text_field :name %>
+		 	<%= f.submit "追加" %>
+		 <% end %>
+		</div>
+  	</div>
+</div>
