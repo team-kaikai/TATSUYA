@@ -1,5 +1,18 @@
 Rails.application.routes.draw do
 
+  devise_for :admins,controllers: {
+    sessions: 'admins/sessions',
+    passwords: 'admins/passwords',
+    registrations: 'admins/registrations'
+  }
+
+
+
+  devise_for :end_users, controllers: {
+    sessions: 'end_users/sessions',
+    passwords: 'end_users/passwords',
+    registrations: 'end_users/registrations'
+  }
 
   namespace :admins do
     get 'order_appends/show'
@@ -8,8 +21,8 @@ Rails.application.routes.draw do
   get 'order_appends/new'
   get 'order_appends/create'
 
-  resources :end_users,only: [:show,:edit,:update,:destroy]
 
+  resources :end_users,only: [:show,:edit,:update,:destroy]
   get '/' => 'home#top'
 
 
@@ -59,21 +72,9 @@ Rails.application.routes.draw do
   # get 'products/create'
   # get 'products/update'
   # get 'products/destroy'
-  devise_for :admins,controllers: {
-  	sessions: 'admins/sessions',
-  	passwords: 'admins/passwords',
-  	registrations: 'admins/registrations'
-  }
+  
 
-
-
-  devise_for :end_users, controllers: {
-  	sessions: 'end_users/sessions',
-  	passwords: 'end_users/passwords',
-  	registrations: 'end_users/registrations'
-  }
-
-  resources :products,   only: [:index, :create, :update, :destroy, :show] do
+  resources :products,   only: [:index, :show] do
   	resource :comments,  only: [:create, :destroy]
   	resource :favorites, only: [:create, :destroy]
   end
@@ -89,7 +90,7 @@ Rails.application.routes.draw do
  # resources :order_appends,only:[:create,:new,:show]
 
  namespace :admins do
- 	resources :products, only: [:show, :new, :edit, :index]
+ 	resources :products, only: [:show, :new, :edit, :index, :create, :update, :destroy]
 
 	 resources :order_details, only: [:index]
 
