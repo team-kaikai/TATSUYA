@@ -1,7 +1,19 @@
 <div class="albumnew-wrapper">
 	<div class="container">
 		<h1>アルバム新規登録</h1>
+<<<<<<< HEAD
 
+=======
+
+
+		<%= form_for @product do |f| %>
+      		<%= f.fields :discs do |disc| %>
+				<%= render 'disc_field', f: disc %>
+			<% end %>
+		<% end %>
+
+
+>>>>>>> master
 			<%= form_for @product, url:"/admins/products" do |f| %>
 				<div class="row">
 					<div class="col-xs-4">
@@ -18,7 +30,7 @@
 					<h4 class="col-xs-4">CD枚数</h4>
 				<%= f.fields_for :discs do |disc| %>
 					<%= disc.select :disc_number, [["1枚","1枚"],["2枚","2枚"],["3枚","3枚"],["4枚","4枚"]] %>
-														<!-- 左が見せる値　　右がデータベースに入れる値 -->
+														<!-- 左が見せる値右がデータベースに入れる値 -->
 					</div>
 					<!-- 押したらアーティスト一覧がでるものを作成しなければならない -->
 					<div class="row">
@@ -58,14 +70,20 @@
 						</div>
 					<% end %>
 				<% end %>
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
 				<%= form_for @product do |f| %>
 		      		<%= f.fields :discs do |disc| %>
 						<%= render 'disc_field', f: disc %>
 					<% end %>
 				<% end %>
+<<<<<<< HEAD
 					
 
+=======
+>>>>>>> master
 				<div class="main-button col-xs-2 col-xs-offset-9">
 					<div class="main-button-delete mypage-border-font">
 				        <%= f.submit %>

@@ -5,18 +5,23 @@ devise_for :admins,controllers: {
     registrations: 'admins/registrations'
   }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
   devise_for :end_users, controllers: {
     sessions: 'end_users/sessions',
     passwords: 'end_users/passwords',
     registrations: 'end_users/registrations'
   }
 
+
   namespace :admins do
     get 'order_appends/show'
     get 'order_appends/index'
   end
   get 'order_appends/new'
-  get 'order_appends/create'
+  post 'order_appends/create'
 
 
   resources :end_users,only: [:show,:edit,:update,:destroy]
@@ -69,9 +74,15 @@ devise_for :admins,controllers: {
   # get 'products/create'
   # get 'products/update'
   # get 'products/destroy'
+<<<<<<< HEAD
+
+
+  resources :products,   only: [:index, :create, :update, :destroy, :show] do
+=======
   
 
   resources :products,   only: [:index, :show] do
+>>>>>>> master
   	resource :comments,  only: [:create, :destroy]
   	resource :favorites, only: [:create, :destroy]
   end
