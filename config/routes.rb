@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
-devise_for :admins,controllers: {
+
+  devise_for :admins,controllers: {
     sessions: 'admins/sessions',
     passwords: 'admins/passwords',
     registrations: 'admins/registrations'
   }
-
 
   devise_for :end_users, controllers: {
     sessions: 'end_users/sessions',
@@ -71,15 +71,9 @@ devise_for :admins,controllers: {
   # get 'products/create'
   # get 'products/update'
   # get 'products/destroy'
-<<<<<<< HEAD
 
 
-  resources :products,   only: [:index, :create, :update, :destroy, :show] do
-=======
-  
-
-  resources :products,   only: [:index, :show] do
->>>>>>> master
+  resources :products,   only: [:index, :create, :update, :destroy, :show]do
   	resource :comments,  only: [:create, :destroy]
   	resource :favorites, only: [:create, :destroy]
   end
