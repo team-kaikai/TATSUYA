@@ -5,19 +5,6 @@ devise_for :admins,controllers: {
     registrations: 'admins/registrations'
   }
 
-
-
-<<<<<<< HEAD
-=======
-  devise_for :admins,controllers: {
-    sessions: 'admins/sessions',
-    passwords: 'admins/passwords',
-    registrations: 'admins/registrations'
-  }
-
-
-
->>>>>>> master
   devise_for :end_users, controllers: {
     sessions: 'end_users/sessions',
     passwords: 'end_users/passwords',
