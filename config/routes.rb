@@ -12,7 +12,6 @@ Rails.application.routes.draw do
   get 'enduser/update'
   get 'enduser/destroy'
 
-
   get '/' => 'home#top'
 
 
@@ -76,7 +75,7 @@ Rails.application.routes.draw do
   	registrations: 'end_users/registrations'
   }
 
-  resources :products,   only: [:index, :create, :update, :destroy, :show] do
+  resources :products,   only: [:index, :show] do
   	resource :comments,  only: [:create, :destroy]
   	resource :favorites, only: [:create, :destroy]
   end
@@ -92,7 +91,7 @@ Rails.application.routes.draw do
  # resources :order_appends,only:[:create,:new,:show]
 
  namespace :admins do
- 	resources :products, only: [:show, :new, :edit, :index]
+ 	resources :products, only: [:show, :new, :edit, :index, :create, :update, :destroy]
 
 	 resources :order_details, only: [:index]
 
