@@ -51,6 +51,20 @@
 				3.<input style="width: 300px;"><br>
 				4.<input style="width: 300px;"><br>
 				5.<input style="width: 300px;"><br>
+
+		<%= form_for @product do |f| %>
+      		<%= f.fields_for :discs do |disc| %>
+				<div class="songs">
+				    <%= disc.fields_for :songs do |song| %>
+					    <%= render 'admins/products/song_fields', song: song %>
+				    <%end%>
+				    <div class="links">
+					    <%= link_to_add_association "add songs", disc, :songs %>
+				    </div>
+				</div>
+			<% end %>
+		<% end %>
+
 			</div>
 		</div>
 		<div class="main-button col-xs-2 col-xs-offset-9">
@@ -58,7 +72,6 @@
 		        <a href="#" style="font-size: 30px;">登録</a>
 		    </div>
 	    </div>
-		
 
 
 
