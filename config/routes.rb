@@ -7,6 +7,17 @@ devise_for :admins,controllers: {
 
 
 
+<<<<<<< HEAD
+=======
+  devise_for :admins,controllers: {
+    sessions: 'admins/sessions',
+    passwords: 'admins/passwords',
+    registrations: 'admins/registrations'
+  }
+
+
+
+>>>>>>> master
   devise_for :end_users, controllers: {
     sessions: 'end_users/sessions',
     passwords: 'end_users/passwords',
@@ -20,8 +31,8 @@ devise_for :admins,controllers: {
   get 'order_appends/new'
   get 'order_appends/create'
 
-  resources :end_users,only: [:show,:edit,:update,:destroy]
 
+  resources :end_users,only: [:show,:edit,:update,:destroy]
   get '/' => 'home#top'
 
 
@@ -73,7 +84,7 @@ devise_for :admins,controllers: {
   # get 'products/destroy'
   
 
-  resources :products,   only: [:index, :create, :update, :destroy, :show] do
+  resources :products,   only: [:index, :show] do
   	resource :comments,  only: [:create, :destroy]
   	resource :favorites, only: [:create, :destroy]
   end
@@ -89,7 +100,7 @@ devise_for :admins,controllers: {
  # resources :order_appends,only:[:create,:new,:show]
 
  namespace :admins do
- 	resources :products, only: [:show, :new, :edit, :index]
+ 	resources :products, only: [:show, :new, :edit, :index, :create, :update, :destroy]
 
 	 resources :order_details, only: [:index]
 
