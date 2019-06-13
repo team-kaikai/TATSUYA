@@ -1,12 +1,6 @@
 <div class="albumnew-wrapper">
 	<div class="container">
 		<h1>アルバム新規登録</h1>
-		<%= form_for @product do |f| %>
-      		<%= f.fields :discs do |disc| %>
-				<%= render 'disc_field', f: disc %>
-			<% end %>
-		<% end %>
-
 			<%= form_for @product, url:"/admins/products" do |f| %>
 				<div class="row">
 					<div class="col-xs-4">
@@ -63,11 +57,13 @@
 						</div>
 					<% end %>
 				<% end %>
+
 				<%= form_for @product do |f| %>
 		      		<%= f.fields :discs do |disc| %>
 						<%= render 'disc_field', f: disc %>
 					<% end %>
 				<% end %>
+
 				<div class="main-button col-xs-2 col-xs-offset-9">
 					<div class="main-button-delete mypage-border-font">
 				        <%= f.submit %>

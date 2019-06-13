@@ -35,10 +35,10 @@ class Admins::ProductsController < ApplicationController
   private
 
 
-  	def product_params
-  		params.require(:product).permit(
-        :profile_image,:album_name,:price,:stock,:status,discs_attributes:[:id,:disc_number,songs_attributes:[:id,:name]])
-  	end
+  def product_params
+  	params.require(:product).permit(:album_name, :profile_image, :price, :stock, :status, discs_attributes: [:id, :product_id, :disc_number, :_destroy,
+  		                                         songs_attributes: [:id, :disc_id, :name, :track, :_destroy]])
+  end
 
 
 end
