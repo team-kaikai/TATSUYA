@@ -1,2 +1,5 @@
 class Product < ApplicationRecord
+
+	 has_many :cars, dependent: :destroy
+
 end
