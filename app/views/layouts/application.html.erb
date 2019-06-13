@@ -12,24 +12,41 @@
   <body>
 
     <header>
+
       <% if end_user_signed_in? %>
         <%= current_end_user.first_name %>がLogin中
       <% end %>
-      <nav>
-        <ul class="nav-list">
-          <% if end_user_signed_in? %>
-            <li class="nav-list-item"><%= link_to 'Home',  products_path , class: "header-title" %></li>
-            <li class="nav-list-item"><%= link_to 'Mypage', enduser_show_path(current_end_user) , class: "header-title" %></li>
-            <li class="nav-list-item"><%= link_to 'Logout', destroy_end_user_session_path, method: :delete, class: "header-title" %></li>
-            <li class="nav-list-item"><%#= link_to cart_path(@end_user) do %>
-            <i class="fas fa-shopping-cart"></i></li>
-          <% else %>
-            <li class="nav-list-item"><%= link_to 'Home', products_path , class: "header-title" %></li>
-            <li class="nav-list-item"><%= link_to 'Signup',new_end_user_registration_path , class: "header-title"%></li>
-            <li class="nav-list-item"><%= link_to 'Login', new_end_user_session_path, class: "header-title" %></li>
-          <% end %>
-        </ul>
-      </nav>
+
+       <% if end_user_signed_in? %>
+          <nav>
+            <ul class="nav-list">
+              <li class="nav-list-item">
+                <%= link_to "HOME", products_path,class: "header-title" %>
+              </li>
+              <li class="nav-list-item">
+                <%= link_to "マイページ", end_user_path(current_end_user), class: "header-title" %>
+              </li>
+              <li class="nav-list-item">
+                <%= link_to "Log out", destroy_end_user_session_path,class: "header-title", method: :delete %>
+              </li>
+            </ul>
+          </nav>
+       <% else %>
+         <nav>
+            <ul class="nav-list">
+              <li class="nav-list-item">
+                <%= link_to "HOME", "/", class: "header-title" %>
+              </li>
+              <li class="nav-list-item">
+                <%= link_to "Sgin up", new_end_user_registration_path, class: "header-title" %>
+              </li>
+              <li class="nav-list-item">
+                <%= link_to "Log in",new_end_user_session_path, class: "header-title"%>
+              </li>
+            </ul>
+          </nav>
+        <% end %>
+
     </header>
 
 

@@ -1,17 +1,28 @@
 Rails.application.routes.draw do
 
+  devise_for :admins,controllers: {
+    sessions: 'admins/sessions',
+    passwords: 'admins/passwords',
+    registrations: 'admins/registrations'
+  }
+
+
+
+  devise_for :end_users, controllers: {
+    sessions: 'end_users/sessions',
+    passwords: 'end_users/passwords',
+    registrations: 'end_users/registrations'
+  }
+
 
   namespace :admins do
     get 'order_appends/show'
     get 'order_appends/index'
   end
   get 'order_appends/new'
-  get 'order_appends/create'
-  get 'enduser/show'
-  get 'enduser/edit'
-  get 'enduser/update'
-  get 'enduser/destroy'
+  post 'order_appends/create'
 
+  resources :end_users,only: [:show,:edit,:update,:destroy]
 
   get '/' => 'home#top'
 
@@ -62,19 +73,7 @@ Rails.application.routes.draw do
   # get 'products/create'
   # get 'products/update'
   # get 'products/destroy'
-  devise_for :admins,controllers: {
-  	sessions: 'admins/sessions',
-  	passwords: 'admins/passwords',
-  	registrations: 'admins/registrations'
-  }
 
-
-
-  devise_for :end_users, controllers: {
-  	sessions: 'end_users/sessions',
-  	passwords: 'end_users/passwords',
-  	registrations: 'end_users/registrations'
-  }
 
   resources :products,   only: [:index, :create, :update, :destroy, :show] do
   	resource :comments,  only: [:create, :destroy]
@@ -96,15 +95,15 @@ Rails.application.routes.draw do
 
 	 resources :order_details, only: [:index]
 
-	 resources :artists, only: [:create]
+	 resources :artists, only: [:create, :new]
 
 	 resources :end_users, only:[:index,:edit]
 
-	 resources :genres, only: [:create]
+	 resources :genres, only: [:create,:new]
 
 	 resources :discs, only: [:create]
 
-	 resources :labels, only: [:create]
+	 resources :labels, only: [:create,:new]
 
    resources :order_appends,only:[:show,:index]
  end
