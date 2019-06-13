@@ -6,11 +6,6 @@ Rails.application.routes.draw do
     registrations: 'admins/registrations'
   }
 
-
-<<<<<<< HEAD
-=======
-
->>>>>>> master
   devise_for :end_users, controllers: {
     sessions: 'end_users/sessions',
     passwords: 'end_users/passwords',
@@ -75,10 +70,6 @@ Rails.application.routes.draw do
   # get 'products/create'
   # get 'products/update'
   # get 'products/destroy'
-<<<<<<< HEAD
-=======
-  
->>>>>>> master
 
   resources :products,   only: [:index, :show] do
   	resource :comments,  only: [:create, :destroy]
