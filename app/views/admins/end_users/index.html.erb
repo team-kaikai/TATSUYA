@@ -14,19 +14,19 @@
 							</tr>
 						</thead>
 						<tbody>
-						<%# @users.each   %>
+						<% @end_users.each do |end_user|  %>
 							<tr>
 							<td>
-								<p>ID<%#= link_to user.id,user_path(user) %></p>
+								<p>ID<%= link_to end_user.id,end_user_path(end_user) %></p>
 							</td>
 							<td>
-								<p>名前<%#= user.first_name %><%#= user.last_name %></p>
+								<p>名前<%= end_user.first_name %><%= end_user.last_name %></p>
 							</td>
 							<td>
-								<p>カナ<%#= user.details_first_name %><%#= user.details_last_name %></p>
+								<p>カナ<%= end_user.details_first_name %><%= end_user.details_last_name %></p>
 							</td>
 						</tr>
-							<%# end  %>
+							<% end  %>
 						</tbody>
 					</table>
 			</div>
