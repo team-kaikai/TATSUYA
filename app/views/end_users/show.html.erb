@@ -43,7 +43,6 @@
 
 			<div class="col-xs-9">
 				<div class="row">
-			<%= form_for(@enduser) do |f| %>
 					<h1 class="col-xs-7">俺のページ</h1>
 					<div class="main-button col-xs-2 col-xs-offset-2">
 						<div class="main-button-delete mypage-border-font">
@@ -88,7 +87,6 @@
 	                		<%= @enduser.email %>
 	                	</div>
 	                </div>
-	               
 	                <div class="row">
 	                	<%= link_to "編集" , edit_end_user_path, class: "btn btn-default pull-right" %>
 	                     <!-- <a class="btn btn-default pull-right" href="#" style="width: 100px;" >編集</a> -->
@@ -147,9 +145,7 @@
 	                </div>
 
  -->
-
 			</div>
-			<% end %>
 		</div>
 	</div>
 </div>
