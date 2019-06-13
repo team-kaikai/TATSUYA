@@ -3,7 +3,7 @@ class Product < ApplicationRecord
 	has_many :discs,dependent: :destroy
 	accepts_nested_attributes_for :discs
 
-	# belongs_to :artist
+	belongs_to :artist
 	#productテーブルリセット
 
 	attachment :profile_image

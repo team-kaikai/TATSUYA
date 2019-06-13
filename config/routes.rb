@@ -1,5 +1,18 @@
 Rails.application.routes.draw do
 
+  devise_for :admins,controllers: {
+    sessions: 'admins/sessions',
+    passwords: 'admins/passwords',
+    registrations: 'admins/registrations'
+  }
+
+
+
+  devise_for :end_users, controllers: {
+    sessions: 'end_users/sessions',
+    passwords: 'end_users/passwords',
+    registrations: 'end_users/registrations'
+  }
 
   namespace :admins do
     get 'order_appends/show'
@@ -59,19 +72,7 @@ Rails.application.routes.draw do
   # get 'products/create'
   # get 'products/update'
   # get 'products/destroy'
-  devise_for :admins,controllers: {
-  	sessions: 'admins/sessions',
-  	passwords: 'admins/passwords',
-  	registrations: 'admins/registrations'
-  }
-
-
-
-  devise_for :end_users, controllers: {
-  	sessions: 'end_users/sessions',
-  	passwords: 'end_users/passwords',
-  	registrations: 'end_users/registrations'
-  }
+  
 
   resources :products,   only: [:index, :show] do
   	resource :comments,  only: [:create, :destroy]

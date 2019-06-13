@@ -2,6 +2,9 @@ class Admins::ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
+    @genre = product.genre
+    @label = product.label
+    @artist = product.artist
   end
 
   def new
@@ -13,7 +16,6 @@ class Admins::ProductsController < ApplicationController
   end
 
   def create
-    binding.pry
   	@product = Product.new(product_params)
   	@product.save!
     redirect_to admins_product_path(@product)

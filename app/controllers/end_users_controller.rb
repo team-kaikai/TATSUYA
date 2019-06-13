@@ -1,6 +1,6 @@
 class EndUsersController < ApplicationController
   def show
-    @enduser = EndUser.find(params[:id])
+    @end_user = EndUser.find(params[:id])
   end
 
   def edit

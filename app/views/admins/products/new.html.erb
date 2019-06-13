@@ -7,9 +7,10 @@
 						<img src="/no_image.jpg" height="300px">
 					</div>
 					<div class="col-xs-2 col-xs-offset-1">
-						<button style="width: 100%; margin-top: 150px;">
+						<%= f.attachment_field :profile_image %>
+						<!-- <button style="width: 100%; margin-top: 150px;">
 							<p>アルバム追加</p>
-						</button>
+						</button> -->
 					</div>
 				</div>
 				<div class="row">
@@ -19,10 +20,10 @@
 														<!-- 左が見せる値　　右がデータベースに入れる値 -->
 					</div>
 					<!-- 押したらアーティスト一覧がでるものを作成しなければならない -->
-					<!-- <div class="row">
+					<div class="row">
 						<h4 class="col-xs-4">アーティスト名</h4>
-						<input><input type="submit" value="登録"><input style="margin-left: 100px;">
-					</div> -->
+						<%= f.collection_select :artist_id, Artist.all,:id, :name %>
+					</div>
 					<div class="row">
 						<h4 class="col-xs-4">シングル/アルバム名</h4>
 						<%= f.text_field :album_name,style: "width: 300px" %>
@@ -31,14 +32,14 @@
 						<h4 class="col-xs-4">価格(税抜)</h4>
 						<%= f.number_field :price,style: "150px" %>
 					</div>
-					<!-- <div class="row">
+					<div class="row">
 						<h4 class="col-xs-4">レーベル名</h4>
-						<input><input type="submit" value="登録"><input style="margin-left: 100px;">
+						<%= f.collection_select :label_name_id, Label.all,:id, :name,class: "col-xs-8" %>
 					</div>
 					<div class="row">
 						<h4 class="col-xs-4">ジャンル</h4>
-						<input><input type="submit" value="登録"><input style="margin-left: 100px;">
-					</div> -->
+						<%= f.collection_select :genre_id, Genre.all,:id, :name %>
+					</div>
 					<div class="row">
 						<h4 class="col-xs-4">在庫数</h4>
 						<%= f.number_field :stock,style: "150px" %>
