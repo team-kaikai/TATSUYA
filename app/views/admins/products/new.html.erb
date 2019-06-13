@@ -53,15 +53,8 @@
 				5.<input style="width: 300px;"><br>
 
 		<%= form_for @product do |f| %>
-      		<%= f.fields_for :discs do |disc| %>
-				<div class="songs">
-				    <%= disc.fields_for :songs do |song| %>
-					    <%= render 'admins/products/song_fields', song: song %>
-				    <%end%>
-				    <div class="links">
-					    <%= link_to_add_association "add songs", disc, :songs %>
-				    </div>
-				</div>
+      		<%= f.fields :discs do |disc| %>
+				<%= render 'disc_field', f: disc %>
 			<% end %>
 		<% end %>
 
