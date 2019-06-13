@@ -7,11 +7,9 @@ Rails.application.routes.draw do
   end
   get 'order_appends/new'
   get 'order_appends/create'
-  get 'enduser/show'
-  get 'enduser/edit'
-  get 'enduser/update'
-  get 'enduser/destroy'
 
+
+  resources :end_users,only: [:show,:edit,:update,:destroy]
   get '/' => 'home#top'
 
 
@@ -95,15 +93,15 @@ Rails.application.routes.draw do
 
 	 resources :order_details, only: [:index]
 
-	 resources :artists, only: [:create]
+	 resources :artists, only: [:create, :new]
 
 	 resources :end_users, only:[:index,:edit]
 
-	 resources :genres, only: [:create]
+	 resources :genres, only: [:create,:new]
 
 	 resources :discs, only: [:create]
 
-	 resources :labels, only: [:create]
+	 resources :labels, only: [:create,:new]
 
    resources :order_appends,only:[:show,:index]
  end
