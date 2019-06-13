@@ -1,6 +1,6 @@
 class EndUsersController < ApplicationController
   def show
-    @end_user = EndUser.find(params[:id])
+    @enduser = EndUser.find(params[:id])
   end
 
   def edit
@@ -8,6 +8,13 @@ class EndUsersController < ApplicationController
   end
 
   def update
+    @enduser = EndUser.find(params[:id])
+    if @enduser.update!(enduser_params)
+      sign_in(@enduser, bypass: true)
+      redirect_to end_user_path(current_end_user)
+    else
+      render 'edit'
+    end
   end
 
   def destroy
@@ -21,4 +28,7 @@ class EndUsersController < ApplicationController
       params.require(:postal_code).permit(:first_postal_code,:last_postal_code)
     end
 
+    def enduser_params
+      params.require(:end_user).permit(:first_name,:last_name,:details_first_name,:details_last_name,:password,:password_confirmation,:email,:first_postal_code,:last_postal_code,:address,:tel)
+    end
 end
