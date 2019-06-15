@@ -25,7 +25,9 @@ class Admins::ProductsController < ApplicationController
   end
 
   def index
-    # @products = Product.page(params[:page]).reverse_order
+
+    @products = Product.all
+
   end
 
   def edit

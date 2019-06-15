@@ -5,19 +5,18 @@
 	    <input type="submit" name="submit" value="検索">
 	   </div>
 	   <div class="row">
-	   	<h2>アルバム一覧</h2>
-	   	<table class="admin-product-index" width="100%" style="text-align: center;">
-	   		<tr>
-	   			<td><img src="#" width="70" height="70" /></td>
-	   			<td>アーティスト名</td>
-	   			<td><button type="button" class="btn btn-info">編集</button></td>
-	   		</tr>
-	   		<tr>
-	   			<td><img src="#" width="70" height="70" /></td>
-	   			<td>アーティスト名</td>
-	   			<td><button type="button" class="btn btn-info">編集</button></td>
-	   		</tr>
-	   	</table>
+		   	<h2>アルバム一覧</h2>
+		    <% if @products.present? %>
+			   	<% @products.each do |product| %>
+			   	<table class="admin-product-index" width="100%" style="text-align: center;">
+			   		<tr>
+			   			<td><%= attachment_image_tag product, :profile_image_id, :fill, 50, 50,format:"jpeg",fallback: "no_image.jpg",size:'50x50'  %></td>
+			   			<td><%= product.album_name %></td>
+			   			<td><%= link_to "編集",admins_product_path(product), class: "btn btn-info" %></td>
+			   		</tr>
+			   	</table>
+		   		<% end %>
+	   		<% end %>
 	   </div>
 	</div>
 </div>

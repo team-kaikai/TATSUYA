@@ -5,7 +5,9 @@ class Product < ApplicationRecord
 	accepts_nested_attributes_for :discs, reject_if: :all_blank, allow_destroy: true
 
 	belongs_to :artist, optional: true
-	# 親に対し、otional: trueが必要
+	belongs_to :label, optional: true
+	belongs_to :genre, optional: true
+	# 親に対し、optional: trueが必要
 	#productテーブルリセット
 
 	attachment :profile_image
