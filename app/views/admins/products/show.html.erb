@@ -17,19 +17,20 @@
 	  			</tr>
 	  		  </thead>
 	  			<tr>
-	  				<td width="15%">1</td>
-	  				<td width="50%">曲名1</td>
-	  				<td width="25%">アーティスト名1</td>
-	  			</tr>
-	  			<tr>
-	  				<td width="15%">2</td>
-	  				<td width="50%">曲名2</td>
-	  				<td width="25%">アーティスト名2</td>
+	  				<td width="15%"></td>
+	  				<td width="50%">
+	  					<% @product.discs.each do |disc| %>
+	  						<% disc.songs.each do |song| %>
+	  							<%= song.track %>
+	  							<%= song.name %>
+	  						<% end %>
+	  					<% end %>
+	  					</td>
+	  				<td width="25%"><%= @product.artist.name %></td>
 	  			</tr>
 	  		</table>
 	  	</div>
 		  	<div class="text-center" style="padding-right: 20%; padding-top: 10%;">
-	       		<button type="button" class="btn btn-info" style="font-size: 20px;">編集</button>
 	   	   </div>
 	 </div>
   </div>
