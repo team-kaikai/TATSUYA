@@ -1,6 +1,6 @@
 class Cart < ApplicationRecord
 
-	belongs_to :products
-	belongs_to :end_users
+	belongs_to :product
+	belongs_to :end_user
 
 end

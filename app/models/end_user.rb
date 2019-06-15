@@ -4,7 +4,8 @@ class EndUser < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :cars, dependent: :destroy
+  has_many :carts, dependent: :destroy
+  has_many :products, through: :carts
 
 
    attr_writer :first_postal_code, :last_postal_code

@@ -3,29 +3,40 @@
 	 	<div class="row" style="margin-top: 50px;">
 	 		<div class="col">
 		 		<table class="table table-bordered">
+
 					<tbody>
-					<%# @cars.each do |cart| %>
+					<% @current_end_user.carts.each do |cart| %>
 						<tr>
 							<td>
-								<%#= attachment_image_tag cart.product,:profile_image_id,:fill,10,10,format:'jpegs',class:"img-circle pull-left profile-img", fallback: "no_image.jpg", size:"40x40" %>
+								<%= attachment_image_tag cart.product,:profile_image,:fill,50,50, fallback: "no_image.jpg", size:"40x40" %>
 								<p>ジャケット画像</p>
 							</td>
 							<td>
-								<p style="border-bottom:1.0px solid black;">title<%#= cart.product.album_name %></p>
+								<p style="border-bottom:1.0px solid black;"><%= cart.product.album_name %></p>
 								<br>
-								<select name="test">
+
+
+							<div class="row">
+								<h4>数量</h4>
+								<%= cart.select :quantity, [["1","1"],["2","2"],["3","3"],["4","4"]] %>
+															<!-- 左が見せる値右がデータベースに入れる値 -->
+							</div>
+
+								<!-- <select name="test">
 									<option value="test1" selected="selected">1</option>
 									<option value="test2">2</option>
 									<option value="test3">3</option>
-								</select>
+								</select> -->
 								<button><%#= link_to "削除", _path(@cart), method: :delete, "data-confirm" => "本当に削除しますか？" %></button>
 							</td>
 							<td>
-								<p>単価</p><%#= cart.product.price %><input type="quantity">円
+								<p>単価</p><%= cart.product.price %><input type="quantity">円
 							</td>
 						</tr>
+					<% end %>
 					<!---->
 					</tbody>
+
 				</table>
 			</div>
 		</div>

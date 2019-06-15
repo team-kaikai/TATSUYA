@@ -50,6 +50,7 @@
 					</div>
 					<%= disc.fields_for :songs do |song| %>
 						<div class="row">
+
 							<h4 class="col-xs-4">シングル/アルバム内の曲名</h4>
 							<div class="col-xs-7 col-xs-offset-4">
 								<%= song.text_field :name,class: "width:300px" %>
