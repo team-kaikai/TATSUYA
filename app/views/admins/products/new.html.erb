@@ -58,14 +58,15 @@
 					<% end %>
 				<% end %>
 
-				<%= form_for @product do |f| %>
-		      		<%= f.fields :discs do |disc| %>
-						<%= render 'disc_field', f: disc %>
+				<!-- cocoon 新しく曲名追加欄をもたせるため -->
+					<%= f.fields :discs do |disc| %>
+						<%= render 'disc_field', f:disc %>
 					<% end %>
-				<% end %>
+
+
 				<div class="main-button col-xs-2 col-xs-offset-9">
 					<div class="main-button-delete mypage-border-font">
-				        <%= f.submit %>
+				        <%= f.submit "商品を追加する" %>
 				    </div>
 			    </div>
 		<% end %>
