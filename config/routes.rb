@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   devise_for :admins,controllers: {
     sessions: 'admins/sessions',
     passwords: 'admins/passwords',
@@ -71,6 +72,7 @@ Rails.application.routes.draw do
   # get 'products/create'
   # get 'products/update'
   # get 'products/destroy'
+
 
 
   resources :products,   only: [:index, :create, :update, :destroy, :show]do
