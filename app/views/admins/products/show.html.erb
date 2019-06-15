@@ -19,8 +19,10 @@
 	  			<tr>
 	  				<td width="15%"></td>
 	  				<td width="50%">
-	  					<%= @product.discs.each do |disc| %>
-	  						<%= @disc.songs.each do |song| %>
+	  					<% @product.discs.each do |disc| %>
+	  						<% disc.songs.each do |song| %>
+	  							<%= song.track %>
+	  							<%= song.name %>
 	  						<% end %>
 	  					<% end %>
 	  					</td>
