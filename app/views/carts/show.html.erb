@@ -4,10 +4,10 @@
 	 		<div class="col">
 		 		<table class="table table-bordered">
 					<tbody>
-					<%# @cars.each do |cart| %>
+					<%# @cars.products.each do |product| %>
 						<tr>
 							<td>
-								<%#= attachment_image_tag cart.product,:profile_image_id,:fill,10,10,format:'jpegs',class:"img-circle pull-left profile-img", fallback: "no_image.jpg", size:"40x40" %>
+								<%#= attachment_image_tag cart.product.profile_image_id,:format:'jpegs', size:"40x40" %>
 								<p>ジャケット画像</p>
 							</td>
 							<td>
@@ -18,10 +18,10 @@
 									<option value="test2">2</option>
 									<option value="test3">3</option>
 								</select>
-								<button><%#= link_to "削除", _path(@cart), method: :delete, "data-confirm" => "本当に削除しますか？" %></button>
+								<button><%#= button_to "削除", cart.product, method: :delete, "data-confirm" => "カートから削除しますか？" %></button>
 							</td>
 							<td>
-								<p>単価</p><%#= cart.product.price %><input type="quantity">円
+								<p>単価</p><%#= (cart.product.price*quantity).to_i %>円
 							</td>
 						</tr>
 					<!---->
@@ -32,16 +32,15 @@
 		<div class="row">
 			<div class="col-xs-4 col-xs-offset-8">
 				<h4 style="border:1.0px solid black; text-align: center;">金額</h4>
-					<h4 style="border-bottom:1.0px solid black;">小計</h4>
-					<h4 style="border-bottom:1.0px solid black;">配送料</h4>
-				<h4 style="border-bottom:1.0px solid black;">合計</h4">
+					<h4 style="border-bottom:1.0px solid black;">小計<%#= (@cart.total_price).to_i %>円</h4>
+					<h4 style="border-bottom:1.0px solid black;">配送料５００円</h4>
+				<h4 style="border-bottom:1.0px solid black;">合計<%#= (@cart.total_price + 500).to_i %></h4">
 			</div>
 		</div>
 		<div class="row">
 			<div class="col" style="margin-top: 50px; text-align: center">
-				<button style="width: 60%;"><p>購入画面へ</p></button>
+				<button style="width: 60%; margin-bottom: 30px;"><%= link_to "購入画面へ" ,order_appends_new_path %></button>
 		<!---->
-
 			</div>
 		</div>
 	</div>
