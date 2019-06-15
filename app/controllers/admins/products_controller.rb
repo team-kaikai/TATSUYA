@@ -9,11 +9,9 @@ class Admins::ProductsController < ApplicationController
 
   def new
   	@product = Product.new
-    # disc = @product.discs.build
-    # disc.songs.build
     @disc = @product.discs.build
     @song = @disc.songs.build
->>>>>>> master
+
   end
 
   def create
@@ -26,6 +24,7 @@ class Admins::ProductsController < ApplicationController
   end
 
   def index
+    # @products = Product.page(params[:page]).reverse_order
   end
 
   def edit
@@ -36,7 +35,7 @@ class Admins::ProductsController < ApplicationController
 
   def product_params
   	params.require(:product).permit(:album_name, :profile_image, :price, :stock, :status, discs_attributes: [:id, :product_id, :disc_number, :_destroy,
-  		                                         songs_attributes: [:id, :disc_id, :name, :track, :_destroy]])
+  		                                                                                  songs_attributes: [:id, :disc_id, :name, :track, :_destroy]])
   end
 
 end
