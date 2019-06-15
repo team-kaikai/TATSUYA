@@ -1,25 +1,6 @@
 <div class="albumnew-wrapper">
 	<div class="container">
 		<h1>アルバム新規登録</h1>
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-=======
-
-
-=======
->>>>>>> master
-		<%= form_for @product do |f| %>
-      		<%= f.fields :discs do |disc| %>
-				<%= render 'disc_field', f: disc %>
-			<% end %>
-		<% end %>
-
-<<<<<<< HEAD
-
->>>>>>> master
-=======
->>>>>>> master
 			<%= form_for @product, url:"/admins/products" do |f| %>
 				<div class="row">
 					<div class="col-xs-4">
@@ -76,23 +57,14 @@
 						</div>
 					<% end %>
 				<% end %>
-<<<<<<< HEAD
-
-=======
->>>>>>> master
-				<%= form_for @product do |f| %>
-		      		<%= f.fields :discs do |disc| %>
-						<%= render 'disc_field', f: disc %>
+<!-- cocoon 新しく曲名追加欄をもたせるため -->
+					<%= f.fields :discs do |disc| %>
+						<%= render 'disc_field', f:disc %>
 					<% end %>
-				<% end %>
-<<<<<<< HEAD
-					
 
-=======
->>>>>>> master
 				<div class="main-button col-xs-2 col-xs-offset-9">
 					<div class="main-button-delete mypage-border-font">
-				        <%= f.submit %>
+				        <%= f.submit "商品を追加する" %>
 				    </div>
 			    </div>
 		<% end %>
