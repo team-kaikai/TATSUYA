@@ -5,10 +5,11 @@ class Admins::EndUsersController < ApplicationController
 	def index
 		#end_user全員情報
     	@end_users = EndUser.all
+    	@search = EndUser.ransack(params[:q])
+    	@result = @search.result
 	end
 
 	def edit
 	end
-	
 
 end

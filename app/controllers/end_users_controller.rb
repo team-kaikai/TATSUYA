@@ -9,10 +9,11 @@ class EndUsersController < ApplicationController
 
   def update
     @enduser = EndUser.find(params[:id])
-    if @enduser.update!(enduser_params)
+    if @enduser.update(enduser_params)
       sign_in(@enduser, bypass: true)
       redirect_to end_user_path(current_end_user)
     else
+      flash[:edit] = "空白の欄があります。すべての記入欄を埋めてください。"
       render 'edit'
     end
   end

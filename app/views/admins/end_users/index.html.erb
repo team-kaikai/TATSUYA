@@ -4,6 +4,23 @@
 		<div class="row">
 	 		<div class="col">
 				<h1>User一覧</h1>
+				<!--検索機能-->
+				<!-- 	<%= search_form_for @search url: admins_end_users_path do |f| %>
+						<div class="form-group">
+							<%= f.label :name_cont,"Name" %>
+							<%= f.text_field :name_cont, class: "form-control" %>
+						</div>
+						<div class="actions"><%= f.submit "search" %>
+						</div>
+					<% end %>
+
+					<% if @result.any? %>
+						<%= render @result %>
+					<% end %>
+					<% if @result.nil? %>
+						<ul class="users">
+							<%= render @end_users %>
+						<% end %> -->
 					<table class="table rable-striped table-hover">
 						<thead>
 							<tr>
