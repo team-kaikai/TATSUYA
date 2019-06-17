@@ -30,8 +30,8 @@
               <li class="nav-list-item">
                 <%= link_to "ログアウト", destroy_end_user_session_path,class: "header-title", method: :delete %>
               </li>
-              <li class="nav-list-item">
-                <%= link_to cart_path(current_end_user.id) do %>
+            <li class="nav-list-item">
+                <%= link_to end_user_carts_path(current_end_user.id) do %>
                   <i class="fas fa-shopping-cart"></i>
                 <% end %>
               </li>

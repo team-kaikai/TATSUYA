@@ -31,6 +31,7 @@ Rails.application.routes.draw do
   get 'home/master' => 'home/master'
 
 
+
   # namespace :admins do
   #   get 'discs/create'
   # end
