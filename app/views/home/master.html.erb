@@ -1,17 +1,42 @@
-<div class="top-wrapper">
-	<div class="master-image">
-		<div class="container">
-			<div class="top-title">
-				<h2 class="sans white">TATSUYA</h2>
-			</div>
-			<div class="btn-position">
-				<div class="sign clearfix">
-					<%= link_to '新規登録',new_admin_registration_path,class: "sans white" %>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TATSUYA</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.0/css/all.css" >
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+	<div class="top-wrapper">
+		<div class="master-image">
+			<div class="container">
+				<div class="top-title">
+					<h2 class="sans white">TATSUYA</h2>
 				</div>
-				<div class="sign clearfix">
-					<%= link_to 'ログイン',new_admin_session_path,class: "sans white" %>
+				<div class="btn-position">
+					<div class="sign clearfix">
+						<%= link_to '新規登録',new_admin_registration_path,class: "sans white" %>
+					</div>
+					<div class="sign clearfix">
+						<%= link_to 'ログイン',new_admin_session_path,class: "sans white" %>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-</div>
+    <footer style="border: 3px solid #aaaadd">
+      <div class="container">
+        <h3 class="text-left">TATSUYA<span style="padding-left: 50px;">長野県長野市長野原1-12-1</span>
+        </h3>
+        <%= link_to destroy_end_user_session_path,method: :delete do %>
+          <h3 style="color: white">ログアウト</h3>
+        <% end %>
+      </div>
+    </footer>
+
+  </body>
+</html>

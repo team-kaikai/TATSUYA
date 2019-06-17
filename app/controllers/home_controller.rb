@@ -4,7 +4,8 @@ class HomeController < ApplicationController
 
   def success
   end
-
+  
+layout false
   def master
   end
 end

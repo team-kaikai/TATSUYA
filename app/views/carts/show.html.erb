@@ -34,7 +34,7 @@
 				<h4 style="border:1.0px solid black; text-align: center;">金額</h4>
 					<h4 style="border-bottom:1.0px solid black;">小計<%#= (@cart.total_price).to_i %>円</h4>
 					<h4 style="border-bottom:1.0px solid black;">配送料５００円</h4>
-				<h4 style="border-bottom:1.0px solid black;">合計<%#= (@cart.total_price + 500).to_i %></h4">
+				<h4 style="border-bottom:1.0px solid black;">合計<%= (@cart.total_price + 500).to_i %></h4">
 			</div>
 		</div>
 		<div class="row">

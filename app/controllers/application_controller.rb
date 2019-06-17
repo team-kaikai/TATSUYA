@@ -14,6 +14,15 @@ class ApplicationController < ActionController::Base
     			products_path
  		 end
 	end
+# ログアウト後に遷移するpathを設定
+	def after_sign_out_path_for(resource)
+		case resource
+			when Admin
+				home_master_path
+			when EndUser
+				root_path
+  		end
+  	end
 
 	protected
 		def configure_permitted_parameters
