@@ -1,20 +1,17 @@
 <div class="productshow-wrapper">
   <div class="container">
-  	<div class="row" style="padding-top: 10%;">
+  	<div class="row" style="padding-top: 10px;">
 	  	<div class="col-xs-4">
-	  		<p style="border-bottom:3px solid #999;">アルバム名<span style=""></span><%= @product.album_name %></p>
-	  		<img src="#" width="300" height="300" />
-	  		<%= @product.label.name %>
-	  		<p style="font-size: 16px;">価格</p>
-	  		<div class="main-button-delete show-border-font">
-	           <%= @product.price %>
+	  		<p style="border-bottom:3px solid #999;">アルバム名:<span style="padding-left: 30px;font-size: 20px"><%= @product.album_name %></span></p>
+	  		<%= attachment_image_tag @product, :profile_image, format: 'jepg', fallback: "sample_image.jpg", size: "300x300" %>
+	  		<div style="float: left; padding: 5px;">
+		  		  <P style="font-size: 15px;">レーベル名:<span style="font-size: 20px; padding-left: 30px;"><%= @product.label.name %></span></P>
+		  		  <p style="font-size: 15px;">価格:<span style="font-size: 20px; padding-left: 30px;"><%= @product.price %>円</span></p>
+		  		  <p style="font-size: 15px;">配送状況:<span style="font-size: 20px;padding-left: 30px;"><%= @product.status %></span></p>
+		  		  <p style="font-size: 15px;">在庫数:<span style="font-size: 20px; padding-left: 30px;"><%= @product.stock %></span><p>
+		  		  <p style="font-size: 15px;">個数:<span style="padding-left: 30px;"><input name="cnt" type="text" value="1" size="4"></span><p>
+		  		  <%= link_to "カートに追加" ,  end_user_carts_path(current_end_user), class: "btn btn-default" %>
 	        </div>
-	        <span>在庫数</span><%= @product.stock %><span style="font-size: 20px; width: 100%;">❤️</span><br>
-	        <span>個数</span><input style="margin: 10px;"><br>
-	      <div class="row">
-	        <a href="https://local-clips.com/" class="btn" style="width: 400px;">カートに追加</a>
-	      </div>
-
 	  	</div>
 	  	<div class="col-xs-8" style="padding-left: 10%;">
 	  		<table class="product-main" style="font-size: 16px;">

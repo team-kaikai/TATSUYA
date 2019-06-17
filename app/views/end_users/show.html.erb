@@ -5,13 +5,11 @@
 			<div class="col-xs-2" style="margin-right:20px;">
 				<div class="favarites-box" style="border-right: 3px solid #dddddd">
 					<h3>いいね一覧</h3>
-             <%# @product.discs.each do |disc| %>
-               <%# disc.songs.each do |song| %>
 					<div class="mypage-good-box1">
 						<%= attachment_image_tag @product, :profile_image, format: 'jepg', fallback: "sample_image.jpg", size: "150x150" %>
 						<div class="mypage-album-box" style="text-align: center">
-						  <%= @product.artist.name %><br>
-						  <%= @product.album_name %>
+						  <p><%= @product.artist.name %></p>
+						  <p><%= @product.album_name %></p>
 						</div>
 					</div>
 
@@ -38,8 +36,6 @@
 						  <p>シングル・アルバム名</p>
 						</div>
 					</div>
-				<%# end %>
-             <%# end %>
 				</div>
 			</div>
 
@@ -92,7 +88,6 @@
 	                </div>
 	                <div class="row">
 	                	<%= link_to "編集" , edit_end_user_path, class: "btn btn-default pull-right" %>
-	                     <!-- <a class="btn btn-default pull-right" href="#" style="width: 100px;" >編集</a> -->
 	                </div>
 	                <div class="row">
 	                	<div class="col-xs-12" style="border-bottom: 3px solid #dddddd">
@@ -124,32 +119,7 @@
 	                		</table>
 	                	</div>
 	                </div>
-
-	                <!-- <div class="row">
-	                	<h4 class="col-xs-4">6月11日</h4>
-	                	<div class="col-xs-4 col-xs-offset-2">
-	                		<h4>配達完了</h4>
-	                	</div>
-	                	<a class="btn btn-default pull-right" href="#" style="width: 100px;" >詳細</a>
-	                </div>
-	                <div class="row">
-	                	<h4 class="col-xs-4">6月11日</h4>
-	                	<div class="col-xs-4 col-xs-offset-2">
-	                		<h4>配達中</h4>
-	                	</div>
-	                	<a class="btn btn-default pull-right" href="#" style="width: 100px;" >詳細</a>
-	                </div>
-	                <div class="row">
-	                	<h4 class="col-xs-4">6月11日</h4>
-	                	<div class="col-xs-4 col-xs-offset-2">
-	                		<h4>配達前</h4>
-	                	</div>
-	                	<a class="btn btn-default pull-right" href="#" style="width: 100px;" >詳細</a>
-	                </div>
-
- -->
 			</div>
-
 		</div>
 	</div>
 </div>
