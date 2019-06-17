@@ -25,10 +25,12 @@
 			  				<td width="50%"><%= song.name %></td>
 			  				<td width="25%"><%= @product.artist.name %></td>
 			  			</tr>
-			  			<%= link_to "編集", admins_product_path(@product), class: "btn btn-info" %>
 			  		<% end %>
 	  			<% end %>
 	  		</table>
+	  		<div style="padding-top: 5%;">
+	  			<%= link_to "編集", edit_admins_product_path, class: "btn btn-info" %>
+	  		</div>
 	  	</div>
 		  	<div class="text-center" style="padding-right: 20%; padding-top: 10%;">
 	   	   </div>
