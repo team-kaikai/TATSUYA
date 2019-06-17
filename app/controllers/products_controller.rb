@@ -11,6 +11,7 @@ class ProductsController < ApplicationController
     @artist = @product.artist
     @disc = @product.disc
     @cart = Cart.new
+  
   end
 
 end
