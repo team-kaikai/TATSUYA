@@ -18,16 +18,17 @@
 				<tr height="20px"></tr>
 			</thead>
 			<tbody>
-				<tr class="each-list">
-					<td>145</td>
-					<td>2019/6/21</td>
-					<td>配送中</td>
-					<td>12</td>
-					<td>山国郁夫</td>
-					<td>aiko kisshug</td>
-					<td>1</td>
-					<td>3600</td>
-				</tr>
+				<% @order_appends .each do |order| %>
+					<tr class="each-list">
+						<td><%= order.id %></td>
+						<td><%= order.created_at %></td>
+						<td><%= order.status %></td>
+						<td><%= order.end_user_id %></td>
+						<td><%= order.end_user.first_name %></td>
+						<td><%= order.product.title %></td>
+						<td><%= order.order_details.quantity %></td>
+						<td><%= order.subtitle %></td>
+					</tr>
 			</tbody>
 		</table>
 	</div>

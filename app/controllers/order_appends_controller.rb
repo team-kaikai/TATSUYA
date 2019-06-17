@@ -12,4 +12,5 @@ class OrderAppendsController < ApplicationController
     params.permit(:name, :address, :postal_code)
   end
 
+
 end

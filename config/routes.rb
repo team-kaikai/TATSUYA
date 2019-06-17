@@ -80,9 +80,11 @@ Rails.application.routes.draw do
 
  resources :home,only:[:top,:success]
 
+
 resources :end_users,only: [:show,:edit,:update,:destroy] do
  resource :address_menus,only:[:create,:new,:destroy]
  resource :carts,only:[:create,:update,:destroy,:show]
+
 end
 
  resources :order_details, only: [:show]

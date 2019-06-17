@@ -7,11 +7,11 @@ class ProductsController < ApplicationController
 
   def show
   	@product = Product.find(params[:id])
-    #@genre = product.genre
-    #@label = product.label
-    #@artist = product.artis
-    #@disc = product.disc.songs
-    #@products = Product.all.order(created_at: :desc)
+  	@label = @product.label
+  	@genre = @product.genre
+    @artist = @product.artist
+    # @disc = @product.disc
+    @cart = Cart.new
   end
 
 end
