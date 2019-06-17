@@ -10,7 +10,15 @@
 		  		  <p style="font-size: 15px;">配送状況:<span style="font-size: 20px;padding-left: 30px;"><%= @product.status %></span></p>
 		  		  <p style="font-size: 15px;">在庫数:<span style="font-size: 20px; padding-left: 30px;"><%= @product.stock %></span><p>
 		  		  <p style="font-size: 15px;">個数:<span style="padding-left: 30px;"><input name="cnt" type="text" value="1" size="4"></span><p>
-		  		  <%= link_to "カートに追加" ,  end_user_carts_path(current_end_user), class: "btn btn-default" %>
+		  	  <%= form_for @cart, url: end_user_carts_path(current_end_user.id) do |f| %>
+	       		  <span>個数</span><%= f.number_field :quantity %><br>
+	       		<%= f.hidden_field :product_id, value: @product.id %>
+	      		<div class="row">
+	      			<%= f.submit "カートに追加する" %>
+	       			<!-- <a href="https://local-clips.com/" class="btn" style="width: 400px;">カートに追加</a> -->
+	    		</div>
+	    	  <% end %>
+		  		  <%#= link_to "カートに追加" ,  end_user_carts_path(current_end_user), class: "btn btn-default" %>
 	        </div>
 	  	</div>
 	  	<div class="col-xs-8" style="padding-left: 10%;">
