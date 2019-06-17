@@ -5,6 +5,7 @@ class EndUser < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :cars, dependent: :destroy
+  
 
 
    attr_writer :first_postal_code, :last_postal_code
