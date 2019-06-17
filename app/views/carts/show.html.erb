@@ -1,31 +1,29 @@
 <div class = "cart-index-wrapper">
 	<div class ="container">
 	 	<div class="row" style="margin-top: 50px;">
-	 		<div class="col">
-		 		<table class="table table-bordered">
+	 		<div class="col-xs-12">
+		 		<table class="table cart-table">
 
 					<tbody>
 					<% current_end_user.carts.each do |cart| %>
-						<tr>
-							<td>
-								<%= attachment_image_tag cart.product,:profile_image,:fill,50,50, fallback: "no_image.jpg", size:"40x40" %>
-								<p>ジャケット画像</p>
+						<tr style="padding: 20px 10px;" class="row">
+							<td class="col-xs-4">
+								<%= attachment_image_tag cart.product,:profile_image,:fill,200,200, fallback: "no_image.jpg", size:"200x200" %>
 							</td>
-							<td>
-								<p style="border-bottom:1.0px solid black;"><%= cart.product.album_name %></p>
+							<td class="col-xs-4">
+								<p style="border-bottom:1.0px solid black; font-size: 20px;"><%= cart.product.album_name %></p>
 								<br>
-
-
-							<div class="row">
-								<h4>数量</h4>
-								<%= cart.select :quantity, [["1",1],["2",2],["3",3],["4",4]] %>
+								<div>
+								<p>数量<%= cart.quantity %></p>
+								<p>単価<%= cart.product.price %></p>
+								<%#= cart.select :quantity, [["1",1],["2",2],["3",3],["4",4]] %>
 															<!-- 左が見せる値右がデータベースに入れる値 -->
 							</div>
-							<%= link_to "数量変更を反映させる", cart_path(@cart) %>
-								<%= link_to "削除", cart_path(cart.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+							<%= link_to "数量変更を反映させる", end_user_carts_path(current_end_user.id) %>
+								<%= link_to "削除", end_user_carts_path(current_end_user.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
 							</td>
-							<td>
-								<p>金額：</p><%= cart.product.price * cart.product.quantity %>円
+							<td class="col-xs-4">
+								<p>金額：</p><%= cart.product.price * cart.quantity %>円
 							</td>
 						</tr>
 					<% end %>
@@ -37,15 +35,15 @@
 		</div>
 		<div class="row">
 			<div class="col-xs-4 col-xs-offset-8">
-				<h4 style="border:1.0px solid black; text-align: center;">金額</h4>
-					<h4 style="border-bottom:1.0px solid black;">小計</h4>
-					<h4 style="border-bottom:1.0px solid black;">配送料</h4>
-				<h4 style="border-bottom:1.0px solid black;">合計</h4">
+				<h4 style="border:1.0px solid black; text-align: center; margin-top: 200px;">金額</h4>
+					<h4 style="border-bottom:1.0px solid black;margin-top: 50px;">小計</h4>
+					<h4 style="border-bottom:1.0px solid black;margin-top: 20px;">配送料</h4>
+				<h4 style="border-bottom:1.0px solid black;margin-top: 20px;">合計</h4">
 			</div>
 		</div>
 		<div class="row">
 			<div class="col" style="margin-top: 50px; text-align: center">
-				<button style="width: 60%;"><p>購入画面へ</p></button>
+				<button style="width: 60%;" class="btn btn-primary"><p>購入画面へ</p></button>
 		<!---->
 			</div>
 		</div>
