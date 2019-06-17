@@ -5,7 +5,7 @@
 		 		<table class="table table-bordered">
 
 					<tbody>
-					<% @current_end_user.carts.each do |cart| %>
+					<% current_end_user.carts.each do |cart| %>
 						<tr>
 							<td>
 								<%= attachment_image_tag cart.product,:profile_image,:fill,50,50, fallback: "no_image.jpg", size:"40x40" %>
@@ -18,19 +18,14 @@
 
 							<div class="row">
 								<h4>数量</h4>
-								<%= cart.select :quantity, [["1","1"],["2","2"],["3","3"],["4","4"]] %>
+								<%= cart.select :quantity, [["1",1],["2",2],["3",3],["4",4]] %>
 															<!-- 左が見せる値右がデータベースに入れる値 -->
 							</div>
-
-								<!-- <select name="test">
-									<option value="test1" selected="selected">1</option>
-									<option value="test2">2</option>
-									<option value="test3">3</option>
-								</select> -->
-								<button><%#= link_to "削除", _path(@cart), method: :delete, "data-confirm" => "本当に削除しますか？" %></button>
+							<%= link_to "数量変更を反映させる", cart_path(@cart) %>
+								<%= link_to "削除", cart_path(cart.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
 							</td>
 							<td>
-								<p>単価</p><%= cart.product.price %><input type="quantity">円
+								<p>金額：</p><%= cart.product.price * cart.product.quantity %>円
 							</td>
 						</tr>
 					<% end %>
@@ -52,7 +47,6 @@
 			<div class="col" style="margin-top: 50px; text-align: center">
 				<button style="width: 60%;"><p>購入画面へ</p></button>
 		<!---->
-
 			</div>
 		</div>
 	</div>

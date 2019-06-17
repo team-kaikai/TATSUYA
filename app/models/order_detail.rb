@@ -1,5 +1,5 @@
 class OrderDetail < ApplicationRecord
 
-	belongs_to :oeder_append
+	belongs_to :order_append
 
 end

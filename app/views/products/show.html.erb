@@ -2,18 +2,22 @@
   <div class="container">
   	<div class="row" style="padding-top: 10%;">
 	  	<div class="col-xs-4">
-	  		<p style="border-bottom:3px solid #999;">アルバム名</p>
+	  		<p style="border-bottom:3px solid #999;"><%= @product.album_name %></p>
 	  		<img src="#" width="300" height="300" />
-	  		<p style="font-size: 16px; padding-top: 10px;">レーベル</p>
-	  		<p style="font-size: 16px;">価格</p>
+	  		<p style="font-size: 16px; padding-top: 10px;"><%= @label.name %></p>
+	  		<p style="font-size: 16px;"><%= @product.price %></p>
 	  		<div class="main-button-delete show-border-font">
-	           <a href="#" style="font-size: 20px;">販売中</a>
+	           <a href="#" style="font-size: 20px;"><%= @product.status %></a>
 	        </div>
-	        <span>在庫数</span><input><span style="font-size: 20px; width: 100%;">❤️</span><br>
-	        <span>個数</span><input style="margin: 10px;"><br>
-	      <div class="row">
-	        <a href="https://local-clips.com/" class="btn" style="width: 400px;">カートに追加</a>
-	      </div>
+	        <span>在庫数</span><input><span style="font-size: 20px; width: 100%;"><%= @product.stock %></span><br>
+	        <!-- ここを後日指定 -->
+	        <%= form_for @cart, url: end_user_carts_path(current_end_user.id) do |f| %>
+	       		<span>個数</span><input style="margin: 10px;"><br>
+	      		<div class="row">
+	      			<%= f.submit "カートに追加する" %>
+	       			<!-- <a href="https://local-clips.com/" class="btn" style="width: 400px;">カートに追加</a> -->
+	    		</div>
+	    	<% end %>
 
 	  	</div>
 	  	<div class="col-xs-8" style="padding-left: 10%;">
@@ -26,9 +30,13 @@
 	  			</tr>
 	  		  </thead>
 	  			<tr>
-	  				<td width="15%">1</td>
-	  				<td width="50%">曲名1</td>
-	  				<td width="25%">アーティスト名1</td>
+	  				<% @disc.song.each do |song| %>
+		  				<td width="15%">1</td>
+		  				<td width="50%"><%= song.name %></td>
+	  				<% end %>
+	  				<% @artist.each do |artist| %>
+	  					<td width="25%"><%= artist.name %></td>
+	  				<% end %>
 	  			</tr>
 	  			<tr>
 	  				<td width="15%">2</td>

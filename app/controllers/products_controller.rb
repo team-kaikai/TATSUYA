@@ -5,6 +5,12 @@ class ProductsController < ApplicationController
   end
 
   def show
+  	@product = Product.find(params[:id])
+  	@label = @product.label
+  	@genre = @product.genre
+    @artist = @product.artist
+    @disc = @product.disc
+    @cart = Cart.new
   end
 
 end
