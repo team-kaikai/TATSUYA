@@ -2,7 +2,7 @@ class AddressMenusController < ApplicationController
   def create
   end
 
-  def show
+  def new
   end
 
   def destroy
