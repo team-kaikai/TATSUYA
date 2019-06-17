@@ -8,7 +8,6 @@ class EndUser < ApplicationRecord
 
   has_many :address_menus
 
-
    attr_writer :first_postal_code, :last_postal_code
 
    #validates :postal_code,format: {with: /\A\d{7}\z/}
