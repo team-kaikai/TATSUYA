@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_15_062307) do
+ActiveRecord::Schema.define(version: 2019_06_17_031707) do
 
   create_table "address_menus", force: :cascade do |t|
     t.text "address"
@@ -128,7 +128,7 @@ ActiveRecord::Schema.define(version: 2019_06_15_062307) do
   create_table "products", force: :cascade do |t|
     t.integer "genre_id"
     t.integer "label_id"
-    t.integer "profile_image_id"
+    t.text "profile_image_id"
     t.integer "artist_id"
     t.string "album_name"
     t.integer "price"

@@ -21,8 +21,6 @@ Rails.application.routes.draw do
   get 'order_appends/new'
   post 'order_appends/create'
 
-
-  resources :end_users,only: [:show,:edit,:update,:destroy]
   get '/' => 'home#top'
 
 
@@ -82,9 +80,10 @@ Rails.application.routes.draw do
 
  resources :home,only:[:top,:success]
 
- resources :address_menus,only:[:create,:show,:destroy]
-
- resources :carts,only:[:create,:update,:destroy,:show]
+ resources :end_users,only: [:show,:edit,:update,:destroy] do
+    resource :address_menus,only:[:create,:new,:destroy]
+    resource :carts,only:[:create,:update,:destroy,:show]
+  end
 
  resources :order_details, only: [:show]
 

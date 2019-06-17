@@ -10,9 +10,9 @@
 			   	<% @products.each do |product| %>
 			   	<table class="admin-product-index" width="100%" style="text-align: center;">
 			   		<tr>
-			   			<td><%= attachment_image_tag product, :profile_image_id, :fill, 50, 50,format:"jpeg",fallback: "no_image.jpg",size:'50x50'  %></td>
-			   			<td><%= product.album_name %></td>
-			   			<td><%= link_to "編集",admins_product_path(product), class: "btn btn-info" %></td>
+			   			<td width="100"><%= attachment_image_tag product, :profile_image, :fill, 50, 50,format:"jpeg",fallback: "no_image.jpg",size:'50x50'  %></td>
+			   			<td width="150"><%= product.album_name %></td>
+			   			<td width="150"><%= link_to "編集",admins_product_path(product), class: "btn btn-info" %></td>
 			   		</tr>
 			   	</table>
 		   		<% end %>
