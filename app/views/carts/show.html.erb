@@ -11,10 +11,20 @@
 								<%= attachment_image_tag cart.product,:profile_image,:fill,200,200, fallback: "no_image.jpg", size:"200x200" %>
 							</td>
 							<td class="col-xs-4">
-								<p style="border-bottom:1.0px solid black; font-size: 20px;"><%= cart.product.album_name %></p>
+								<p style="border-bottom:1.0px solid black; font-size: 20px;"><%= cart.product.album_name %>／<%= cart.product.artist.name %></p>
 								<br>
 								<div>
-								<p>数量<%= cart.quantity %></p>
+								<p>数量
+									<%	@limit = [] %>
+									<% @limit.clear %>
+								<%  (1..cart.product.stock).each do |s| %>
+                  					<%  add_limit = [s,s] %>
+     								<%  @limit.push(add_limit) %>
+     							<% end %>
+
+									<%= form_for cart.product, url: end_user_carts_path(cart.id) do |f| %>
+										<%= f.select :stock,@limit, :selected=>cart.quantity %></p>
+									<% end %>
 								<p>単価<%= cart.product.price %></p>
 								<%#= cart.select :quantity, [["1",1],["2",2],["3",3],["4",4]] %>
 															<!-- 左が見せる値右がデータベースに入れる値 -->
@@ -22,8 +32,14 @@
 							<%= link_to "数量変更を反映させる", end_user_carts_path(current_end_user.id) %>
 								<%= link_to "削除", end_user_carts_path(current_end_user.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
 							</td>
+							<%# @cart.line_items.each do |item| %>
+							<%#= (item.good.price).to_i %>
+							<%# end %>
 							<td class="col-xs-4">
-								<p>金額：</p><%= cart.product.price * cart.quantity %>円
+								<%# @subtotal += cart.product.price * cart.quantity %>
+								<!-- <p>金額：</p> --><%#= cart.product.price * cart.quantity %>
+								<h1><%= get_subtotal(cart) %></h1>
+								<%#= @subtotal %>
 							</td>
 						</tr>
 					<% end %>
@@ -36,9 +52,9 @@
 		<div class="row">
 			<div class="col-xs-4 col-xs-offset-8">
 				<h4 style="border:1.0px solid black; text-align: center; margin-top: 200px;">金額</h4>
-					<h4 style="border-bottom:1.0px solid black;margin-top: 50px;">小計</h4>
-					<h4 style="border-bottom:1.0px solid black;margin-top: 20px;">配送料</h4>
-				<h4 style="border-bottom:1.0px solid black;margin-top: 20px;">合計</h4">
+					<h4 style="border-bottom:1.0px solid black;margin-top: 50px;"><%= get_price(@carts) %> </h4>
+					<h4 style="border-bottom:1.0px solid black;margin-top: 20px;">配送料/500<h4>
+				<h4 style="border-bottom:1.0px solid black;margin-top: 20px;"><%= get_price(@carts) + @fee %></h4">
 			</div>
 		</div>
 		<div class="row">

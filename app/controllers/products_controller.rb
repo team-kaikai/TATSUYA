@@ -11,6 +11,14 @@ class ProductsController < ApplicationController
     @artist = @product.artist
     # @disc = @product.disc
     @cart = Cart.new
+
+    if @product.stock != 0
+      @limit = []
+      (1..@product.stock).each do |s|
+        add_limit = [s,s]
+        @limit.push(add_limit)
+      end
+    end
   end
 
 end

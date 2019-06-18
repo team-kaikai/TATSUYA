@@ -12,7 +12,7 @@
 	        <span>在庫数</span><span style="font-size: 20px; width: 100%;"><%= @product.stock %></span><br>
 	        <!-- ここを後日指定 -->
 	        <%= form_for @cart, url: end_user_carts_path(current_end_user.id) do |f| %>
-	       		<span>個数</span><%= f.number_field :quantity %><br>
+	       		<span>個数</span><%= f.select :quantity,@limit %><br>
 	       		<%= f.hidden_field :product_id, value: @product.id %>
 	      		<div class="row">
 	      			<%= f.submit "カートに追加する" %>
