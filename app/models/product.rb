@@ -3,6 +3,7 @@ class Product < ApplicationRecord
     has_many :carts,dependent: :destroy
     has_many :end_users, through: :carts
 	has_many :discs,dependent: :destroy
+	has_many :order_details,dependent: :destroy
 	has_many :comments, dependent: :destroy
 	has_many :favorites, dependent: :destroy
 
@@ -14,6 +15,10 @@ class Product < ApplicationRecord
 	belongs_to :genre, optional: true
 	# 親に対し、optional: trueが必要
 	#productテーブルリセット
+
+	def total_price
+		product.price * quantity
+	end
 
 	attachment :profile_image
 
