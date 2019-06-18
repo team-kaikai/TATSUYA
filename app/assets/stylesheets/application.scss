@@ -301,10 +301,23 @@ nav{
 }
 
 /*-- product index--*/
+.product-list:after{
+	display: block;
+	clear: both;
+	content: "";
+}
 .product {
 	margin: 15px;
 	float: left;
 	list-style: none;
+}
+
+.product-list{
+	/*--display: flex;--*/
+	flex-wrap: wrap;
+	justify-content: space-around;
+	align-items: flex-start;
+	align-content: space-around;
 }
 /*------------------*/
 

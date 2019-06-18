@@ -6,8 +6,8 @@ class Admins::EndUsersController < ApplicationController
 		#end_user全員情報
     	@end_users = EndUser.all
     	#検索機能
-    	# @search = EndUser.ransack(params[:q])
-    	# @result = @search.result
+    	#@search = EndUser.ransack(params[:q])
+    	#@result = @search.result
 	end
 
 	def edit
