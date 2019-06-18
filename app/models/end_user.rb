@@ -6,7 +6,9 @@ class EndUser < ApplicationRecord
 
   has_many :carts, dependent: :destroy
 
-  has_many :address_menus
+  has_many :address_menus, foreign_key: "enduser_id"
+  has_many :comments, dependent: :destroy, foreign_key: "enduser_id"
+  has_many :favorites, dependent: :destroy, foreign_key: "enduser_id"
 
    attr_writer :first_postal_code, :last_postal_code
 

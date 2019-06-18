@@ -29,8 +29,7 @@ Rails.application.routes.draw do
 
   get 'home/success' => 'home/success'
   get 'home/master' => 'home/master'
-
-
+  get 'home/select' => 'home/select'
 
   # namespace :admins do
   #   get 'discs/create'
@@ -78,7 +77,7 @@ Rails.application.routes.draw do
 
 
   resources :products,   only: [:index, :create, :update, :destroy, :show]do
-  	resource :comments,  only: [:create, :destroy]
+  	resources :comments,  only: [:create, :destroy]
   	resource :favorites, only: [:create, :destroy]
   end
 

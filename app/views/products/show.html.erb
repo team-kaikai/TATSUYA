@@ -15,6 +15,25 @@
 	       		<span>個数</span><%= f.number_field :quantity %><br>
 	       		<%= f.hidden_field :product_id, value: @product.id %>
 	      		<div class="row">
+
+
+	      	<% if @product.favorited_by?(current_end_user) %>
+  				<li>
+    				<%= link_to product_favorites_path(@product), method: :delete do %>
+      					<i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
+      				<%= @product.favorites.count %> いいね
+    				<% end %>
+  				</li>
+			<% else %>
+  				<li>
+    				<%= link_to product_favorites_path(@product), method: :post do %>
+      					<i class="fa fa-heart-o" aria-hidden="true"></i>
+      				<%= @product.favorites.count %> いいね
+    				<% end %>
+  				</li>
+			<% end %>
+
+
 	      			<%= f.submit "カートに追加する" %>
 	       			<!-- <a href="https://local-clips.com/" class="btn" style="width: 400px;">カートに追加</a> -->
 	    		</div>
@@ -52,17 +71,20 @@
 <div class="add-review-wrapper" style="padding-top: 20px;">
 	<div class="container" style="border: 3px solid #dddddd; border-radius: 10px; height: auto;">
 		<h2>レビュー追加</h2>
-		<div class="add-review" style="padding: 10px;">
-			<input type="button" value="追加" style="width:300px; height:30px;">
-		</div>
+		<%= form_for [@product, @comment] do |f| %>
+			<div class="add-review" style="padding: 10px;">
+				<%= f.submit "送信する", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
+			</div>
 		<div class="row">
-			<textarea style="width: 100%; height: 150px;"></textarea>
+				<%= f.text_area :comment, rows:'5', class: "form-control",placeholder: "コメントをここに" %>
 		</div>
+		<% end %>
 	</div>
 </div> 
 <div class="review-wrapper">
   <div class="container">
   	<h2>レビュー一覧</h2>
+  	<% @product.comments.each do |comment| %>
   	   <div class="row">
   		  <ol class="review-list" style="border: 2px solid #999;">
 	          <li class="comment">
@@ -70,15 +92,21 @@
 	                <div class="comment-text">
 	                    <div class="comment-author clearfix">
 	                        <span class="comment-meta">
-	                          <span class="comment-date">2019/6/11</span>
+	                          <span class="comment-date"><%= comment.created_at.strftime('%Y/%m/%d') %></span>
+	                          <span class="comment-date"><%= comment.end_user.first_name %>さんのレビュー</span>
 	                        </span>
 	                    </div>
-	                    <div class="comment-entry">コメント内容</div>
+	                    <div class="comment-entry"><%= comment.comment %></div>
 	                </div>
 	            </div>
 	          </li>
-	          <input type="button" value="削除" style="width:100px; height:30px; float: right;">
+			<% if current_end_user %>
+	        	<button style="width: 30%; float: right;">
+							<p><%= link_to "削除", product_comment_path(@product,comment), method: :delete, "data-confirm" => "本当に削除しますか？" %></p>
+				</button>
+			<% end %>
          </ol>
   	  </div>
+  	 <% end %>
   </div>
 </div>

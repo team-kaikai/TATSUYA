@@ -2,6 +2,7 @@ class Admins::ArtistsController < ApplicationController
   def create
   	@artist =Artist.new(artist_params)
   	@artist.save
+    redirect_to home_select_path
   end
   def new
   	@artist = Artist.new

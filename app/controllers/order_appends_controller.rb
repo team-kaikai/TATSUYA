@@ -2,6 +2,7 @@ class OrderAppendsController < ApplicationController
 
   def new
   	@order_append = OrderAppend.new
+    @address_nemus = current_end_user.address_menus
   end
 
   def create
