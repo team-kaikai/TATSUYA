@@ -1,22 +1,41 @@
 <div class="productindex-wrapper">
 	<div class="container">
 	   <div class="row" style="text-align: center;">
-	    <input type="search" name="search" size="148" placeholder="キーワードを入力">
-	    <input type="submit" name="submit" value="検索">
+	    <%= search_form_for @search, url:  admins_products_path do |f| %>
+	    <!--nameカラムに対して部分一致検索ができる-->
+	    	<div class="form-group">
+	    		<%= f.label :artist_name_cont, "アーティスト検索" %>
+	    		<%= f.text_field :artist_name_cont, class: "form-control" %>
+	    	</div>
+	    	<div class="actions">
+	    		<%= f.submit"Search" %>
+	    	</div>
+	    <% end %>
 	   </div>
 	   <div class="row">
 		   	<h2>アルバム一覧</h2>
-		    <% if @products.present? %>
-			   	<% @products.each do |product| %>
 			   	<table class="admin-product-index" width="100%" style="text-align: center;">
+			   		<thead>
+		  			<tr>
+		  				<th width="100"></th>
+		  				<th width="150" style="padding-left: 12%;">曲名</th>
+		  				<th width="150" style="padding-left: 10%;">アーティスト</th>
+		  				<th width="150"></th>
+		  			</tr>
+	  		  		</thead>
+	  		  		<tbody>
+	  		 <% if @products.present? %>
+			   	<% @products.each do |product| %>
 			   		<tr>
-			   			<td><%= attachment_image_tag product, :profile_image_id, :fill, 50, 50,format:"jpeg",fallback: "no_image.jpg",size:'50x50'  %></td>
-			   			<td><%= product.album_name %></td>
-			   			<td><%= link_to "編集",admins_product_path(product), class: "btn btn-info" %></td>
+			   			<td width="100"><%= attachment_image_tag product, :profile_image, :fill, 50, 50,format:"jpeg",fallback: "no_image.jpg",size:'50x50'  %></td>
+			   			<td width="150"><%= product.album_name %></td>
+			   			<td width="150"><%= product.artist.name %></td>
+			   			<td width="150"><%= link_to "編集",admins_product_path(product), class: "btn btn-info" %></td>
 			   		</tr>
-			   	</table>
-		   		<% end %>
+			 	<% end %>
 	   		<% end %>
+			   		</tbody>
+			   	</table>
 	   </div>
 	</div>
 </div>

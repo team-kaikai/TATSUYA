@@ -3,8 +3,16 @@
 	  <h1 style="text-align: center;">TATSUYA</h1>
 
 	   <div class="row" style="text-align: center;">
-	    <input type="search" name="search" size="148" placeholder="キーワードを入力">
-	    <input type="submit" name="submit" value="検索">
+	   	<%= search_form_for @search do |f| %>
+	    <!--nameカラムに対して部分一致検索ができる-->
+	    	<div class="form-group">
+	    		<%= f.label :artist_name_cont, "検索" %>
+	    		<%= f.text_field :artist_name_cont, class: "form-control" %>
+	    	</div>
+	    	<div class="actions">
+	    		<%= f.submit"Search" %>
+	  		</div>
+	    <% end %>
 	   </div>
 
 	  	 <div clss="row">
@@ -21,15 +29,21 @@
 
 	  		<div class="offset-1 col-xs-10" style="padding-top: 1%; margin-top: 10px; border-right:3px solid #999;">
 	  		  <h3 style="padding-left: 2%; padding-bottom: 10px;">CD一覧</h3>
-	  			<ul>
+	  			<ul class="product-list" style="padding-left: 2%;">
+	  				<% @products.each do |product| %>
 				　　<li class="product" style="border: 1px solid #999;">
-						<div style="padding: 5%;">
-							<img src="#" width="150" height="150" />
-							　<p style="margin-bottom: 0px; padding-top: 10px;">アーティスト</p>
-							　<p style="margin-bottom: 0px;">アルバム名</p>
-							　<p style="margin-bottom: 0px;">価格</p>
+						<div>
+							<%= link_to product_path(product) do %>
+							<%= attachment_image_tag product, :profile_image, :fill, 200, 200,format:"jpeg",fallback: "no_image.jpg",size:'200x200' %>
+							<% end %>
+						<div style="padding-left: 7%; padding-bottom: 5%;">
+							　<p style="margin-bottom: 0px; padding-top: 10px;"><%= product.artist.name %></p>
+							　<p style="margin-bottom: 0px;"><%= product.album_name %></p>
+							　<p style="margin-bottom: 0px;"><%= product.price %>円</p>
+						</div>
 						</div>
 					</li>
+					<% end %>
 				</ul>
 	  		</div>
 	  	 </div>

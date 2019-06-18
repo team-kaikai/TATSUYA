@@ -4,11 +4,12 @@ class EndUser < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :carts, dependent: :destroy
-
-  has_many :address_menus, foreign_key: "enduser_id"
-  has_many :comments, dependent: :destroy, foreign_key: "enduser_id"
-  has_many :favorites, dependent: :destroy, foreign_key: "enduser_id"
+  has_many :carts, dependent: :destroy,class_name: "Cart",foreign_key: "enduser_id"
+  has_many :products, through: :carts
+  has_many :address_menus, dependent: :destroy,class_name: "AddressMenu",foreign_key: "enduser_id"
+  has_many :order_appends, dependent: :destroy,class_name: "OrderAppend",foreign_key: "enduser_id"
+  has_many :favorites, dependent: :destroy,class_name: "Favorite",foreign_key: "enduser_id"
+  has_many :comments, dependent: :destroy,class_name: "Comment",foreign_key: "enduser_id"
 
    attr_writer :first_postal_code, :last_postal_code
 
@@ -19,11 +20,11 @@ class EndUser < ApplicationRecord
    before_validation :set_postal_code
 
    def first_postal_code
-   		@first_postal_code || self.address[0..2] if self.address.present?
+   		@first_postal_code || self.postal_code[0..2] if self.postal_code.present?
    end
 
    def last_postal_code
-   		@last_postal_code || self.address[3..6] if self.address.present?
+   		@last_postal_code || self.postal_code[3..6] if self.postal_code.present?
    end
 
    def set_postal_code

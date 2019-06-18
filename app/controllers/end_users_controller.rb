@@ -11,6 +11,7 @@ class EndUsersController < ApplicationController
   def update
     @enduser = EndUser.find(params[:id])
     if @enduser.update(enduser_params)
+      # @enduser.update(address_params)
       sign_in(@enduser, bypass: true)
       redirect_to end_user_path(current_end_user)
     else
@@ -26,11 +27,11 @@ class EndUsersController < ApplicationController
   end
 
   private
-    def address_params
-      params.require(:postal_code).permit(:first_postal_code,:last_postal_code)
-    end
+    # def address_params
+    #   params.require(:end_user).permit(:first_postal_code,:last_postal_code)
+    # end
 
     def enduser_params
-      params.require(:end_user).permit(:first_name,:last_name,:details_first_name,:details_last_name,:password,:password_confirmation,:email,:first_postal_code,:last_postal_code,:address,:tel)
+      params.require(:end_user).permit(:first_name,:last_name,:details_first_name,:details_last_name,:password,:password_confirmation,:email,:postal_code,:first_postal_code,:last_postal_code,:address,:tel)
     end
 end
