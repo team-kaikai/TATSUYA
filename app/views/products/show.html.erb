@@ -11,6 +11,7 @@
 	        </div>
 	        <span>在庫数</span><span style="font-size: 20px; width: 100%;"><%= @product.stock %></span><br>
 	        <!-- ここを後日指定 -->
+	        <% if @cart.present? %>
 	        <%= form_for @cart, url: end_user_carts_path(current_end_user.id) do |f| %>
 	       		<span>個数</span><%= f.number_field :quantity %><br>
 	       		<%= f.hidden_field :product_id, value: @product.id %>
@@ -37,6 +38,7 @@
 	      			<%= f.submit "カートに追加する" %>
 	       			<!-- <a href="https://local-clips.com/" class="btn" style="width: 400px;">カートに追加</a> -->
 	    		</div>
+	    	<% end %>
 	    	<% end %>
 
 	  	</div>
