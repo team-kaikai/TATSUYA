@@ -13,5 +13,4 @@ class Product < ApplicationRecord
 
 	attachment :profile_image
 
-
 end

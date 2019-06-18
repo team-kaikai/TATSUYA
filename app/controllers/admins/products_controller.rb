@@ -16,7 +16,6 @@ class Admins::ProductsController < ApplicationController
 
   def create
   	@product = Product.new(product_params)
-
   	@product.save!
     redirect_to admins_product_path(@product)
   end
@@ -25,9 +24,11 @@ class Admins::ProductsController < ApplicationController
   end
 
   def index
-
     @products = Product.all
-
+    # 検索オブジェクト
+    @search = Product.ransack(params[:q])
+    # 検索結果
+    @products = @search.result
   end
 
   def edit

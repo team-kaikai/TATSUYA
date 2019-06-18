@@ -22,11 +22,11 @@ class EndUser < ApplicationRecord
    before_validation :set_postal_code
 
    def first_postal_code
-   		@first_postal_code || self.address[0..2] if self.address.present?
+   		@first_postal_code || self.postal_code[0..2] if self.postal_code.present?
    end
 
    def last_postal_code
-   		@last_postal_code || self.address[3..6] if self.address.present?
+   		@last_postal_code || self.postal_code[3..6] if self.postal_code.present?
    end
 
    def set_postal_code
