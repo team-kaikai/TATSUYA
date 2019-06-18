@@ -11,6 +11,11 @@ class ProductsController < ApplicationController
     @artist = @product.artist
     # @disc = @product.disc
     @cart = Cart.new
+    @comment = Comment.new
   end
+
+  def create
+  end
+
 
 end
