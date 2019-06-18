@@ -11,6 +11,7 @@ class ProductsController < ApplicationController
     @artist = @product.artist
     # @disc = @product.disc
     @cart = Cart.new
+<<<<<<< HEAD
 
     if @product.stock != 0
       @limit = []
@@ -19,6 +20,13 @@ class ProductsController < ApplicationController
         @limit.push(add_limit)
       end
     end
+=======
+    @comment = Comment.new
+>>>>>>> master
   end
+
+  def create
+  end
+
 
 end

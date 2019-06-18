@@ -3,6 +3,7 @@ class Cart < ApplicationRecord
 	belongs_to :product
 	belongs_to :end_user, class_name: "EndUser", foreign_key: "enduser_id"
 
+
 	# def add_product(product_id)
 	# 	current_product = products.find_by_product_id(product_id)
 	# 	if current_product
@@ -12,6 +13,7 @@ class Cart < ApplicationRecord
 	# 	end
 	# 	current_product
 	# end
+
 
 
 end

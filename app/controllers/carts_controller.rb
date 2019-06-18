@@ -15,6 +15,7 @@ class CartsController < ApplicationController
   end
 
   def destroy
+  	@cart.product.destroy
   end
 
   def show
