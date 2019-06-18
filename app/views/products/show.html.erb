@@ -3,6 +3,7 @@
   	<div class="row" style="padding-top: 10px;">
 	  	<div class="col-xs-4">
 
+
 	  		<p style="border-bottom:3px solid #999;">アルバム名:<span style="padding-left: 30px;font-size: 20px"><%= @product.album_name %></span></p>
 	  		<%= attachment_image_tag @product, :profile_image, format: 'jepg', fallback: "sample_image.jpg", size: "300x300" %>
 	  		<div style="float: left; padding: 5px;">
@@ -12,6 +13,7 @@
 		  		  <p style="font-size: 15px;">在庫数:<span style="font-size: 20px; padding-left: 30px;"><%= @product.stock %></span><p>
 		  	  <%= form_for @cart, url: end_user_carts_path(current_end_user.id) do |f| %>
 	       		  <span style="font-size: 15px;">個数:</span><%= f.number_field :quantity %>
+
 
 	       		<%= f.hidden_field :product_id, value: @product.id %>
 

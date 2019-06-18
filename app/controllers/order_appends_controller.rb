@@ -12,7 +12,7 @@ class OrderAppendsController < ApplicationController
   end
 
    def order_append_params
-    params.permit(:name, :address, :postal_code)
+    params.permit(:name, :address, :postal_code, :subtotal)
   end
 
 
