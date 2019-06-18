@@ -11,6 +11,7 @@ class Admins::EndUsersController < ApplicationController
 	end
 
 	def edit
+		@enduser = EndUser.find(params[:id])
 	end
 
 end

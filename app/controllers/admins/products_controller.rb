@@ -15,7 +15,9 @@ class Admins::ProductsController < ApplicationController
   end
 
   def create
-  	@product = Product.new(product_params)
+
+    # ーーーーーenum記述ーーーーーーーーーーーーーーーーーーー
+  	@product = Product.new(params_int(product_params))
   	@product.save!
     redirect_to admins_product_path(@product)
   end
@@ -39,8 +41,16 @@ class Admins::ProductsController < ApplicationController
   private
   	def product_params
   		params.require(:product).permit(
-        :artist_id,:label_id,:genre_id,:profile_image,:album_name,:price,:stock,:status,discs_attributes: [:id, :product_id, :disc_number, :_destroy,songs_attributes: [:id, :disc_id, :name, :track, :_destroy]])
+        :artist_id,:label_id,:genre_id,:profile_image,:album_name,:price,:stock,:status,:body,discs_attributes: [:id, :product_id, :disc_number, :_destroy,songs_attributes: [:id, :disc_id, :name, :track, :_destroy]])
   	end
+# ーーーーenum記述ーーーーーーーーー
+    def params_int(product)
+        product.each do |key,value|
+          if integer_string?(value)
+            product[key]=value.to_i
+          end
+    end
+  end
 
 end
 

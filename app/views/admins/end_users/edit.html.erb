@@ -8,7 +8,7 @@
 			<ul class="col-xs-10 col-xs-offset-1" style="list-style:none;">
 				<li style="border-bottom: 3px solid #dddddd">
 					<p><string>名前</string></p>
-					<p style="padding-left: 10%;">設楽将太</p>
+					<p style="padding-left: 10%;"><%= @enduser.first_name %><%= @enduser.last_name %></p>
 				</li>
 			</ul>
 		</div>
@@ -16,7 +16,7 @@
 			<ul class="col-xs-10 col-xs-offset-1" style="list-style:none;">
 				<li style="border-bottom: 3px solid #dddddd">
 					<p><string>フリガナ</string></p>
-					<p style="padding-left: 10%;">シダラショウタ</p>
+					<p style="padding-left: 10%;"><%= @enduser.details_first_name %><%= @enduser.details_first_name %></p>
 				</li>
 			</ul>
 		</div>
@@ -24,7 +24,7 @@
 			<ul class="col-xs-10 col-xs-offset-1" style="list-style:none;">
 				<li style="border-bottom: 3px solid #dddddd">
 					<p><string>郵便番号</string></p>
-					<p style="padding-left: 10%;">1112222</p>
+					<p style="padding-left: 10%;"><%= @enduser.first_postal_code %>-<%= @enduser.last_postal_code %></p>
 				</li>
 			</ul>
 		</div>
@@ -32,7 +32,7 @@
 			<ul class="col-xs-10 col-xs-offset-1" style="list-style:none;">
 				<li style="border-bottom: 3px solid #dddddd">
 					<p><string>住所</string></p>
-					<p style="padding-left: 10%;">神奈川県横浜市中区本牧緑丘100</p>
+					<p style="padding-left: 10%;"><%= @enduser.address %></p>
 				</li>
 			</ul>
 		</div>
@@ -40,7 +40,7 @@
 			<ul class="col-xs-10 col-xs-offset-1" style="list-style:none;">
 				<li style="border-bottom: 3px solid #dddddd">
 					<p><string>電話番号</string></p>
-					<p style="padding-left: 10%;">08053801190</p>
+					<p style="padding-left: 10%;"><%= @enduser.tel %></p>
 				</li>
 			</ul>
 		</div>
@@ -48,21 +48,12 @@
 			<ul class="col-xs-10 col-xs-offset-1" style="list-style:none;">
 				<li style="border-bottom: 3px solid #dddddd">
 					<p><string>Email</string></p>
-					<p style="padding-left: 10%;">ss045.official@gmail.com</p>
-				</li>
-			</ul>
-		</div>
-		<div class="row">
-			<ul class="col-xs-10 col-xs-offset-1" style="list-style:none;">
-				<li style="border-bottom: 3px solid #dddddd">
-					<p><string>パスワード</string></p>
-					<p style="padding-left: 10%;">111222</p>
+					<p style="padding-left: 10%;"><%= @enduser.email %></p>
 				</li>
 			</ul>
 		</div>
 		<div class="row" style="margin: 50px">
 			<div class="col-xs-10 col-xs-offset-1">
-				<a class="btn btn-default" href="#" style="width: 100px; margin-right: 500px;" >更新</a>
 				<%= link_to "退会" , destroy_end_user_session_path, class: "btn btn-default pull-right" %>
 			</div>
 		</div>

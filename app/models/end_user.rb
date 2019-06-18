@@ -4,6 +4,7 @@ class EndUser < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+
   has_many :carts, dependent: :destroy,class_name: "Cart",foreign_key: "enduser_id"
   has_many :products, through: :carts
   has_many :address_menus, dependent: :destroy,class_name: "AddressMenu",foreign_key: "enduser_id"
@@ -11,6 +12,8 @@ class EndUser < ApplicationRecord
   has_many :favorites, dependent: :destroy,class_name: "Favorite",foreign_key: "enduser_id"
   has_many :comments, dependent: :destroy,class_name: "Comment",foreign_key: "enduser_id"
 
+
+ 
    attr_writer :first_postal_code, :last_postal_code
 
    #validates :postal_code,format: {with: /\A\d{7}\z/}
