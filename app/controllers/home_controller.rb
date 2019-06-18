@@ -5,6 +5,11 @@ class HomeController < ApplicationController
   def success
   end
 
+
   def master
   end
+
+  def select
+  end
+  
 end

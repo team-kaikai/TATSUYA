@@ -4,7 +4,6 @@ class CartsController < ApplicationController
   	@cart.enduser_id = current_end_user.id
   	@cart.save
     redirect_to end_user_carts_path(@cart.enduser_id)
-
   end
 
   def update
@@ -12,6 +11,7 @@ class CartsController < ApplicationController
   end
 
   def destroy
+  	@cart.product.destroy
   end
 
   def show

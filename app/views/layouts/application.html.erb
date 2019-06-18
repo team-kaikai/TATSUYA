@@ -4,6 +4,7 @@
     <title>TATSUYA</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.0/css/all.css" >
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -14,7 +15,7 @@
     <header>
 
       <% if end_user_signed_in? %>
-        <%= current_end_user.first_name %>がLogin中
+        <div class="header-title"><%= current_end_user.first_name %>がLogin中</div>
       <% end %>
 
        <% if end_user_signed_in? %>
@@ -28,6 +29,11 @@
               </li>
               <li class="nav-list-item">
                 <%= link_to "ログアウト", destroy_end_user_session_path,class: "header-title", method: :delete %>
+              </li>
+            <li class="nav-list-item">
+                <%= link_to end_user_carts_path(current_end_user.id) do %>
+                  <i class="fas fa-shopping-cart"></i>
+                <% end %>
               </li>
             </ul>
           </nav>
@@ -44,14 +50,14 @@
                 <%= link_to "アルバム一覧",admins_products_path,class: "header-title" %>
               </li>
               <li class="nav-list-item">
-                <%= link_to "購入一覧", admins_order_appends_index_path , class: "header-title" %>
+                <%= link_to "購入一覧", admins_order_appends_index_path, class: "header-title" %>
               </li>
               <li class="nav-list-item">
                 <%= link_to "ログアウト", destroy_admin_session_path,class: "header-title", method: :delete %>
               </li>
             </ul>
           </nav>
-       <% else %>
+        <% else %>
          <nav>
             <ul class="nav-list">
               <li class="nav-list-item">

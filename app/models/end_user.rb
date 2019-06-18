@@ -11,8 +11,6 @@ class EndUser < ApplicationRecord
   has_many :favorites, dependent: :destroy,class_name: "Favorite",foreign_key: "enduser_id"
   has_many :comments, dependent: :destroy,class_name: "Comment",foreign_key: "enduser_id"
 
-
-
    attr_writer :first_postal_code, :last_postal_code
 
    #validates :postal_code,format: {with: /\A\d{7}\z/}
