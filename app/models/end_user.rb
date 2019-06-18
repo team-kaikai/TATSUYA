@@ -4,6 +4,8 @@ class EndUser < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_many :carts, dependent: :destroy
+
 
 
   has_many :carts, dependent: :destroy,class_name: "Cart",foreign_key: "enduser_id"
@@ -15,7 +17,7 @@ class EndUser < ApplicationRecord
 
 
 
-
+ 
    attr_writer :first_postal_code, :last_postal_code
 
    #validates :postal_code,format: {with: /\A\d{7}\z/}

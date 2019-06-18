@@ -1,23 +1,35 @@
 <div class = "order-new-wrapper">
 	<div class ="container">
-		<%= form_for(@order_append, url: order_appends_create_path, method: :post) do |f| %>
+		<%= form_with(local: true) do |form| %>
 		<div class="row">
 			<div class="col-xs-8 col-xs-offset-2">
 				<h3 style="border-bottom:1.0px solid black; margin-top: 30px;">送付先選択</h3>
 			</div>
 		</div>
-		<div class="row">
-			<div class="col-xs-4 col-xs-offset-2">
-				<h4><%= radio_button_tag(:order_append_new, "既存の住所") %>既存の住所</h4>
+<!-- 		<div class="row">
+			<div class="col-xs-3 col-xs-offset-2">
+				<h4>既存の住所</h4>
 			</div>
-			<div class="col-xs-4">
-				<p>登録してある住所<%= current_end_user.address %></p>
+		</div> -->
+		<div class="row">
+			<div class="col-xs-8 col-xs-offset-2">
+				<table class="table">
+					<tbody>
+					<% @address_nemus.each do |address_menu| %>
+						<tr>
+							<td><%= radio_button_tag(:order_append_new, "既存の住所") %></td>
+							<td><%= address_menu.postal_code %></td>
+							<td><%= address_menu.address %></td>
+						</tr>
+					<% end %>
+					</tbody>
+				</table>
 			</div>
 		</div>
-		<div class="row">
+		<!-- <div class="row">
 			<div class="col-xs-4 col-xs-offset-2">
 				<label>
-					<h4><%= radio_button_tag(:order_append_new, "新しい送り先") %>新しい送り先</h4>
+					<h4><%#= radio_button_tag(:order_append_new, "新しい送り先") %>新しい送り先</h4>
 				</label>
 			</div>
 		</div>
@@ -26,7 +38,7 @@
 				<h3>名前</h3>
 			</div>
 			<div class="col-xs-5 col-xs-offset-2">
-				<%= f.text_field :name %>
+				<%#= f.text_field :name %>
 			</div>
 		</div>
 		<div class="row">
@@ -34,7 +46,7 @@
 					<h3>住所</h3>
 			</div>
 			<div class="col-xs-5 col-xs-offset-2">
-				<%= f.text_field :address, size: 30 %>
+				<#= f.text_field :address, size: 30 %>
 			</div>
 		</div>
 		<div class="row">
@@ -43,9 +55,10 @@
 				<span style="font-size:10px; line-height: 5px;">(ハイフンなし)</span></h3>
 			</div>
 			<div class="col-xs-5 col-xs-offset-2">
-				<%= f.text_field :postal_code %>
+				<%#= f.text_field :postal_code %>
 			</div>
-		</div>
+		</div> -->
+		
 		<div class="row">
 			<div class="col-xs-8 col-xs-offset-2">
 				<h3 style="border-bottom:1.0px solid black;">支払い方法選択</h3>
