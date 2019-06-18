@@ -13,5 +13,8 @@ class Product < ApplicationRecord
 
 	attachment :profile_image
 
+	# enum記述
+	enum status: { 販売中: 0, 停止中: 1}
+
 
 end
