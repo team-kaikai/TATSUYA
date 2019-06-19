@@ -2,6 +2,7 @@ class EndUsersController < ApplicationController
   def show
     @enduser = EndUser.find(params[:id])
     @product = Product.find(params[:id])
+    @favorite = Favorite.all
   end
 
   def edit

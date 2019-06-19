@@ -1,4 +1,8 @@
 class Product < ApplicationRecord
+	# enum記述
+	enum status: {
+		販売中:1, 停止中:2
+	}
 
     has_many :carts,dependent: :destroy
     has_many :end_users, through: :carts
@@ -21,13 +25,6 @@ class Product < ApplicationRecord
 	end
 
 	attachment :profile_image
-
-
-
-	# enum記述
-	enum status: { 販売中: 0, 停止中: 1}
-
-
 
 	def favorited_by?(enduser)
         favorites.where(enduser_id: enduser.id).exists?
