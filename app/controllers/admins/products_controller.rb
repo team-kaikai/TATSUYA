@@ -20,7 +20,9 @@ class Admins::ProductsController < ApplicationController
   end
 
   def destroy
-
+    @product = Product.find(params[:id])
+    @product.destroy
+    redirect_to admins_products_path
   end
 
   def index
@@ -29,10 +31,18 @@ class Admins::ProductsController < ApplicationController
     @search = Product.ransack(params[:q])
     # 検索結果
     @products = @search.result
+    #ランキング実装用
+    @all_ranks = Product.find(Favorite.group(:product_id).order('count(product_id)desc').limit(5).pluck(:product_id))
   end
 
   def edit
     @product = Product.find(params[:id])
+  end
+
+  def update
+    @product = Product.find(params[:id])
+    @product.update(product_params)
+    redirect_to admins_products_path
   end
 
   # 文字列が数字だけで構成されていれば true を返す
@@ -48,7 +58,6 @@ class Admins::ProductsController < ApplicationController
         :songs_attributes=> [:id, :disc_id, :name, :track, :_destroy]])
 	end
 # ーーーーenum記述ーーーーーーーーー
-
   def params_int(product_params)
     product_params.each do |key,value|
        if number?(value)
@@ -56,6 +65,5 @@ class Admins::ProductsController < ApplicationController
        end
     end
   end
-
 end
 
