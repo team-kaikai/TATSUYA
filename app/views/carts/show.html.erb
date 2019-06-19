@@ -54,12 +54,18 @@
 				<h4 style="border:1.0px solid black; text-align: center; margin-top: 200px;">金額</h4>
 					<h4 style="border-bottom:1.0px solid black;margin-top: 50px;"><%= get_price(@carts) %> </h4>
 					<h4 style="border-bottom:1.0px solid black;margin-top: 20px;">配送料/500<h4>
-				<h4 style="border-bottom:1.0px solid black;margin-top: 20px;"><%= get_price(@carts) + @fee %></h4">
+				<h4 style="border-bottom:1.0px solid black;margin-top: 20px;">
+					<%  price = get_price(@carts) + @fee %>
+					<%= form_for @order_append ,url: order_appends_create_path do |f| %>
+						<%= f.hidden_field :subtotal,value: price %>
+					<%= get_price(@carts) + @fee %>
+					</h4>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col" style="margin-top: 50px; text-align: center">
-				<button style="width: 60%;" class="btn btn-primary"><p>購入画面へ</p></button>
+				<button style="width: 60%;" class="btn btn-primary"><%= f.submit "購入画面へ",class: "btn btn-primary" %></button>
+				<% end %>
 			</div>
 		</div>
 	</div>

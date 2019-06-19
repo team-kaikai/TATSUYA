@@ -26,7 +26,7 @@ class CartsController < ApplicationController
     @cart_less = current_end_user.carts
     @fee = 500
     # @cart_my = Cart.where(user_id: current_end_user.id)
-    
+   @order_append = OrderAppend.new
 
 
      # if @cart.stock != 0

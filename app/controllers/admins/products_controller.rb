@@ -49,8 +49,8 @@ class Admins::ProductsController < ApplicationController
           if integer_string?(value)
             product[key]=value.to_i
           end
+        end
     end
-  end
 
 end
 
