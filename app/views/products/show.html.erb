@@ -20,7 +20,7 @@
 						<%= f.hidden_field :product_id, value: @product.id %>
 						<div class="row" style="padding: 10px">
 					        <% if @product.favorited_by?(current_end_user) %>
-				  				<li>
+				  				<li class="favorite">
 				    				<%= link_to product_favorites_path(@product), method: :delete do %>
 				      				    <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
 				      				<%= @product.favorites.count %>
