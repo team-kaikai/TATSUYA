@@ -12,9 +12,12 @@
 				<%= form_for @order_append, url: order_appends_create_path do |f| %>
 				<table class="table">
 					<tbody>
-						<tr><%= current_end_user.first_name %></tr>
-
-
+						<tr>
+							<td><%#= radio_button_tag :address, address_menu.id %></td>
+							<td><%= current_end_user.first_name %><%= current_end_user.last_name %></td>
+							<td><%= current_end_user.first_postal_code %><%= current_end_user.last_postal_code %></td>
+							<td><%= current_end_user.address %></td>
+						</tr>
 					<% @address_nemus.each do |address_menu| %>
 						<tr>
 							<td><%= radio_button_tag :address, address_menu.id %></td>
