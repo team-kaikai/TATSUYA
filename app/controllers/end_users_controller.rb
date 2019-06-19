@@ -1,7 +1,7 @@
 class EndUsersController < ApplicationController
   def show
     @enduser = EndUser.find(params[:id])
-    @product = Product.find(params[:id])
+    #@product = Product.find(params[:id])
     @favorite = Favorite.all
 
     @favorite_products = Product.find(current_end_user.favorites.pluck(:product_id))

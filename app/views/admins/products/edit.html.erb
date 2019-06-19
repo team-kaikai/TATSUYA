@@ -4,12 +4,6 @@
 
 			<%= form_for @product do |f| %>
 				<div class="row">
-					<div class="col-xs-4">
-						<div class="main-button-delete mypage-border-font">
-				        <%= f.submit "編集" %>
-				        <p><%= link_to'削除',admins_product_path(@product), method: :delete, "data-confirm" => "本当に削除しますか？" %></p>
-				    </div>
-					</div>
 					<div class="col-xs-2 col-xs-offset-1">
 						<%= f.attachment_field :profile_image %>
 						<!-- <button style="width: 100%; margin-top: 150px;">
@@ -40,7 +34,7 @@
 					</div>
 					<div class="row">
 						<h4 class="col-xs-4">ステータス(販売中・販売停止中)</h4>
-						<%= f.text_field :status,style: "150px" %>
+						<%= f.select :status, options_for_select(Product.statuses),{} %>
 					</div>
 
 
@@ -73,6 +67,10 @@
 				<%= f.fields :discs do |disc| %>
 					<%= render 'disc_field', f:disc %>
 				<% end %>
+				<div class="col-xs-4">
+				    <p><%= link_to'削除',admins_product_path(@product), method: :delete, "data-confirm" => "本当に削除しますか？" %></p>
+				</div>
+				<%= f.submit "編集" %>
 		<% end %>
 	</div>
 </div>

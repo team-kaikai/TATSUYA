@@ -38,6 +38,42 @@
 			</div>
 		</div>
 	</div>
+</div>
+<div class="container">
+  	<div class="row" style="padding-top: 10px;">
+	  	<div class="col-xs-4">
+	  		<p style="border-bottom:3px solid #999;">アルバム名:<span style="padding-left: 30px;font-size: 20px"><%= @product.album_name %></span></p>
+	  		<%= attachment_image_tag @product, :profile_image, format: 'jepg', fallback: "sample_image.jpg", size: "300x300" %>
+	  		<div style="float: left; padding: 5px;">
+		  		  <P style="font-size: 15px;">レーベル名:<span style="font-size: 20px; padding-left: 30px;"><%= @product.label.name %></span></P>
+		  		  <p style="font-size: 15px;">価格:<span style="font-size: 20px; padding-left: 30px;"><%= @product.price %>円</span></p>
+		  		  <p style="font-size: 15px;">配送状況:<span style="font-size: 20px;padding-left: 30px;"><%= @product.status %></span></p>
+		  		  <p style="font-size: 15px;">在庫数:<span style="font-size: 20px; padding-left: 30px;"><%= @product.stock %></span><p>
+		  	  <%= form_for @cart, url: end_user_carts_path(current_end_user.id) do |f| %>
+	       		  <span style="font-size: 15px;">個数:</span><%= f.number_field :quantity %>
+	       		<%= f.hidden_field :product_id, value: @product.id %>
+
+  			<div class="row" style="padding: 10px">
+	           <% if @product.favorited_by?(current_end_user) %>
+    				<%= link_to product_favorites_path(@product), method: :delete do %>
+      				    <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
+      				<%= @product.favorites.count %>
+    				<% end %>
+			   <% else %>
+    				<%= link_to product_favorites_path(@product), method: :post do %>
+      					<i class="fa fa-heart-o" aria-hidden="true"></i>
+      				<%= @product.favorites.count %> いいね
+    				<% end %>
+		       <% end %>
+		   </div>
+	      			<%= f.submit "カートに追加する", class: "btn btn-default pull-right" %>
+	       			<!-- <a href="https://local-clips.com/" class="btn" style="width: 400px;">カートに追加</a> -->
+	    	</div>
+
+		  		  <%#= link_to "カートに追加" ,  end_user_carts_path(current_end_user), class: "btn btn-default" %>
+	       </div>
+	    	<% end %>
+	    </div>
 
 	<div class="position-user" style="padding-left: 10%; width: 500px">
 	  	<table class="product-main" style="font-size: 16px;">
@@ -64,7 +100,7 @@
 	  		  <p style="border: 1px solid #dddddd; width: 550px; height: 150px"><%= @product.body %></p>
 		</div>
 	</div>
-
+</div>
 <div class="add-review-wrapper" style="padding-top: 20px;">
 	<div class="container" style="border: 3px solid #dddddd; border-radius: 10px; height: auto;">
 		<h2>レビュー追加</h2>
