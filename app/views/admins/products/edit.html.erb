@@ -1,76 +1,67 @@
 <div class="albumnew-wrapper">
 	<div class="container">
-		<h1>アルバム編集</h1>
-
-			<%= form_for @product do |f| %>
-				<div class="row">
-					<div class="col-xs-2 col-xs-offset-1">
-						<%= f.attachment_field :profile_image %>
-						<!-- <button style="width: 100%; margin-top: 150px;">
-							<p>アルバム追加</p>
-						</button> -->
-					</div>
+		<h1 style="padding-bottom: 4%;">アルバム編集</h1>
+		<!--[:admins,@product]-->
+		<%= form_for [:admins,@product] do |f| %>
+			<div class="row">
+				<div style="padding-bottom: 2%; padding-left: 1%;">
+					<%= f.attachment_field :profile_image %>
 				</div>
-					<!-- 押したらアーティスト一覧がでるものを作成しなければならない -->
-					<div class="row">
-						<h4 class="col-xs-4">アーティスト名</h4>
-						<%= f.collection_select :artist_id, Artist.all,:id, :name %>
-					</div>
-					<div class="row">
-						<h4 class="col-xs-4">価格(税抜)</h4>
-						<%= f.number_field :price,style: "150px" %>
-					</div>
-					<div class="row">
-						<h4 class="col-xs-4">レーベル名</h4>
-						<%= f.collection_select :label_id, Label.all,:id, :name,class: "col-xs-8" %>
-					</div>
-					<div class="row">
-						<h4 class="col-xs-4">ジャンル</h4>
-						<%= f.collection_select :genre_id, Genre.all,:id, :name %>
-					</div>
-					<div class="row">
-						<h4 class="col-xs-4">在庫数</h4>
-						<%= f.number_field :stock,style: "150px" %>
-					</div>
-					<div class="row">
-						<h4 class="col-xs-4">ステータス(販売中・販売停止中)</h4>
-						<%= f.select :status, options_for_select(Product.statuses),{} %>
-					</div>
-
-
-					<div class="row">
-						 <h4 class="col-xs-4">シングル/アルバム名</h4>
-						<%= f.text_field :album_name,style: "width: 300px" %>
-					</div>
-
-					<dev class="row">
-						<h4>商品説明</h4>
-					<div>
-						<%= f.text_area :body, size:"70x10" %>
-					</div>
-					</dev>
-
-					<div class="row">
-						<h4 class="col-xs-4">CD枚数</h4>
-						<%= f.fields_for :discs do |disc| %>
+			</div>
+			<!-- 押したらアーティスト一覧がでるものを作成しなければならない -->
+			<div class="row">
+				<h4 class="col-xs-4">アーティスト名</h4>
+				<%= f.collection_select :artist_id, Artist.all,:id, :name %>
+			</div>
+			<div class="row">
+				<h4 class="col-xs-4">価格(税抜)</h4>
+				<%= f.number_field :price,style: "150px" %>
+			</div>
+			<div class="row">
+				<h4 class="col-xs-4">レーベル名</h4>
+				<%= f.collection_select :label_id, Label.all,:id, :name,class: "col-xs-8" %>
+			</div>
+			<div class="row">
+				<h4 class="col-xs-4">ジャンル</h4>
+				<%= f.collection_select :genre_id, Genre.all,:id, :name %>
+			</div>
+			<div class="row">
+				<h4 class="col-xs-4">在庫数</h4>
+				<%= f.number_field :stock,style: "150px" %>
+			</div>
+			<div class="row">
+				<h4 class="col-xs-4">ステータス(販売中・販売停止中)</h4>
+				<!--options_for_select(Product.statuses)だとvalueが1,2で判断されるので-->
+				<!--options_for_select(Product.statuses.keys)にするとvalueが販売中,停止中と数字に対応した文字列が値になる-->
+				<!--データベースに反映されるときに自動でまた数値に変換されるらしい-->
+				<%= f.select :status, options_for_select(Product.statuses.keys),{} %>
+			</div>
+			<div class="row">
+				 <h4 class="col-xs-4">シングル/アルバム名</h4>
+				 <%= f.text_field :album_name,style: "width: 300px" %>
+			</div>
+			<div class="row">
+				<div class="col-xs-6">
+					<h4>CD枚数</h4>
+					<%= f.fields_for :discs do |disc| %>
 						<%= disc.select :disc_number, [["1枚",1],["2枚",2],["3枚",3],["4枚",4]] %>
 						<!-- 左が見せる値右がデータベースに入れる値 -->
-					</div>
-					<div class="row">
-						<h4 class="col-xs-4">シングル/アルバム内の曲名</h4>
+						<h4>シングル/アルバム内の曲名</h4>
 						<%= disc.fields_for :songs do |song| %>
-					</div>
+						<% end %>
 					<% end %>
-				<% end %>
-
-				<!-- cocoon 新しく曲名追加欄をもたせるため -->
-				<%= f.fields :discs do |disc| %>
-					<%= render 'disc_field', f:disc %>
-				<% end %>
-				<div class="col-xs-4">
-				    <p><%= link_to'削除',admins_product_path(@product), method: :delete, "data-confirm" => "本当に削除しますか？" %></p>
+							<!-- cocoon 新しく曲名追加欄をもたせるため -->
+					<%= f.fields :discs do |disc| %>
+						<%= render 'disc_field', f:disc %>
+					<% end %>
 				</div>
-				<%= f.submit "編集" %>
+				<h4>商品説明</h4>
+				<%= f.text_area :body, size:"70x10" %>
+			</div>
+			<div class="row text-center" style="padding: 5% 0;">
+				<%= f.submit "編集" , class: "btn btn-confirm" %>
+				<span style="padding-left: 10%;"><%= link_to'削除',admins_product_path(@product), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger" %></span>
+			</div>
 		<% end %>
 	</div>
 </div>
