@@ -3,10 +3,12 @@ class HomeController < ApplicationController
   end
 
   def success
+  	render :layout => nil
   end
 
 
   def master
+  	render :layout => nil
   end
 
   def select

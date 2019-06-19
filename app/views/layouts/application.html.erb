@@ -31,7 +31,7 @@
                 <%= link_to "ログアウト", destroy_end_user_session_path,class: "header-title glyphicon glyphicon-log-out logout", method: :delete %>
               </li>
             <li class="nav-list-item">
-                <%= link_to end_user_carts_path(current_end_user.id) do %>
+                <%= link_to end_user_carts_path(current_end_user) do %>
                   <i class="fas fa-shopping-cart"></i>
                 <% end %>
               </li>
@@ -58,7 +58,7 @@
             </ul>
           </nav>
         <% else %>
-         <nav>
+          <nav>
             <ul class="nav-list">
               <li class="nav-list-item">
                 <%= link_to "HOME", "/", class: "header-title glyphicon glyphicon-home home" %>
@@ -78,13 +78,19 @@
 
     <%= yield %>
 
-    <footer style="border: 3px solid #aaaadd">
+    <footer>
       <div class="container">
-        <h3 class="text-left">TATSUYA<span style="padding-left: 50px;">長野県長野市長野原1-12-1</span>
+        <h3>TATSUYA<span style="padding-left: 50px;">長野県長野市長野原1-12-1</span>
+          <p class="nav-list-item" style="padding-left: 50px;">
+            <% if end_user_signed_in? %>
+              <%= link_to "", destroy_end_user_session_path,class: "header-title glyphicon glyphicon-log-out logout", method: :delete %>
+            <% elsif admin_signed_in? %>
+              <%= link_to "", destroy_admin_session_path,class: "header-title glyphicon glyphicon-log-out logout", method: :delete %>
+            <% else %>
+            <% end %>
+          </p>
         </h3>
-        <%= link_to destroy_end_user_session_path,method: :delete do %>
-          <h3 style="color: white">ログアウト</h3>
-        <% end %>
+
       </div>
     </footer>
 

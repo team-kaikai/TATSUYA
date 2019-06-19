@@ -3,6 +3,7 @@ class Admins::OrderAppendsController < ApplicationController
   end
 
   def index
-  	@order_appends = OrderAppends.all
+  	@order_appends = OrderAppend.all
+
   end
 end
