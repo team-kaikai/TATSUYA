@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   get 'order_appends/new'
   post 'order_appends/create'
 
-  get '/' => 'home#top'
+  root 'home#top'
 
 
   get 'home/success' => 'home/success'

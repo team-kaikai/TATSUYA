@@ -7,6 +7,7 @@ class HomeController < ApplicationController
 
 
   def master
+  	render :layout => nil
   end
 
   def select

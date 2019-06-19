@@ -17,10 +17,12 @@ class ApplicationController < ActionController::Base
 # ログアウト後に遷移するpathを設定
 	def after_sign_out_path_for(resource)
 		case resource
-			when Admin
+			when :admin
 				home_master_path
-			when EndUser
-				home_top_path
+
+			when :end_user
+				root_path
+
   		end
   	end
 
