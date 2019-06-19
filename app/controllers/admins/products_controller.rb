@@ -20,7 +20,9 @@ class Admins::ProductsController < ApplicationController
   end
 
   def destroy
-
+    @product = Product.find(params[:id])
+    @product.destroy
+    redirect_to admins_products_path
   end
 
   def index
@@ -35,10 +37,17 @@ class Admins::ProductsController < ApplicationController
     @product = Product.find(params[:id])
   end
 
+<<<<<<< HEAD
   # 文字列が数字だけで構成されていれば true を返す
   def number?(str)
     # 文字列の先頭(\A)から末尾(\z)までが「0」から「9」の文字か
     nil != (str =~ /\A[0-9]+\z/)
+=======
+  def update
+    @product = Product.find(params[:id])
+    @product.update
+    redirect_to admins_products_path
+>>>>>>> commit
   end
 
   private
@@ -49,14 +58,22 @@ class Admins::ProductsController < ApplicationController
       ])
 	end
 # ーーーーenum記述ーーーーーーーーー
+<<<<<<< HEAD
 
   def params_int(product_params)
     product_params.each do |key,value|
        if number?(value)
         product_params[key]=value.to_i
        end
+=======
+    def params_int(product)
+        product.each do |key,value|
+          if integer_string?(value)
+            product[key]=value.to_i
+          end
+         end
+>>>>>>> commit
     end
-  end
 
 end
 

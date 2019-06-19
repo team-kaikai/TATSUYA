@@ -2,10 +2,13 @@
 	<div class="container">
 		<h1>アルバム編集</h1>
 
-			<%= form_for @product, url:"/admins/products" do |f| %>
+			<%= form_for @product do |f| %>
 				<div class="row">
 					<div class="col-xs-4">
-						<img src="/no_image.jpg" height="300px">
+						<div class="main-button-delete mypage-border-font">
+				        <%= f.submit "編集" %>
+				        <p><%= link_to'削除',admins_product_path(@product), method: :delete, "data-confirm" => "本当に削除しますか？" %></p>
+				    </div>
 					</div>
 					<div class="col-xs-2 col-xs-offset-1">
 						<%= f.attachment_field :profile_image %>
@@ -46,6 +49,13 @@
 						<%= f.text_field :album_name,style: "width: 300px" %>
 					</div>
 
+					<dev class="row">
+						<h4>商品説明</h4>
+					<div>
+						<%= f.text_area :body, size:"70x10" %>
+					</div>
+					</dev>
+
 					<div class="row">
 						<h4 class="col-xs-4">CD枚数</h4>
 						<%= f.fields_for :discs do |disc| %>
@@ -63,13 +73,6 @@
 				<%= f.fields :discs do |disc| %>
 					<%= render 'disc_field', f:disc %>
 				<% end %>
-
-
-				<div class="main-button col-xs-2 col-xs-offset-9">
-					<div class="main-button-delete mypage-border-font">
-				        <%= f.submit "編集" %>
-				    </div>
-			    </div>
 		<% end %>
 	</div>
 </div>

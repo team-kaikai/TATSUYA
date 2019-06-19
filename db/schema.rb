@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2019_06_17_031852) do
+=======
+ActiveRecord::Schema.define(version: 2019_06_17_074310) do
+>>>>>>> commit
 
   create_table "address_menus", force: :cascade do |t|
     t.text "address"

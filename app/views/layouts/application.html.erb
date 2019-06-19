@@ -28,7 +28,7 @@
                 <%= link_to "マイページ", end_user_path(current_end_user), class: "header-title glyphicon glyphicon-user users" %>
               </li>
               <li class="nav-list-item">
-                <%= link_to "ログアウト", destroy_end_user_session_path,class: "header-title glyphicon glyphicon-log-out logout", method: :delete %>
+                <%= link_to "ログアウト", destroy_end_user_session_path(current_end_user), class: "header-title glyphicon glyphicon-log-out logout", method: :delete %>
               </li>
             <li class="nav-list-item">
                 <%= link_to end_user_carts_path(current_end_user.id) do %>
