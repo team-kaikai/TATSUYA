@@ -1,4 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TATSUYA</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.0/css/all.css" >
 
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
 	<div class="success">
          <div class="success-text">
       	   <h1><img src="/success.jpeg" alt="写真" width="96" height="65">ご購入ありがとうございます<img src="/success.jpeg" class="flip-horizontal" alt="写真" width="96" height="65"></h1>
@@ -10,5 +22,6 @@
           <%= link_to "商品一覧に戻る", products_path, class: "btn" %>
         </div>
    </div>
-
+  </body>
+</html>
 

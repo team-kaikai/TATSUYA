@@ -18,17 +18,20 @@
 				<tr height="20px"></tr>
 			</thead>
 			<tbody>
-				<% @order_appends .each do |order| %>
+				<% @order_appends.each do |order| %>
 					<tr class="each-list">
 						<td><%= order.id %></td>
 						<td><%= order.created_at %></td>
 						<td><%= order.status %></td>
-						<td><%= order.end_user_id %></td>
-						<td><%= order.end_user.first_name %></td>
-						<td><%= order.product.title %></td>
-						<td><%= order.order_details.quantity %></td>
-						<td><%= order.subtitle %></td>
+						<td><%= order.enduser_id %></td>
+						<td><%#= order.enduser.name %></td>
+						<% @product.each do |product| %>
+							<td><%#= order.product.title %></td>
+							<td><%#= order.order_details.quantity %></td>
+						<% end %>
+						<td><%#= order.subtitle %></td>
 					</tr>
+				<% end %>
 			</tbody>
 		</table>
 	</div>
