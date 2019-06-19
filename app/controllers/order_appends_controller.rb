@@ -15,6 +15,7 @@ class OrderAppendsController < ApplicationController
 
   def update
     @order_append = OrderAppend.new(order_append_params)
+
     #情報を受注一覧に持っていくために必要
      @order_append.name = AddressMenu.find(params[:address]).name
      @order_append.postal_code = AddressMenu.find(params[:address]).postal_code

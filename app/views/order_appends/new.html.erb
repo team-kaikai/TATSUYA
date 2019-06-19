@@ -7,10 +7,14 @@
 		</div>
 		<div class="row">
 			<div class="col-xs-8 col-xs-offset-2">
-				<p style="text-align: center;">※選択しない場合は、ユーザー登録時に使用した住所が送付先になります</p>
+<!-- 				<p style="text-align: center;">※選択しない場合は、ユーザー登録時に使用した住所が送付先になります</p>
+				 -->
 				<%= form_for @order_append, url: order_appends_create_path do |f| %>
 				<table class="table">
 					<tbody>
+						<tr><%= current_end_user.first_name %></tr>
+
+
 					<% @address_nemus.each do |address_menu| %>
 						<tr>
 							<td><%= radio_button_tag :address, address_menu.id %></td>

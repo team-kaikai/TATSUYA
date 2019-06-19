@@ -26,6 +26,16 @@ class ApplicationController < ActionController::Base
   		end
   	end
 
+  	# @enduser.postal_code = EndUser.new()
+
+
+
+
+
+  	# private
+  	# 	def enduser_params
+  	# 		params.require(:enduser).permit(:postal_code,:address)
+  	# 	end
 	# helper_method :get_subtotal
 
 	# def get_subtotal(c)
