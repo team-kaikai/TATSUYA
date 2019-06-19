@@ -51,7 +51,29 @@
 		<div class="address-under">
 			<div class="row">
 				<h1 class="col-xs-3 col-xs-offset-1" style="margin-top:10%;">登録済み住所</h1>
-			</div>
+					<div class="row">
+					<div class="address-under-box col-xs-8 col-xs-offset-2 border-font">
+						<div class="row">
+							<h3 class="col-xs-3">氏名</h3>
+							<div class="col-xs-8 col-xs-offset-1 border-font">
+								<h3><%= @enduser.first_name %><%= @enduser.last_name %></h3>
+							</div>
+						</div>
+						<div class="row" style="margin-top: 20px;">
+							<h3 class="col-xs-3">郵便番号</h3>
+							<div class="col-xs-8 col-xs-offset-1 border-font">
+								<h3><%= @enduser.first_postal_code %>-<%= @enduser.last_postal_code %></h3>
+							</div>
+						</div>
+						<div class="row" style="margin-top: 20px;">
+							<h3 class="col-xs-3">住所</h3>
+							<div class="col-xs-8 col-xs-offset-1 border-font">
+								<h3><%= @enduser.address %></h3>
+							</div>
+						</div>
+						<p>※ご入会時に登録して頂いた住所です。ユーザー情報編集ページから変更できます。</p>
+					</div>
+				</div>
 			<% @enduser.address_menus.each do |address_menu| %>
 				<div class="row">
 					<div class="address-under-box col-xs-8 col-xs-offset-2 border-font">

@@ -28,7 +28,7 @@
                 <%= link_to "マイページ", end_user_path(current_end_user), class: "header-title glyphicon glyphicon-user users" %>
               </li>
               <li class="nav-list-item">
-                <%= link_to "ログアウト", destroy_end_user_session_path,class: "header-title glyphicon glyphicon-log-out logout", method: :delete %>
+                <%= link_to "ログアウト", destroy_end_user_session_path(current_end_user),class: "header-title glyphicon glyphicon-log-out logout", method: :delete %>
               </li>
             <li class="nav-list-item">
                 <%= link_to end_user_carts_path(current_end_user.id) do %>
@@ -82,7 +82,7 @@
       <div class="container">
         <h3 class="text-left">TATSUYA<span style="padding-left: 50px;">長野県長野市長野原1-12-1</span>
         </h3>
-        <%= link_to destroy_end_user_session_path,method: :delete do %>
+        <%= link_to destroy_end_user_session_path(current_end_user),method: :delete do %>
           <h3 style="color: white">ログアウト</h3>
         <% end %>
       </div>
