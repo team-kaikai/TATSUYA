@@ -1,17 +1,15 @@
-	<div class="container">
-			<div class="nested-fields form-inline">
-				<div class="form-group col-xs-12">
-					<%#= f.number_field :disc_number %>
-					<%= f.select :disc_number, [["ディスク1",1],["ディスク2",2]] %>
-				</div>
-			</div>
-			<div class="songs" style="">
-			    <%= f.fields :songs do |song| %>
-				    <%= render 'song_fields', f: song %>
-			    <% end %>
-			    <div class="links">
-				    <%= link_to_add_association "曲を追加する", f, :songs,class: "col-xs-offset-3" %>
-			    </div>
-			</div>
-		</div>
+
+<div class="nested-fields form-inline">
+	<div class="form-group">
+		<%#= f.number_field :disc_number %>
+		<%= f.select :disc_number, [["ディスク1",1],["ディスク2",2]] %>
 	</div>
+</div>
+<div class="songs">
+    <%= f.fields_for :songs do |song| %>
+	    <%= render 'song_fields', f: song %>
+    <% end %>
+    <div class="links">
+	    <%= link_to_add_association "曲を追加する", f, :songs,class: "col-xs-offset-3" %>
+    </div>
+</div>
