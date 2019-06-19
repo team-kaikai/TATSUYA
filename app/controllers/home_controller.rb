@@ -3,6 +3,7 @@ class HomeController < ApplicationController
   end
 
   def success
+  	render :layout => nil
   end
 
 

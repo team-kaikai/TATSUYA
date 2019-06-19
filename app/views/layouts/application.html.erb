@@ -83,9 +83,9 @@
         <h3>TATSUYA<span style="padding-left: 50px;">長野県長野市長野原1-12-1</span>
           <p class="nav-list-item" style="padding-left: 50px;">
             <% if end_user_signed_in? %>
-              <%= link_to "ログアウト", destroy_end_user_session_path,class: "header-title glyphicon glyphicon-log-out logout", method: :delete %>
+              <%= link_to "", destroy_end_user_session_path,class: "header-title glyphicon glyphicon-log-out logout", method: :delete %>
             <% elsif admin_signed_in? %>
-              <%= link_to "ログアウト", destroy_admin_session_path,class: "header-title glyphicon glyphicon-log-out logout", method: :delete %>
+              <%= link_to "", destroy_admin_session_path,class: "header-title glyphicon glyphicon-log-out logout", method: :delete %>
             <% else %>
             <% end %>
           </p>
