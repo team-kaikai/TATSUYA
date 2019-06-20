@@ -31,7 +31,6 @@ class ApplicationController < ActionController::Base
   	 		@cart = Cart.where(enduser_id: current_end_user.id).find_by(product_id: product.id)
   	 	else
   	 		@cart = Cart.create(enduser_id: current_end_user.id, product_id: product.id,quantity: 0)
-  	 		binding.pry
   	 	end
   	 end
 

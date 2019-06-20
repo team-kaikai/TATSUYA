@@ -7,6 +7,7 @@ class CartsController < ApplicationController
     #　この下　application/controllerに current_cartのメソッド記述あり
     @hoge = Product.find(params[:product_id])
     @cart = current_cart(@hoge)
+    binding.pry
     @cart.quantity += params[:cart][:quantity].to_i
     @cart.enduser_id = current_end_user.id
   	@cart.save
