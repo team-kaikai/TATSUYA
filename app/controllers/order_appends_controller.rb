@@ -1,7 +1,8 @@
 class OrderAppendsController < ApplicationController
+  # showに対してbefore_action等でアクセス制限を掛けておく必要があります。
 
-  def new
-  	@order_append = OrderAppend.new
+  def show
+  	@order_append = OrderAppend.find(params[:id])
     @address_nemus = current_end_user.address_menus
     @end_users =  current_end_user
   end
@@ -11,11 +12,12 @@ class OrderAppendsController < ApplicationController
 
     @order_append.enduser_id = current_end_user.id
     @order_append.save
-    redirect_to order_appends_new_path
+    redirect_to order_append_path(@order_append)
   end
 
   def update
-    @order_append = OrderAppend.new(order_append_params)
+    @carts = Cart.where(enduser_id: current_end_user.id)
+    @order_append = OrderAppend.find(params[:id])
     if params[:address].to_i > 0#0以上
     #address_menuで処理
       @order_append.name = AddressMenu.find(params[:address]).name
@@ -29,7 +31,16 @@ class OrderAppendsController < ApplicationController
       @order_append.address = current_end_user.address
       @order_append.enduser_id = current_end_user.id
     end
-      # @order_append.each do |order|
+      @carts.each do |cart|
+        @order_detail = @order_append.order_details.build
+        @order_detail.product_id = cart.product.id
+        @order_detail.price = cart.product.price
+        @order_detail.quantity = cart.quantity
+        binding.pry
+        @order_detail.save!
+      end
+
+
 
 
     @order_append.update(order_append_params)
@@ -44,6 +55,10 @@ class OrderAppendsController < ApplicationController
   def order_append_sub_params
     params.require(:order_append).permit(:subtotal)
   end
+
+  # def order_detail_params
+  #   params.require(:order_detail).permit(:product_id,:price,:quantitye)
+  # end
 
 
 
