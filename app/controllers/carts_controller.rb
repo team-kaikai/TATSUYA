@@ -7,13 +7,10 @@ class CartsController < ApplicationController
     #　この下　application/controllerに current_cartのメソッド記述あり
     @hoge = Product.find(params[:product_id])
     @cart = current_cart(@hoge)
-    binding.pry
     @cart.quantity += params[:cart][:quantity].to_i
     @cart.enduser_id = current_end_user.id
-  	if @cart.save
-       flash[:notice] = "You have creatad cart successfully."
-       redirect_to end_user_carts_path(@cart.enduser_id)
-    end
+  	@cart.save
+    redirect_to end_user_carts_path(@cart.enduser_id)
   end
 
   def update
