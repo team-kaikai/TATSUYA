@@ -31,7 +31,7 @@
 															<!-- 左が見せる値右がデータベースに入れる値 -->
 							</div>
 							<%= link_to "数量変更を反映させる", end_user_carts_path(current_end_user.id) %>
-								<%= link_to "削除", end_user_carts_path(current_end_user.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+								<%= link_to "削除", cart_path(cart.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
 							</td>
 							<%# @cart.line_items.each do |item| %>
 							<%#= (item.good.price).to_i %>
@@ -60,12 +60,8 @@
 						<%= f.hidden_field :subtotal,value: price %>
 					<%= get_price(@carts) + @fee %>
 					</h4>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col" style="margin-top: 50px; text-align: center">
-				<button style="width: 60%;" class="btn btn-primary"><%= f.submit "購入画面へ",class: "btn btn-primary" %></button>
-				<% end %>
+					<button style="width: 60%;" class="btn btn-primary"><%= f.submit "購入画面へ",class: "btn btn-primary" %></button>
+					<% end %>
 			</div>
 		</div>
 	</div>

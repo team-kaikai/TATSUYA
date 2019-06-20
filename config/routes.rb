@@ -79,13 +79,14 @@ Rails.application.routes.draw do
   	resource :favorites, only: [:create, :destroy]
     resource :carts, only:[:create]
   end
+  resources :carts, only:[:destroy]
 
  resources :home,only:[:top,:success]
 
 
 resources :end_users,only: [:show,:edit,:update,:destroy] do
  resource :address_menus,only:[:create,:new,:destroy]
- resource :carts,only:[:update,:destroy,:show]
+ resource :carts,only:[:update,:show]
 
 end
 
