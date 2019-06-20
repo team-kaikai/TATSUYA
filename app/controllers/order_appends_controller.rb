@@ -31,6 +31,7 @@ class OrderAppendsController < ApplicationController
     end
       # @order_append.each do |order|
 
+
     @order_append.update(order_append_params)
     redirect_to home_success_path
   end

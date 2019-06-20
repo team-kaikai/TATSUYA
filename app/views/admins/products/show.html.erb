@@ -42,23 +42,30 @@
   <div class="container">
   	<h2>レビュー一覧</h2>
   	   <div class="row">
+  	   	<% @product.comments.each do |comment| %>
   		  <ol class="review-list" style="border: 2px solid #999;">
 	          <li class="comment">
 	            <div class="comment-body bb">
 	                <div class="comment-text">
 	                    <div class="comment-author clearfix">
 	                        <span class="comment-meta">
-	                          <span class="comment-date">2019/6/11</span>
+	                          <span class="comment-date"><%= comment.created_at.strftime('%Y/%m/%d') %></span>
+	                          <span class="comment-date"><%= comment.end_user.first_name %>さんのレビュー</span>
 	                        </span>
 	                    </div>
-	                    <div class="comment-entry">コメント内容</div>
-	                     <div class="text-right">
-       						<button type="button" class="btn btn-danger" style="font-size: 10px;">削除</button>
+	                    <div class="comment-entry">
+	                    	<%= comment.comment %>
+		                    <div class="text-right">
+	       						<button style="width: 30%;">
+									<%= link_to "削除", product_comment_path(@product,comment), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+								</button>
+	   	   					</div>
    	   					</div>
 	                </div>
 	            </div>
 	          </li>
          </ol>
+        <% end %>
   	  </div>
   </div>
 </div>
