@@ -1,4 +1,9 @@
 class EndUsersController < ApplicationController
+  before_action :authenticate_end_user!
+  before_action :ensure_correct_user,only:[:show,:edit]
+
+
+
   def show
     @enduser = EndUser.find(params[:id])
     #@product = Product.find(params[:id])
@@ -27,6 +32,13 @@ class EndUsersController < ApplicationController
   end
 
   def index
+  end
+
+  def ensure_correct_user
+    @enduser = EndUser.find(params[:id])
+    if current_end_user.id != @enduser.id
+      redirect_to end_user_path(current_end_user.id)
+    end
   end
 
   private
