@@ -29,7 +29,6 @@ class OrderAppendsController < ApplicationController
       @order_append.address = current_end_user.address
       @order_append.enduser_id = current_end_user.id
     end
-
     @order_append.update(order_append_params)
     redirect_to home_success_path
   end
