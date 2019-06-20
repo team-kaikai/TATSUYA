@@ -22,6 +22,7 @@ class EndUsersController < ApplicationController
       # @enduser.update(address_params)
       sign_in(@enduser, bypass: true)
       redirect_to end_user_path(current_end_user)
+      flash[:notice] = "You have creatad cart successfully."
     else
       flash[:edit] = "空白の欄があります。すべての記入欄を埋めてください。"
       render 'edit'
