@@ -4,6 +4,6 @@ class Admins::OrderAppendsController < ApplicationController
 
   def index
   	@order_appends = OrderAppend.all
-
+    @product = Product.all
   end
 end
