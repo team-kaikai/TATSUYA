@@ -2,8 +2,12 @@ class AddressMenusController < ApplicationController
   def create
   	 @address_menus = AddressMenu.new(address_menu_params)
   	 @address_menus.enduser_id = current_end_user.id
-  	 @address_menus.save
-  	 redirect_to new_end_user_address_menus_path(current_end_user.id)
+  	 if @address_menus.save
+        flash[:notice] = "You have creatad address successfully."
+  	    redirect_to new_end_user_address_menus_path(current_end_user.id)
+     else
+        render :new
+     end
   end
 
   def new
@@ -13,8 +17,10 @@ class AddressMenusController < ApplicationController
 
   def destroy
   	address_menu = AddressMenu.find(params[:end_user_id])
-    address_menu.destroy
-    redirect_to new_end_user_address_menus_path(current_end_user.id)
+    if address_menu.destroy
+       flash[:notice] = "削除しました"
+       redirect_to new_end_user_address_menus_path(current_end_user.id)
+    end
   end
 
  private

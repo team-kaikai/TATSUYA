@@ -10,8 +10,10 @@ class CartsController < ApplicationController
     binding.pry
     @cart.quantity += params[:cart][:quantity].to_i
     @cart.enduser_id = current_end_user.id
-  	@cart.save
-    redirect_to end_user_carts_path(@cart.enduser_id)
+  	if @cart.save
+       flash[:notice] = "You have creatad cart successfully."
+       redirect_to end_user_carts_path(@cart.enduser_id)
+    end
   end
 
   def update

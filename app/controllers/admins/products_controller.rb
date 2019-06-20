@@ -15,14 +15,20 @@ class Admins::ProductsController < ApplicationController
 
   def create
   	@product = Product.new(params_int(product_params))
-  	@product.save!
-    redirect_to admins_product_path(@product)
+  	 if @product.save!
+        flash[:notice] = "You have creatad product successfully."
+        redirect_to admins_product_path(@product)
+     else
+        render :new
+     end
   end
 
   def destroy
     @product = Product.find(params[:id])
-    @product.destroy
-    redirect_to admins_products_path
+     if @product.destroy
+        flash[:notice] = "削除しました"
+        redirect_to admins_products_path
+     end
   end
 
   def index
@@ -41,8 +47,12 @@ class Admins::ProductsController < ApplicationController
 
   def update
     @product = Product.find(params[:id])
-    @product.update(product_params)
-    redirect_to admins_products_path
+    if @product.update(product_params)
+       flash[:notice] = "You have update product successfully."
+       redirect_to admins_products_path
+    else
+       render :edit
+    end
   end
 
   # 文字列が数字だけで構成されていれば true を返す
