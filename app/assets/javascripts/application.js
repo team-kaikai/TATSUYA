@@ -16,5 +16,6 @@
 //= require jquery
 //= require bootstrap-sprockets
 //= require cocoon
+//= require jquery.jscroll.min.js
+//= require turbolinks
 //= require_tree .
-
