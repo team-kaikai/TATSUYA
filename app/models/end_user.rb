@@ -12,15 +12,22 @@ class EndUser < ApplicationRecord
   has_many :favorites, dependent: :destroy,class_name: "Favorite",foreign_key: "enduser_id"
   has_many :comments, dependent: :destroy,class_name: "Comment",foreign_key: "enduser_id"
 
-
+  acts_as_paranoid
 
    #attr_writer :first_postal_code, :last_postal_code
 
    #validates :postal_code,format: {with: /\A\d{7}\z/}
-   #validates :first_postal_code, presence: true
-   #validates :last_postal_code, presence: true
+   # validates :first_postal_code, presence: true
+   # validates :last_postal_code, presence: true
+   validates :first_name,presence: true
+   validates :last_name,presence: true
+   validates :address,length:{ in: 10..20}
+   validates :tel,length: {in: 10..13}
+
 
    #before_validation :set_postal_code
+# first_postal_code,last_postal_codeを postal_codeにまとめている記述
+   before_validation :set_postal_code
 
    #def first_postal_code
    		#@first_postal_code || self.postal_code[0..2] if self.postal_code.present?
