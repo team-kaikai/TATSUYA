@@ -48,6 +48,6 @@ class EndUsersController < ApplicationController
     # end
 
     def enduser_params
-      params.require(:end_user).permit(:first_name,:last_name,:details_first_name,:details_last_name,:password,:password_confirmation,:email,:postal_code,:first_postal_code,:last_postal_code,:address,:tel)
+      params.require(:end_user).permit(:first_name,:last_name,:details_first_name,:details_last_name,:password,:password_confirmation,:email,:postal_code,:address,:tel)
     end
 end
