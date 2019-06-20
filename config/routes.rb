@@ -77,6 +77,7 @@ Rails.application.routes.draw do
   resources :products,   only: [:index, :create, :update, :destroy, :show]do
   	resources :comments,  only: [:create, :destroy]
   	resource :favorites, only: [:create, :destroy]
+    resource :carts, only:[:create]
   end
 
  resources :home,only:[:top,:success]
@@ -84,7 +85,7 @@ Rails.application.routes.draw do
 
 resources :end_users,only: [:show,:edit,:update,:destroy] do
  resource :address_menus,only:[:create,:new,:destroy]
- resource :carts,only:[:create,:update,:destroy,:show]
+ resource :carts,only:[:update,:destroy,:show]
 
 end
 
