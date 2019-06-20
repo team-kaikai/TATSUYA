@@ -4,13 +4,13 @@ class CommentsController < ApplicationController
     comment = current_end_user.comments.new(comment_params)
     comment.product_id = product.id
     comment.save!
-    redirect_to product_path(current_end_user.id)
+    redirect_to product_path(product.id)
   end
 
   def destroy
   	comment = Comment.find(params[:id])
     comment.destroy
-    redirect_to product_path(current_end_user.id)
+    redirect_to product_path(params[:product_id])
   end
 
     private
