@@ -44,7 +44,7 @@ class CartsController < ApplicationController
     #   end
     # end
 
-  end
+end
 
   private
    def cart_params

@@ -1,3 +1,6 @@
+<!-- form内のコードを整理する　＝＞　確認ボタンが反応する  もしくはターボリンクス -->
+
+
 <div class = "cart-index-wrapper">
 	<div class ="container">
 	 	<div class="row" style="margin-top: 50px;">
@@ -56,7 +59,7 @@
 					<h4 style="border-bottom:1.0px solid black;margin-top: 20px;">配送料/500<h4>
 				<h4 style="border-bottom:1.0px solid black;margin-top: 20px;">
 					<%  price = get_price(@carts) + @fee %>
-					<%= form_for @order_append ,url: order_appends_create_path do |f| %>
+					<%= form_for @order_append do |f| %>
 						<%= f.hidden_field :subtotal,value: price %>
 					<%= get_price(@carts) + @fee %>
 					</h4>

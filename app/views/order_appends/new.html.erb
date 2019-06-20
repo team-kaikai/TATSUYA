@@ -1,5 +1,5 @@
 <div class = "order-new-wrapper">
-	<%= form_with(model: @order_append, url: order_appends_update_path, method: :patch) do |f|%>
+	<%= form_for(@order_append) do |f|%>
 	<div class ="container">
 		<div class="row">
 			<div class="col-xs-8 col-xs-offset-2">
