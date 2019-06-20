@@ -14,7 +14,7 @@ class EndUser < ApplicationRecord
 
   acts_as_paranoid
 
-   #attr_writer :first_postal_code, :last_postal_code
+   # attr_writer :first_postal_code, :last_postal_code
 
    #validates :postal_code,format: {with: /\A\d{7}\z/}
    # validates :first_postal_code, presence: true
@@ -29,16 +29,16 @@ class EndUser < ApplicationRecord
 # first_postal_code,last_postal_codeを postal_codeにまとめている記述
    before_validation :set_postal_code
 
-   #def first_postal_code
-   		#@first_postal_code || self.postal_code[0..2] if self.postal_code.present?
-   #end
+   # def first_postal_code
+   # 		@first_postal_code || self.postal_code[0..2] if self.postal_code.present?
+   # end
 
-   #def last_postal_code
-   		#@last_postal_code || self.postal_code[3..6] if self.postal_code.present?
-   #end
+   # def last_postal_code
+   # 		@last_postal_code || self.postal_code[3..6] if self.postal_code.present?
+   # end
 
-   #def set_postal_code
-   		#self.postal_code = [@first_postal_code,@last_postal_code].join("")
-   #end
+   # def set_postal_code
+   # 		self.postal_code = [@first_postal_code,@last_postal_code].join
+   # end
 
 end

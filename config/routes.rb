@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   end
   get 'order_appends/new'
   post 'order_appends/create'
+  patch 'order_appends/update'
 
   root 'home#top'
 

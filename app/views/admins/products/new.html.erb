@@ -49,12 +49,6 @@
 						<%= f.text_field :album_name,style: "width: 300px" %>
 					</div>
 
-					<%= f.fields_for :songs do |song| %>
-						<div class="row">
-							<h4 class="col-xs-4">シングル/アルバム内の曲名</h4>
-						</div>
-					<% end %>
-
 				<div class="row">
 					<h4 class="col-xs-4">CD枚数</h4>
 					<%= f.fields_for :discs do |disc| %>
