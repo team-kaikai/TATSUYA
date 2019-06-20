@@ -1,11 +1,14 @@
 class CartsController < ApplicationController
   def create
-  	@cart = Cart.new(cart_params)
-  	@cart.enduser_id = current_end_user.id
-    if @cart.blank?
-      @cart = current_cart.cart.build(product_id: params[:product_id])
-    end
-    @cart.quantity += params[:quantity].to_i
+    # if @cart
+    #   @cart = current_cart.cart.build(product_id: params[:product_id])
+    # end
+
+    #　この下　application/controllerに current_cartのメソッド記述あり
+    @hoge = Product.find(params[:product_id])
+    @cart = current_cart(@hoge)
+    @cart.quantity += params[:cart][:quantity].to_i
+    @cart.enduser_id = current_end_user.id
   	@cart.save
     redirect_to end_user_carts_path(@cart.enduser_id)
   end
@@ -15,7 +18,9 @@ class CartsController < ApplicationController
   end
 
   def destroy
-  	@cart.product.destroy
+  	cart = Cart.find_by(id: params[:id])
+    cart.destroy
+    redirect_to end_user_carts_path(current_end_user.id)
   end
 
   def show

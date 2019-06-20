@@ -26,6 +26,20 @@ class ApplicationController < ActionController::Base
   		end
   	end
 
+  	 def current_cart (product)
+  	 	if Cart.where(enduser_id: current_end_user.id).find_by(product_id: product.id)
+  	 		@cart = Cart.where(enduser_id: current_end_user.id).find_by(product_id: product.id)
+  	 	else
+  	 		@cart = Cart.create(enduser_id: current_end_user.id, product_id: product.id,quantity: 0)
+  	 	end
+  	 end
+
+
+
+
+
+
+
   	# @enduser.postal_code = EndUser.new()
 
 
