@@ -1,0 +1,33 @@
+<div class ="inquiry-admin-index">
+    <div class="container">
+      <div class="row" style="text-align: center;">
+
+      <div class="page-header">
+        <h1>お問い合わせ内容一覧</h1>
+      </div>
+
+      <% @inquiry.each  do |inquiry| %>
+        <table class="table">
+          <tr>
+            <th>名前</th>
+            <td>
+              <%= link_to inquiry.name,admin_show_path(inquiry)  %>
+            </td>
+          </tr>
+          <tr>
+            <th>メールアドレス</th>
+            <td>
+             <%= inquiry.email %>
+            </td>
+          </tr>
+         <tr>
+           <th>お問い合わせ日時</th>
+            <td>
+              <%= inquiry.created_at.strftime('%Y/%m/%d')  %>
+           </td>
+         </tr>
+       </table>
+      <% end %>
+    </div>
+  </div>
+</div>

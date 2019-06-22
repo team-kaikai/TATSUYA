@@ -27,9 +27,7 @@ class EndUser < ApplicationRecord
 
    #before_validation :set_postal_code
 # first_postal_code,last_postal_codeを postal_codeにまとめている記述
-
    # before_validation :set_postal_code
-
 
    # def first_postal_code
    # 		@first_postal_code || self.postal_code[0..2] if self.postal_code.present?
@@ -42,5 +40,10 @@ class EndUser < ApplicationRecord
    # def set_postal_code
    # 		self.postal_code = [@first_postal_code,@last_postal_code].join
    # end
+
+#mail送信用
+  # def self.send_report
+  #   InquiryMailer.report(EndUser.first).deliver_now
+  # end
 
 end

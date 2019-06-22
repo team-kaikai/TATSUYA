@@ -35,6 +35,11 @@
                   <i class="fas fa-shopping-cart"></i>
                 <% end %>
               </li>
+              <li class="nav-list-item">
+                <%= link_to inquiry_path do %>
+                  <i class="fab fa-telegram-plane"></i>
+                <% end %>
+              </li>
             </ul>
           </nav>
         <% elsif admin_signed_in? %>
@@ -54,6 +59,11 @@
               </li>
               <li class="nav-list-item">
                 <%= link_to "", destroy_admin_session_path,class: "header-title glyphicon glyphicon-log-out logout", method: :delete %>
+              </li>
+              <li class="nav-list-item">
+                <%= link_to inquiry_admin_index_path do %>
+                  <i class="fab fa-telegram-plane"></i>
+                <% end %>
               </li>
             </ul>
           </nav>
