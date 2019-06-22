@@ -37,8 +37,8 @@ class OrderAppendsController < ApplicationController
         @order_detail.price = cart.product.price
         @order_detail.quantity = cart.quantity
         @order_detail.save!
+        cart.destroy
       end
-
 
     @order_append.pay =  params[:order_append][:pay].to_i
     @order_append.save
