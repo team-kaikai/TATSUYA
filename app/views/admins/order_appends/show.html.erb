@@ -32,7 +32,7 @@
 			<ul class="details-box col-xs-10 col-xs-offset-1" style="list-style:none;">
 				<li style="border-bottom: 3px solid #dddddd">
 					<p><string>電話番号</string></p>
-					<p style="padding-left: 10%;"><%#= @order_append.enduser_id.tel %></p>
+					<p style="padding-left: 10%;"><%= @order_append.end_user.tel %></p>
 				</li>
 			</ul>
 		</div>
@@ -40,7 +40,7 @@
 			<ul class="details-box col-xs-10 col-xs-offset-1" style="list-style:none;">
 				<li style="border-bottom: 3px solid #dddddd">
 					<p><string>Email</string></p>
-					<p style="padding-left: 10%;"><%#= @order_append.enduser_id.email %></p>
+					<p style="padding-left: 10%;"><%= @order_append.end_user.email %></p>
 				</li>
 			</ul>
 		</div>
@@ -48,7 +48,7 @@
 			<ul class="details-box col-xs-10 col-xs-offset-1" style="list-style:none;">
 				<li style="border-bottom: 3px solid #dddddd">
 					<p><string>支払い方法</string></p>
-					<p style="padding-left: 10%;">代引き</p>
+					<p style="padding-left: 10%;"><%= @order_append.pay %></p>
 				</li>
 			</ul>
 		</div>
@@ -58,21 +58,31 @@
 	<div class="container">
 		<div class="order-status-title">
 			<h1>注文内容詳細・・・
-			<%= f.select :status, options_for_select(OrderAppend.statuses.keys),{} %>
+			<%= form_for [:admins,@order_append] do |f| %>
+			<%= f.select :status, options_for_select(OrderAppend.statuses.keys, :selected => @order_append.status), {} %>
+			<%= f.submit %>
+			<% end %>
 			</h1>
 		</div>
 		<div class="row">
-			<div class="status-box col-xs-8 col-xs-offset-2">
-				<div class="row">
-					<img src="/noimage.png" style="height: 140px;" class="col-xs-3">
-					<div class="col-xs-7 col-xs-offset-1" style="padding-top: 15px">
-						<p>アルバム名</p>
-						<p>枚数</p>
-						<p>購入日</p>
-						<p>価格</p>
+			<% @order_details.each do |details| %>
+				<% if @order_append.id == details.order_append_id %>
+					<div class="status-box col-xs-8 col-xs-offset-2">
+						<div class="row">
+							<%= attachment_image_tag details.product, :profile_image, :fill, 150, 150,format:"jpeg",fallback: "no_image.jpg",size:'150x150'  %>
+							<div class="col-xs-7 col-xs-offset-1" style="padding-top: 15px">
+								<p>アルバム名<%= details.product.album_name %></p>
+								<p>枚数<%= details.quantity %>枚</p>
+								<p>購入日<%= details.created_at.strftime('%Y/%m/%d') %></p>
+								<p>価格<%= details.price %>円</p>
+							</div>
+						</div>
 					</div>
-				</div>
-			</div>
+				<% end %>
+			<% end %>
+		</div>
+		<div class="row text-right" style="padding-bottom: 2%;">
+			<p style="font-size: 32px;">購入金額<span style="padding-right: 1%;"></span><%= @order_append.subtotal %>円</p>
 		</div>
 	</div>
 </div>

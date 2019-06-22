@@ -1,5 +1,5 @@
 <div class = "order-new-wrapper">
-	<%= form_for(@order_append) do |f|%>
+	<%= form_for @order_append, url:order_append_path do |f|%>
 	<div class ="container">
 		<div class="row">
 			<div class="col-xs-8 col-xs-offset-2">
@@ -45,14 +45,14 @@
 			<div class="col-xs-4 col-xs-offset-2">
 
 				<label>
-					<h4><%= f.radio_button :pay, '0' %>代引き</h4>
+					<h4><%= f.radio_button :pay, 0 %>代引き</h4>
 				</label>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-xs-4 col-xs-offset-2">
 				<label>
-					<h4><%= f.radio_button :pay, '1' %>クレジット</h4>
+					<h4><%= f.radio_button :pay, 1 %>クレジット</h4>
 				</label>
 			</div>
 
@@ -60,7 +60,7 @@
 		<div class="row">
 			<div class="col-xs-4 col-xs-offset-2">
 				<label>
-					<h4><%= f.radio_button :pay, '2' %>銀行振込</h4>
+					<h4><%= f.radio_button :pay, 2 %>銀行振込</h4>
 				</label>
 			</div>
 		</div>

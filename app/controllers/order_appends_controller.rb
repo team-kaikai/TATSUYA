@@ -40,10 +40,8 @@ class OrderAppendsController < ApplicationController
         cart.destroy
       end
 
-
-
-
-    @order_append.save(order_append_params)
+    @order_append.pay =  params[:order_append][:pay].to_i
+    @order_append.save
     redirect_to home_success_path
   end
 
