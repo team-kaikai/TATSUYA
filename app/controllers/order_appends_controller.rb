@@ -36,14 +36,12 @@ class OrderAppendsController < ApplicationController
         @order_detail.product_id = cart.product.id
         @order_detail.price = cart.product.price
         @order_detail.quantity = cart.quantity
-        binding.pry
         @order_detail.save!
       end
 
 
-
-
-    @order_append.update(order_append_params)
+    @order_append.pay =  params[:order_append][:pay].to_i
+    @order_append.save
     redirect_to home_success_path
   end
 
