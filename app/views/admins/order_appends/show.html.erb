@@ -1,7 +1,11 @@
 <div class="order-details">
 	<div class="container">
 		<div class="order-datails-title">
-			<h1>注文者（送付先）詳細</h1>
+			<h1>注文者（送付先）詳細
+				<!--<span style="padding-left: 45%;">
+					<%#= link_to "一覧へ戻る", admins_order_appends_path, class: "btn btn-success" %>
+				</span>-->
+			</h1>
 		</div>
 
 		<div class="row">
@@ -59,7 +63,7 @@
 		<div class="order-status-title">
 			<h1>注文内容詳細・・・
 			<%= form_for [:admins,@order_append] do |f| %>
-			<%= f.select :status, options_for_select(OrderAppend.statuses.keys, :selected => @order_append.status), {} %>
+			<%= f.select :status, options_for_select(OrderAppend.statuses.keys, :selected => @order_append.status), {include_blank: "配送状況の選択"} %>
 			<%= f.submit %>
 			<% end %>
 			</h1>

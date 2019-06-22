@@ -9,7 +9,6 @@ class EndUsersController < ApplicationController
     @enduser_append = @enduser.order_appends
     #@product = Product.find(params[:id])
     @favorite = Favorite.all
-
     @favorite_products = Product.find(current_end_user.favorites.pluck(:product_id))
   end
 

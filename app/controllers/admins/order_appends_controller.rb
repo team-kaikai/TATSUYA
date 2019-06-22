@@ -14,7 +14,8 @@ class Admins::OrderAppendsController < ApplicationController
   def update
   	@order_append = OrderAppend.find(params[:id])
   	@order_append.update(order_append_params)
-  	redirect_to admins_order_append_path(@order_append.id)
+  	#redirect_to admins_order_append_path(@order_append.id)
+  	redirect_to  admins_order_appends_path
   end
 
   private

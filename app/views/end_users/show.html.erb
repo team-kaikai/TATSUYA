@@ -1,12 +1,11 @@
 <div class="mypage-wrapper">
 	<div class="continer">
 		<div class="row">
-			<div class="col-xs-2" style="margin-right:20px;">
-				<div class="favarites-box" style="border-right: 3px solid #dddddd">
+			<div class="col-xs-2" style="margin-right:20px;border-right: 3px solid #dddddd;">
 					<h3>いいね一覧</h3>
 				<% @favorite_products.each do |favorite_product| %>
-					<div class="mypage-good-box1">
-					  <%= link_to product_path do %>
+					<div class="row" style="display: inline-block;text-align: center;padding-left: 15%;">
+					  <%= link_to product_path(favorite_product) do %>
 						<%= attachment_image_tag favorite_product, :profile_image, format: 'jepg', fallback: "no_image.jpg", size: "150x150" %>
 						<div class="mypage-album-box" style="text-align: center">
 						  <p><%= favorite_product.artist.name %></p>
@@ -15,7 +14,6 @@
 					  <% end %>
 					</div>
 				<% end %>
-				</div>
 			</div>
 
 			<div class="col-xs-9">
@@ -85,7 +83,7 @@
 		                				<tr style="border-bottom: 3px solid #dddddd">
 		                					<td><%= user.updated_at.strftime('%Y/%m/%d') %></td>
 		                					<td><%= user.status %></td>
-		                					<td><%= link_to "詳細" ,  order_detail_path(@enduser.id), class: "btn btn-default pull-right" %></td>
+		                					<td><%= link_to "詳細" ,  order_detail_path(user), class: "btn btn-default pull-right" %></td>
 		                				</tr>
 		                				<tr height="20px"></tr>
 	                			<% end %>
