@@ -69,11 +69,11 @@
 	<div class="container" style="border: 3px solid #dddddd; border-radius: 10px; height: auto;">
 		<h2>レビュー追加</h2>
 		<%= form_for [@product, @comment] do |f| %>
-			<div class="add-review" style="padding: 10px;">
-				<%= f.submit "送信する", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
-			</div>
 			<div class="row">
 				<%= f.text_area :comment, rows:'5', class: "form-control",placeholder: "コメントをここに" %>
+				<div class="add-review" style="padding: 10px;">
+					<%= f.submit "送信する", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
+				</div>
 			</div>
 		<% end %>
 	</div>
