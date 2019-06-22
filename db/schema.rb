@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_20_052332) do
+ActiveRecord::Schema.define(version: 2019_06_22_042859) do
 
   create_table "address_menus", force: :cascade do |t|
     t.text "address"
@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 2019_06_20_052332) do
   create_table "carts", force: :cascade do |t|
     t.integer "enduser_id"
     t.integer "product_id"
-    t.integer "quantity"
+    t.integer "quantity", default: 1
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -97,6 +97,14 @@ ActiveRecord::Schema.define(version: 2019_06_20_052332) do
 
   create_table "genres", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "inquiries", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.text "message"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
