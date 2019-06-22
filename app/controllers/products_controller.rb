@@ -8,7 +8,7 @@ class ProductsController < ApplicationController
   	#ランキング実装用
   	@all_ranks = Product.find(Favorite.group(:product_id).order('count(product_id)desc').limit(5).pluck(:product_id))
     #スクロール
-    @products = Product.page(params[:page]).per(9)
+    #@products = Product.page(params[:page]).per(9)
   end
 
   def show

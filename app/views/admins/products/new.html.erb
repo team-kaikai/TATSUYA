@@ -56,16 +56,14 @@
 					</div>
 
 
-				
-
 					<%= f.fields_for :discs do |disc| %>
 						<%#= disc.select :disc_number, [["1枚",1],["2枚",2]] %>
 					<!-- 左が見せる値右がデータベースに入れる値 -->
-				
 				<!-- cocoon 新しく曲名追加欄をもたせるため -->
 				<h4 class="col-xs-12">シングル/アルバム内の曲名</h4>
+				<div class="row"  style="margin-left: 380px;">
 					<%= render 'disc_fields', f:disc %>
-
+				</div>
 					<% end %>
 					<div class="links">
 						<%= link_to_add_association "ディスク2を追加する", f, :discs,class: "col-xs-offset-3" %>
