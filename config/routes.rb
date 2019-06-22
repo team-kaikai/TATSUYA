@@ -19,9 +19,7 @@ Rails.application.routes.draw do
     get 'order_appends/show'
     get 'order_appends/index'
   end
-  get 'order_appends/new'
-  post 'order_appends/create'
-  patch 'order_appends/update'
+
 
   root 'home#top'
 
@@ -90,7 +88,7 @@ resources :end_users,only: [:show,:edit,:update,:destroy] do
  resource :carts,only:[:update,:show]
 
 end
-
+ resources :order_appends, only:[:new, :show, :create, :update]
  resources :order_details, only: [:show]
 
  # resources :order_appends,only:[:create,:new,:show]

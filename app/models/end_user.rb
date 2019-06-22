@@ -27,7 +27,8 @@ class EndUser < ApplicationRecord
 
    #before_validation :set_postal_code
 # first_postal_code,last_postal_codeを postal_codeにまとめている記述
-   #before_validation :set_postal_code
+
+   # before_validation :set_postal_code
 
    # def first_postal_code
    # 		@first_postal_code || self.postal_code[0..2] if self.postal_code.present?

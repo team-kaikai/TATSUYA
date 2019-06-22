@@ -6,7 +6,10 @@ class Product < ApplicationRecord
 
     has_many :carts,dependent: :destroy
     has_many :end_users, through: :carts
+
 	has_many :order_details,dependent: :destroy
+	# has_many :order_appends, through: :order_details
+
 	has_many :comments, dependent: :destroy
 	has_many :favorites, dependent: :destroy
 

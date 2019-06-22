@@ -1,2 +1,75 @@
-<h1>OrderAppends#show</h1>
-<p>Find me in app/views/order_appends/show.html.erb</p>
+<div class = "order-new-wrapper">
+	<%= form_for(@order_append) do |f|%>
+	<div class ="container">
+		<div class="row">
+			<div class="col-xs-8 col-xs-offset-2">
+				<h3 style="border-bottom:1.0px solid black; margin-top: 30px;">送付先選択</h3>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-8 col-xs-offset-2">
+				<table class="table">
+					<tbody>
+						<tr>
+							<td><%= radio_button_tag :address, 0 %></td>
+							<td><%= current_end_user.first_name %><%= current_end_user.last_name %></td>
+							<td><%= current_end_user.postal_code %></td>
+							<td><%= current_end_user.address %></td>
+						</tr>
+					<% @address_nemus.each do |address_menu| %>
+						<tr>
+							<td><%= radio_button_tag :address, address_menu.id %></td>
+							<td><%= address_menu.name %><td>
+							<td><%= address_menu.postal_code %></td>
+							<td><%= address_menu.address %></td>
+						</tr>
+					<% end %>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col" style="margin: 50px 0; text-align: center">
+			  	<button>
+					<%= link_to "住所情報を新規追加する",new_end_user_address_menus_path(current_end_user)  %>
+				</button>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-xs-8 col-xs-offset-2">
+				<h3 style="border-bottom:1.0px solid black;">支払い方法選択</h3>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-4 col-xs-offset-2">
+
+				<label>
+					<h4><%= f.radio_button :pay, '0' %>代引き</h4>
+				</label>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-4 col-xs-offset-2">
+				<label>
+					<h4><%= f.radio_button :pay, '1' %>クレジット</h4>
+				</label>
+			</div>
+
+		</div>
+		<div class="row">
+			<div class="col-xs-4 col-xs-offset-2">
+				<label>
+					<h4><%= f.radio_button :pay, '2' %>銀行振込</h4>
+				</label>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col" style="margin: 50px 0; text-align: center">
+					<%= f.submit "購入", :class=>"purchase_btn"%>
+				</div>
+			</div>
+		</div>
+	</div>
+	<% end %>
+</div>
