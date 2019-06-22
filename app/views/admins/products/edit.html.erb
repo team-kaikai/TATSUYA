@@ -1,6 +1,11 @@
 <div class="albumnew-wrapper">
 	<div class="container">
 		<h1 style="padding-bottom: 4%;">アルバム編集</h1>
+		<% if @product.errors.any? %>
+			<% @product.errors.full_messages.each do |message| %>
+			<%= message %>
+			<% end %>
+		<% end %>
 		<!--[:admins,@product]-->
 		<%= form_for [:admins,@product] do |f| %>
 			<div class="row">
