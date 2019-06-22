@@ -16,7 +16,6 @@ class ProductsController < ApplicationController
   	@label = @product.label
   	@genre = @product.genre
     @artist = @product.artist
-    # @disc = @product.disc
     @cart = Cart.new
 
     if @product.stock != 0
