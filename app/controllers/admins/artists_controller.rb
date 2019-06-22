@@ -1,8 +1,12 @@
 class Admins::ArtistsController < ApplicationController
   def create
   	@artist =Artist.new(artist_params)
-  	@artist.save
-    redirect_to home_select_path
+  	if @artist.save
+        flash[:notice] = "You have creatad artist successfully."
+        redirect_to home_select_path
+    else
+      render :new
+    end
   end
   def new
   	@artist = Artist.new
