@@ -3,7 +3,7 @@
 		<div class="order-list-title row" style="border-bottom: 3px solid #dddddd;" >
 			<h1 class="col-xs-12">受注一覧</h1>
 		</div>
-		<table class="table-borderde table-list">
+		<table class="table-borderde table-list" style="width: 100%;">
 			<thead>
 				<tr class="order-tr-box">
 					<th width="10%">受注ID</th>
@@ -11,9 +11,8 @@
 					<th width="10%">配送状況</th>
 					<th width="15%">ユーザーid</th>
 					<th width="15%">ユーザー名</th>
-					<th width="20%">CD名</th>
-					<th width="10%">枚数</th>
 					<th width="15%">合計金額</th>
+					<th></th>
 				</tr>
 				<tr height="20px"></tr>
 			</thead>
@@ -21,15 +20,12 @@
 				<% @order_appends.each do |order| %>
 					<tr class="each-list">
 						<td><%= order.id %></td>
-						<td><%= order.created_at %></td>
+						<td><%= order.created_at.strftime('%Y/%m/%d') %></td>
 						<td><%= order.status %></td>
 						<td><%= order.enduser_id %></td>
-						<td><%= order.enduser.name %></td>
-						<% @product.each do |product| %>
-							<td><%= order.product.title %></td>
-							<td><%= order.order_details.quantity %></td>
-						<% end %>
-						<td><%= order.subtitle %></td>
+						<td><%= order.name %></td>
+						<td><%= order.subtotal %>円</td>
+						<td><%= link_to "詳細",  admins_order_append_path(order) %></td>
 					</tr>
 				<% end %>
 			</tbody>
