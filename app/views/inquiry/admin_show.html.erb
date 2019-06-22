@@ -1,0 +1,45 @@
+<div class ="inquiry-admin-index">
+    <div class="container">
+      <div class="row" style="text-align: center;">
+
+      <div class="page-header">
+        <h1>お問い合わせ内容詳細</h1>
+      </div>
+      <div class="row">
+            <ol class="inquiry-list" style="border: 2px solid #999;">
+              <li class="inquiry-detail">
+            <div class="inquiry-body bb">
+              <div class="inquiry-text">
+                <div class="inquiry-author clearfix">
+                              <span class="inquiry-meta">
+                                <span class="inquiry-date"><%= @inquiries.created_at.strftime('%Y/%m/%d') %></span>
+                                <span class="inquiry-name"><%= @inquiries.name %></span>
+                              </span>
+                </div>
+                <div class="inquiry-entry"><%= @inquiries.message %></div>
+              </div>
+            </div>
+              </li>
+   
+           </ol>
+      </div>
+      <div class="reply">
+        <h1>返信用フォーム</h1>
+      </div>
+    <%= form_for @inquiry, url: inquiry_thanks_path do |f| %>
+  <table class="table">
+      <tr>
+        <th>名前<span class="text-danger"></span></th>
+        <td><%= f.text_field :name %></td>
+        <%= f.hidden_field :email, value: @inquiries.email %>
+      </tr>
+      <tr>
+        <th>返信内容</th>
+       <td><%= f.text_area :message %></td>
+      </tr>
+   </table>
+    <%= f.submit '確認', class: 'btn btn-primary' %>
+    <% end %>
+    </div>
+  </div>
+</div>
