@@ -20,11 +20,27 @@ class InquiryController < ApplicationController
   def thanks
     # メール送信
     @inquiry = Inquiry.new(inquiry_params)
+      @inquiry.save
+   if end_user_signed_in?
     InquiryMailer.received_email(@inquiry).deliver
-
     # 完了画面を表示
     render :action => 'thanks'
+	else
+	InquiryMailer.reply_email(@inquiry).deliver
+	render :action => 'thanks'
+	end
+
   end
+
+  def admin_index
+  	@inquiry = Inquiry.all
+  end
+
+  def admin_show
+  	@inquiries = Inquiry.find(params[:id])
+  	@inquiry = Inquiry.new
+  end
+
 
   private
 

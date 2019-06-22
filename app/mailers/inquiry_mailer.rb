@@ -1,10 +1,11 @@
 class InquiryMailer < ApplicationMailer
 
-  default from: 'notifications@example.com'
-
-  def report(inquiry)
-    @inquiry = inquiry
-    @url  = 'http://example.com/login'
-    mail(to: @user.email, subject: 'レポート')
+  def received_email(inquiry)
+  	@inquiry = inquiry
+    mail(to: @inquiry.email, subject: 'レポート')
+  end
+  def reply_email(inquiry)
+  	@inquiry = inquiry
+    mail(to: @inquiry.email, subject: 'レポート')
   end
 end

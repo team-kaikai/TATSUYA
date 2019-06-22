@@ -6,8 +6,11 @@ class EndUserMailer < ApplicationMailer
   #   en.end_user_mailer.send_mail.subject
   #
 
-  def send_mail(enduser)
-    @enduser = enduser
-    mail to: enduser.email, subject:"Sample from Rails"
+  default from: 'notifications@example.com'
+
+  def 
+    @end_user = params[:end_user]
+    @url  = 'http://example.com/login'
+    mail(to: @end_user.email, subject: 'お問い合わせありがとうございます。')
   end
 end

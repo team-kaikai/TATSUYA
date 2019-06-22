@@ -29,9 +29,17 @@ Rails.application.routes.draw do
   get 'home/select' => 'home/select'
 
   #mail
+
   get 'inquiry' => 'inquiry#index'              # 入力画面
   post 'inquiry/confirm' => 'inquiry#confirm'   # 確認画面
   post 'inquiry/thanks' => 'inquiry#thanks'     # 送信完了画面
+  #mail返信
+
+  get 'inquiry/admin_index' => 'inquiry#admin_index'
+
+  get 'inquiry/:id' => 'inquiry#admin_show',as: "admin_show"
+
+
 
   # namespace :admins do
   #   get 'discs/create'
@@ -113,7 +121,7 @@ end
 
 	 resources :labels, only: [:create,:new]
 
-   resources :order_appends,only:[:show,:index,:update]
+   resources :order_appends,only:[:show,:index]
  end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
