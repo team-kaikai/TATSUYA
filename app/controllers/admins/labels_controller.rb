@@ -1,8 +1,12 @@
 class Admins::LabelsController < ApplicationController
   def create
   	@label = Label.new(label_params)
-  	@label.save
-    redirect_to home_select_path
+  	if @label.save
+       flash[:notice] = "You have creatad label successfully."
+       redirect_to home_select_path
+    else
+      render :new
+    end
   end
   def new
   end

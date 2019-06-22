@@ -1,8 +1,13 @@
 class Admins::GenresController < ApplicationController
   def create
   	@genre = Genre.new(genre_params)
-  	@genre.save
-    redirect_to home_select_path
+  	if @genre.save
+       flash[:notice] = "You have creatad genre successfully."
+       redirect_to home_select_path
+    else
+      render :new
+    end
+
   end
   def new
   end

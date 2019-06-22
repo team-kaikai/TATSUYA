@@ -9,8 +9,10 @@ class ApplicationController < ActionController::Base
 	def after_sign_in_path_for(resource)
  		 case resource
  		 	when Admin
+ 		 		 flash[:notice] = "サインインしました"
     			admins_end_users_path
   			when EndUser
+  				 flash[:notice] = "サインインしました"
     			products_path
  		 end
 	end
@@ -18,9 +20,10 @@ class ApplicationController < ActionController::Base
 	def after_sign_out_path_for(resource)
 		case resource
 			when :admin
+				 flash[:notice] = "ログアウトしました"
 				home_master_path
-
 			when :end_user
+				 flash[:notice] = "ログアウトしました"
 				root_path
 
   		end

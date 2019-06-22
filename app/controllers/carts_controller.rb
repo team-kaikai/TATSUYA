@@ -22,8 +22,10 @@ class CartsController < ApplicationController
 
   def destroy
   	cart = Cart.find_by(id: params[:id])
-    cart.destroy
-    redirect_to end_user_carts_path(current_end_user.id)
+    if cart.destroy
+       flash[:notice] = "削除しました"
+       redirect_to end_user_carts_path(current_end_user.id)
+    end
   end
 
   def show

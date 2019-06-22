@@ -2,6 +2,11 @@
   <div class="container">
   	<div class="row" align="center">
   		<h1 style="padding-bottom: 20px;">ユーザー情報編集</h1>
+  		<% if @enduser.errors.any? %>
+			<% @enduser.errors.full_messages.each do |message| %>
+			<%= message %>
+			<% end %>
+		<% end %>
   		<% if flash[:edit] %>
   			<p style="color:red;"><%= flash[:edit] %></p>
 		<% end %>
