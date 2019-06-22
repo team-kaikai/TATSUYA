@@ -14,6 +14,9 @@ class CartsController < ApplicationController
   end
 
   def update
+    @cart = Cart.find(params[:id])
+    @cart.update(cart_params)
+    redirect_to end_user_carts_path
 
   end
 
@@ -29,9 +32,12 @@ class CartsController < ApplicationController
   	# カートの中身を全て出すため
   	@carts = Cart.all
     @cart_less = current_end_user.carts
+    # 配送料
     @fee = 500
-    # @cart_my = Cart.where(user_id: current_end_user.id)
-   @order_append = OrderAppend.new
+    # 消費税
+    @tax = 1.08
+    @order_append = OrderAppend.new
+
 
 
      # if @cart.stock != 0
