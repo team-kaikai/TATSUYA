@@ -23,6 +23,11 @@ class Product < ApplicationRecord
 	#productテーブルリセット
 
 
+	validates :album_name, {presence: true}
+	validates :price,length:{in: 1..2 }
+	validates :body, {presence: true, length: {maximum: 200}} 
+	validates :stock,length:{in: 1..2 } 
+
 	def total_price
 		product.price * quantity
 	end

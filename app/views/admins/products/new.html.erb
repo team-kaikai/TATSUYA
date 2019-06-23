@@ -23,6 +23,9 @@
 
 					<!-- 押したらアーティスト一覧がでるものを作成しなければならない -->
 					<div class="row">
+						<%= link_to "アーティスト,レーベル,ジャンル登録へ", new_admins_artist_path %>
+					</div>
+					<div class="row">
 						<h4 class="col-xs-4">アーティスト名</h4>
 						<%= f.collection_select :artist_id, Artist.all,:id, :name %>
 					</div>
