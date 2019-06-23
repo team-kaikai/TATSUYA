@@ -39,29 +39,27 @@
 				<!--options_for_select(Product.statuses)だとvalueが1,2で判断されるので-->
 				<!--options_for_select(Product.statuses.keys)にするとvalueが販売中,停止中と数字に対応した文字列が値になる-->
 				<!--データベースに反映されるときに自動でまた数値に変換されるらしい-->
-				<%= f.select :status, options_for_select(Product.statuses.keys),{} %>
+				<%= f.select :status, options_for_select(Product.statuses.keys,:selected => @product.status),{} %>
 			</div>
 			<div class="row">
 				 <h4 class="col-xs-4">シングル/アルバム名</h4>
 				 <%= f.text_field :album_name,style: "width: 300px" %>
 			</div>
-			<div class="row">
-				<div class="col-xs-6">
-					<h4>CD枚数</h4>
-					<%= f.fields_for :discs do |disc| %>
-						<%= disc.select :disc_number, [["1枚",1],["2枚",2],["3枚",3],["4枚",4]] %>
-						<!-- 左が見せる値右がデータベースに入れる値 -->
-						<h4>シングル/アルバム内の曲名</h4>
-						<%= disc.fields_for :songs do |song| %>
-						<% end %>
-					<% end %>
-							<!-- cocoon 新しく曲名追加欄をもたせるため -->
-					<%= f.fields :discs do |disc| %>
-						<%= render 'disc_fields', f:disc %>
-					<% end %>
+			<%= f.fields_for :discs do |disc| %>
+				<%#= disc.select :disc_number, [["1枚",1],["2枚",2]] %>
+				<!-- 左が見せる値右がデータベースに入れる値 -->
+				<!-- cocoon 新しく曲名追加欄をもたせるため -->
+				<h4 class="col-xs-12">シングル/アルバム内の曲名</h4>
+				<div class="row"  style="margin-left: 380px;">
+					<%= render 'disc_fields', f:disc %>
 				</div>
-				<h4>商品説明</h4>
-				<%= f.text_area :body, size:"70x10" %>
+			<% end %>
+			<div class="links">
+				<%= link_to_add_association "ディスク2を追加する", f, :discs,class: "col-xs-offset-3" %>
+			</div>
+			<div class="row">
+				<h4 class="col-xs-4">CD情報</h4>
+				<%= f.text_area :body, rows:'5', class: "form-control",placeholder: "情報をここに書いてね❤️" %>
 			</div>
 			<div class="row text-center" style="padding: 5% 0;">
 				<%= f.submit "編集" , class: "btn btn-confirm" %>

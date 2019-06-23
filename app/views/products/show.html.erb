@@ -21,7 +21,6 @@
 						<span style="font-size: 15px;">個数:</span>
 						<p>数量<%= f.select :quantity,@limit %></p>
 
-					<% if end_user_signed_in? %>
 						<%= f.hidden_field :product_id, value: @product.id %>
 						<div class="row" style="padding: 10px">
 					        <% if @product.favorited_by?(current_end_user) %>
@@ -32,16 +31,16 @@
 									<% end %>
 							<% else %>
 				    				<%= link_to product_favorites_path(@product), method: :post do %>
-				      					<i class="far fa-heart" aria-hidden="true"></i>
+				      					<i class="fa fa-heart-o" aria-hidden="true"></i>
 				      					<%= @product.favorites.count %> いいね
 				    				<% end %>
 						    <% end %>
 						</div>
-					<% else %>
-							      		<i class="far fa-heart" aria-hidden="true"></i>
-				      					<%= @product.favorites.count %> いいね
-				    <% end %>
+						<% if @product.status == "販売中" %>
 				      		<%= f.submit "カートに追加する", class: "btn btn-default pull-right" %>
+				      	<% else%>
+				      		<p style="font-size: 25px;color: red">現在購入できません</p>
+			      		<% end %>
 				    <% end %>
 				</div>
 			</div>
@@ -73,22 +72,20 @@
 		</div>
 	</div>
 </div>
-<% if end_user_signed_in? %>
-	<div class="add-review-wrapper" style="padding-top: 20px;">
-		<div class="container" style="border: 3px solid #dddddd; border-radius: 10px; height: auto;">
-			<h2>レビュー追加</h2>
-			<%= form_for [@product, @comment] do |f| %>
-				<div class="row">
-					<%= f.text_area :comment, rows:'5', class: "form-control",placeholder: "コメントをここに" %>
-					<div class="add-review" style="padding: 10px;">
-						<%= f.submit "送信する", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
-					</div>
+
+<div class="add-review-wrapper" style="padding-top: 20px;">
+	<div class="container" style="border: 3px solid #dddddd; border-radius: 10px; height: auto;">
+		<h2>レビュー追加</h2>
+		<%= form_for [@product, @comment] do |f| %>
+			<div class="row">
+				<%= f.text_area :comment, rows:'5', class: "form-control",placeholder: "コメントをここに" %>
+				<div class="add-review" style="padding: 10px;">
+					<%= f.submit "送信する", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
 				</div>
-			<% end %>
-		</div>
+			</div>
+		<% end %>
 	</div>
-<% else %>
-<% end %>
+</div>
 
 <div class="review-wrapper">
 	<div class="container">
