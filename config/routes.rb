@@ -113,7 +113,7 @@ end
 
 	 resources :artists, only: [:create, :new]
 
-	 resources :end_users, only:[:index,:edit]
+	 resources :end_users, only:[:index,:edit,:show,:destroy]
 
 	 resources :genres, only: [:create,:new]
 
@@ -121,7 +121,7 @@ end
 
 	 resources :labels, only: [:create,:new]
 
-   resources :order_appends,only:[:show,:index]
+   resources :order_appends,only:[:show,:index,:update]
  end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
