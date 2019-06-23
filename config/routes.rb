@@ -29,16 +29,17 @@ Rails.application.routes.draw do
   get 'home/select' => 'home/select'
 
   #mail
-
   get 'inquiry' => 'inquiry#index'              # 入力画面
   post 'inquiry/confirm' => 'inquiry#confirm'   # 確認画面
   post 'inquiry/thanks' => 'inquiry#thanks'     # 送信完了画面
   #mail返信
-
   get 'inquiry/admin_index' => 'inquiry#admin_index'
-
   get 'inquiry/:id' => 'inquiry#admin_show',as: "admin_show"
-
+  post 'inquiry/admin_thanks' => 'inquiry#admin_thanks'
+  #mail返信確認gem(letter_opener_web)用
+  if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at: "/letter_opener"
+  end
 
 
   # namespace :admins do

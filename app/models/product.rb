@@ -29,8 +29,10 @@ class Product < ApplicationRecord
 
 	attachment :profile_image
 
+
+
 	def favorited_by?(enduser)
-        favorites.where(enduser_id: enduser.id).exists?
+        	favorites.where(enduser_id: enduser.id).exists?
     end
 
 end
