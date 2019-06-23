@@ -22,6 +22,7 @@ class Product < ApplicationRecord
 	# 親に対し、optional: trueが必要
 	#productテーブルリセット
 
+
 	def total_price
 		product.price * quantity
 	end

@@ -10,6 +10,19 @@ class Admins::EndUsersController < ApplicationController
     	#@result = @search.result
 	end
 
+	def show
+	    @enduser = EndUser.find(params[:id])
+	    @enduser_append = @enduser.order_appends
+	    #@product = Product.find(params[:id])
+	end
+
+	def destroy
+		enduser = EndUser.find(params[:id])
+		enduser.destroy
+		redirect_to admins_end_users_path
+	end
+
+
 	def edit
 		@enduser = EndUser.find(params[:id])
 	end

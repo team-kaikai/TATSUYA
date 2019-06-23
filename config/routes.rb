@@ -113,7 +113,7 @@ end
 
 	 resources :artists, only: [:create, :new]
 
-	 resources :end_users, only:[:index,:edit]
+	 resources :end_users, only:[:index,:edit,:show,:destroy]
 
 	 resources :genres, only: [:create,:new]
 
