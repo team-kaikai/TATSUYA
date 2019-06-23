@@ -2,7 +2,7 @@ class Admins::LabelsController < ApplicationController
   def create
   	@label = Label.new(label_params)
   	if @label.save
-       flash[:notice] = "You have creatad label successfully."
+       flash[:notice] = "追加しました"
        redirect_to home_select_path
     else
       render :new

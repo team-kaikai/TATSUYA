@@ -3,7 +3,7 @@ class AddressMenusController < ApplicationController
   	 @address_menus = AddressMenu.new(address_menu_params)
   	 @address_menus.enduser_id = current_end_user.id
   	 if @address_menus.save
-        flash[:notice] = "You have creatad address successfully."
+        flash[:notice] = "追加しました"
   	    redirect_to new_end_user_address_menus_path(current_end_user.id)
      else
         @enduser = EndUser.find(params[:end_user_id])
