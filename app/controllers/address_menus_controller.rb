@@ -6,6 +6,7 @@ class AddressMenusController < ApplicationController
         flash[:notice] = "You have creatad address successfully."
   	    redirect_to new_end_user_address_menus_path(current_end_user.id)
      else
+        @enduser = EndUser.find(params[:end_user_id])
         render :new
      end
   end

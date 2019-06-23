@@ -5,7 +5,7 @@
 				<p style="border-bottom:3px solid #999;">アルバム名:
 				<span style="padding-left: 30px;font-size: 20px"><%= @product.album_name %></span>
 				</p>
-				<%= attachment_image_tag @product, :profile_image, format: 'jepg', fallback: "sample_image.jpg", size: "300x300" %>
+				<%= attachment_image_tag @product, :profile_image, format: 'jepg', fallback: "no_image.jpg", size: "300x300" %>
 				<div style="float: left; padding: 5px;">
 						<P style="font-size: 15px;">レーベル名:
 							<span style="font-size: 20px; padding-left: 30px;"><%= @product.label.name %></span></P>

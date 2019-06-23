@@ -4,6 +4,7 @@ class AddressMenu < ApplicationRecord
 
 
 	validates :name,presence: true
-	validates :address,length:{ in: 10..20}
+	validates :address, {presence: true, length:{ in: 1..50}}
+	validates :postal_code, {presence: true, length:{ in: 1..7}}
 
 end
