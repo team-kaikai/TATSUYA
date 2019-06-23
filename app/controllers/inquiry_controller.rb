@@ -20,25 +20,32 @@ class InquiryController < ApplicationController
   def thanks
     # メール送信
     @inquiry = Inquiry.new(inquiry_params)
+    # admin側の一覧画面で情報を持ってくる為のflag
+    @inquiry.mail_flag = 1
       @inquiry.save
-   if end_user_signed_in?
     InquiryMailer.received_email(@inquiry).deliver
     # 完了画面を表示
     render :action => 'thanks'
-	else
-	InquiryMailer.reply_email(@inquiry).deliver
-	render :action => 'thanks'
+
 	end
 
-  end
 
   def admin_index
-  	@inquiry = Inquiry.all
+    #mail_flag:1の情報を持ってくる
+  	@inquiry = Inquiry.where(mail_flag: 1)
   end
 
   def admin_show
   	@inquiries = Inquiry.find(params[:id])
   	@inquiry = Inquiry.new
+  end
+
+  def admin_thanks
+    # メール送信
+    @inquiry = Inquiry.new(inquiry_params)
+      @inquiry.save
+    InquiryMailer.reply_email(@inquiry).deliver
+    render :action => 'admin_thanks'
   end
 
 
