@@ -4,6 +4,8 @@ class Product < ApplicationRecord
 		販売中:1, 停止中:2
 	}
 
+	attachment :profile_image
+
     has_many :carts,dependent: :destroy
     has_many :end_users, through: :carts
 
@@ -25,15 +27,12 @@ class Product < ApplicationRecord
 
 	validates :album_name, {presence: true}
 	validates :price, {presence: true}
-	validates :body, {presence: true, length: {maximum: 200}} 
+	validates :body, length: {maximum: 200}
 	validates :stock, {presence: true} 
 
 	def total_price
 		product.price * quantity
 	end
-
-	attachment :profile_image
-
 
 
 	def favorited_by?(enduser)

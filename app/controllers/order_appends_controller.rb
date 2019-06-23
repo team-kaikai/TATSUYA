@@ -37,7 +37,7 @@ class OrderAppendsController < ApplicationController
         @order_detail.product_id = cart.product.id
         @order_detail.price = cart.product.price
         @order_detail.quantity = cart.quantity
-        @order_detail.save!
+        @order_detail.save
         product.stock -= @order_detail.quantity.to_i
         product.save
         cart.destroy
