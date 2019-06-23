@@ -26,6 +26,9 @@ class ProductsController < ApplicationController
       end
     end
     @comment = Comment.new
+    if @product.status == 1.to_i
+      rdirect_to products_path
+    end
   end
 
   def create
