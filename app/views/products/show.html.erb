@@ -23,6 +23,7 @@
 
 						<%= f.hidden_field :product_id, value: @product.id %>
 						<div class="row" style="padding: 10px">
+							<% if end_user_signed_in? %>
 					        <% if @product.favorited_by?(current_end_user) %>
 				  				<li class="favorite">
 				    				<%= link_to product_favorites_path(@product), method: :delete do %>
@@ -31,10 +32,14 @@
 									<% end %>
 							<% else %>
 				    				<%= link_to product_favorites_path(@product), method: :post do %>
-				      					<i class="fa fa-heart-o" aria-hidden="true"></i>
+				      					<i class="far fa-heart" aria-hidden="true"></i>
 				      					<%= @product.favorites.count %> いいね
 				    				<% end %>
 						    <% end %>
+						   <% else %>
+				      					<i class="far fa-heart" aria-hidden="true"></i>
+				      					<%= @product.favorites.count %> いいね
+				    		<% end %>
 						</div>
 						<% if @product.status == "販売中" %>
 				      		<%= f.submit "カートに追加する", class: "btn btn-default pull-right" %>
