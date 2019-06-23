@@ -36,7 +36,11 @@
 				    				<% end %>
 						    <% end %>
 						</div>
+						<% if @product.status == "販売中" %>
 				      		<%= f.submit "カートに追加する", class: "btn btn-default pull-right" %>
+				      	<% else%>
+				      		<p style="font-size: 25px;color: red;">現在購入できません</p>
+				      	<% end %>
 				    <% end %>
 				</div>
 			</div>
