@@ -17,7 +17,7 @@
 						<% @end_users.each do |end_user|  %>
 						<tr>
 							<td>
-								<p>ID<span style="font-size: 20px; padding-left: 30px;"><%= link_to end_user.id,end_user_path(end_user) %></span></p>
+								<p>ID<span style="font-size: 20px; padding-left: 30px;"><%= link_to end_user.id,admins_end_user_path(end_user) %></span></p>
 							</td>
 							<td>
 								<p>名前<span style="font-size: 20px; padding-left: 30px;"><%= end_user.first_name %><%= end_user.last_name %></span></p>
