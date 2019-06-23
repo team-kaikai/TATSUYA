@@ -30,6 +30,9 @@ class EndUsersController < ApplicationController
   end
 
   def destroy
+    enduser = EndUser.find(params[:id])
+    enduser.destroy
+    redirect_to root_path
   end
 
   def index

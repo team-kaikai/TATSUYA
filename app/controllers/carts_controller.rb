@@ -12,11 +12,11 @@ class CartsController < ApplicationController
     @cart.quantity += params[:cart][:quantity].to_i
     if @cart.quantity >= @hoge.stock
        @cart.quantity = @hoge.stock
+       flash[:notice] = "購入個数が在庫数を超えたので、限界の数とさせて頂きます"
     end
 
   	@cart.save
     redirect_to end_user_carts_path(@cart.enduser_id)
-    flash[:notice] = "購入個数が在庫数を超えたので、限界の数とさせて頂きます"
   end
 
   def update
