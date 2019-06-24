@@ -89,7 +89,7 @@
 			<div class="row">
 				<%= f.text_area :comment, rows:'5', class: "form-control",placeholder: "コメントをここに" %>
 				<div class="add-review" style="padding: 10px;">
-					<%= f.submit "送信する", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
+					<%= f.submit "送信する", class: "btn1 btn-lg btn-base-1 mt-20 pull-right" %>
 				</div>
 			</div>
 		<% end %>
@@ -100,9 +100,9 @@
 <div class="review-wrapper">
 	<div class="container">
   		<h2>レビュー一覧</h2>
-  		<% @product.comments.each do |comment| %>
-			<div class="row">
-  		  		<ol class="review-list" style="border: 2px solid #999;">
+  		<div class="row"  style="border: 2px solid #999;">
+  			<% @product.comments.each do |comment| %>
+  		  		<ol class="review-list">
 	        		<li class="comment">
 						<div class="comment-body bb">
 							<div class="comment-text">
@@ -116,15 +116,15 @@
 							</div>
 						</div>
 	          		</li>
-					<% if current_end_user %>
+					<% if current_end_user.id == comment.enduser_id %>
 						<div class="text-right">
-			        		<button style="width: 30%;">
-								<p><%= link_to "削除", product_comment_path(@product,comment), method: :delete, "data-confirm" => "本当に削除しますか？" %></p>
-							</button>
+							<p>
+								<%= link_to "削除", product_comment_path(@product,comment), method: :delete, "data-confirm" => "本当に削除しますか？",class: "btn1 btn-lg btn-base-1 mt-10" %>
+							</p>
 						</div>
 					<% end %>
          		</ol>
-			</div>
-  	 	<% end %>
+  	 		<% end %>
+  	 	</div>
 	</div>
 </div>

@@ -2,8 +2,10 @@
 	<div class="container">
 		<div class="order-status-title">
 			<div class="row">
-					<h1>注文内容詳細・・・</h1>
-					 <p style="font-size: 20px;">配送状況<span style="padding-left: 2%;"><%= @order_append.status %></span></p>
+				<h1>注文内容詳細・・・</h1>
+				<p style="font-size: 20px;">配送状況<span style="padding-left: 2%;"><%= @order_append.status %></span></p>
+				<P style="font-size: 20px;">送付先住所<span style="padding-left: 2%;"><%= @order_append.address %></span></P>
+				<p style="font-size: 20px;">送付先指名<span style="padding-left: 2%;"><%= @order_append.name %></span></p>
 			</div>
 		</div>
 		<div class="row">
@@ -22,6 +24,9 @@
 					</div>
 				<% end %>
 			<% end %>
+		</div>
+		<div class="row text-right" style="padding-bottom: 2%;">
+			<p style="font-size: 32px;">購入金額<span style="padding-right: 1%;"></span><%= @order_append.subtotal %>円</p>
 		</div>
 	</div>
 </div>

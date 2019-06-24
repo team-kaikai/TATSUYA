@@ -37,13 +37,13 @@ class Admins::ProductsController < ApplicationController
      # 検索オブジェクト
      @search = Product.ransack(params[:q])
 
-    if params[:q] 
+    if params[:q]
     # 検索結果
      @products = @search.result
     #ランキング実装用
     end
 
-   
+
     @all_ranks = Product.find(Favorite.group(:product_id).order('count(product_id)desc').limit(5).pluck(:product_id))
   end
 
