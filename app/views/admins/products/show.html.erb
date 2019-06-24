@@ -41,9 +41,9 @@
 <div class="review-wrapper">
   <div class="container">
   	<h2>レビュー一覧</h2>
-  	   <div class="row">
+  	   <div class="row"  style="border: 2px solid #999;">
   	   	<% @product.comments.each do |comment| %>
-  		  <ol class="review-list" style="border: 2px solid #999;">
+  		  <ol class="review-list">
 	          <li class="comment">
 	            <div class="comment-body bb">
 	                <div class="comment-text">
@@ -56,9 +56,7 @@
 	                    <div class="comment-entry">
 	                    	<%= comment.comment %>
 		                    <div class="text-right">
-	       						<button style="width: 30%;">
-									<%= link_to "削除", product_comment_path(@product,comment), method: :delete, "data-confirm" => "本当に削除しますか？" %>
-								</button>
+								<%= link_to "削除", product_comment_path(@product,comment), method: :delete, "data-confirm" => "本当に削除しますか？",class: "btn1 btn-lg btn-base-1 mt-10" %>
 	   	   					</div>
    	   					</div>
 	                </div>

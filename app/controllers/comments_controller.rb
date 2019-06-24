@@ -16,7 +16,7 @@ class CommentsController < ApplicationController
        redirect_to product_path(params[:product_id])
     elsif admin_signed_in?
       comment.destroy
-       flash[:notice] = "削除しました"
+       flash[:notice] = "削除しました。"
        redirect_to admins_product_path(params[:product_id])
     end
   end
