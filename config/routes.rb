@@ -36,6 +36,8 @@ Rails.application.routes.draw do
   get 'inquiry/admin_index' => 'inquiry#admin_index'
   get 'inquiry/:id' => 'inquiry#admin_show',as: "admin_show"
   post 'inquiry/admin_thanks' => 'inquiry#admin_thanks'
+
+
   #mail返信確認gem(letter_opener_web)用
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
