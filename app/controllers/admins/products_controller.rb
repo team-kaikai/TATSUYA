@@ -33,6 +33,7 @@ class Admins::ProductsController < ApplicationController
 
   def index
     @products = Product.all.order(created_at: :desc)
+    # @products = Product.page(params[:page]).per(6)
 
      # 検索オブジェクト
      @search = Product.ransack(params[:q])

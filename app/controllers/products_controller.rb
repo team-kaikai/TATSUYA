@@ -1,11 +1,11 @@
 class ProductsController < ApplicationController
   def index
   	@products = Product.all.order(created_at: :desc).page(params[:page]).per(9)
+  	# @products = Product.all.order(created_at: :desc)
     # 検索オブジェクト
-    if @search = Product.ransack(params[:q])
+    @search = Product.ransack(params[:q])
     # 検索結果
-    @products = @search.result
-    end
+    @ransacks = @search.resultr
   	#ランキング実装用
   	@all_ranks = Product.find(Favorite.group(:product_id).order('count(product_id)desc').limit(5).pluck(:product_id))
     #スクロール
