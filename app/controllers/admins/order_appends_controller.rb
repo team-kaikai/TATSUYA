@@ -6,9 +6,9 @@ class Admins::OrderAppendsController < ApplicationController
 
   def index
   	@order_appends = OrderAppend.all
-  	# @enduser = EndUser.find(enduser_id)
+  	#@enduser = EndUser.find(enduser_id)
   	@order_details = OrderDetail.all
-    # @order_detail = order_appends.order_detailss
+    # @order_detail = order_appends.order_details
   end
 
   def update
@@ -17,6 +17,9 @@ class Admins::OrderAppendsController < ApplicationController
   	#redirect_to admins_order_append_path(@order_append.id)
   	redirect_to  admins_order_appends_path
   end
+
+
+    # @order_append.with_deleted.find(@order_append.id)
 
   private
   	def order_append_params

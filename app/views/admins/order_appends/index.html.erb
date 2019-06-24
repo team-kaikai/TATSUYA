@@ -23,7 +23,7 @@
 						<td><%= order.created_at.strftime('%Y/%m/%d') %></td>
 						<td><%= order.status %></td>
 						<td><%= order.enduser_id %></td>
-						<td><%= order.name %></td>
+						<td><%= order.end_user.first_name %><%= order.end_user.last_name %></td>
 						<td><%= order.subtotal %>円</td>
 						<td><%= link_to "詳細",  admins_order_append_path(order) %></td>
 					</tr>
