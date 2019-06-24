@@ -5,7 +5,7 @@ class ProductsController < ApplicationController
     # 検索オブジェクト
     @search = Product.ransack(params[:q])
     # 検索結果
-    @ransacks = @search.resultr
+    @ransacks = @search.result
   	#ランキング実装用
   	@all_ranks = Product.find(Favorite.group(:product_id).order('count(product_id)desc').limit(5).pluck(:product_id))
     #スクロール

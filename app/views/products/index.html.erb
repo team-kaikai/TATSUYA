@@ -36,6 +36,22 @@
 	  				<!-- ---------------------------------------------------- -->
 
 	  				<ul class="skill-list jscroll">
+	  					<% if @search.result != nil %>
+	  					<% @ransacks.each do |ransack| %>
+						　　<li class="product" style="border: 4px solid #999;">
+								<div>
+									<%= link_to product_path(ransack) do %>
+									<%= attachment_image_tag ransack, :profile_image, :fill, 200, 200,format:"jpeg",fallback: "no_image.jpg",size:'200x200' %>
+									<% end %>
+								<div style="padding-left: 7%; padding-bottom: 5%;">
+									　<p style="margin-bottom: 0px; padding-top: 10px;"><%= ransack.artist.name %></p>
+									　<p style="margin-bottom: 0px;"><%= ransack.album_name %></p>
+									　<p style="margin-bottom: 0px;"><%= ransack.price %>円</p>
+								</div>
+								</div>
+							</li>
+						<% end %>
+						<% elsif %>
 		  				<% @products.each do |product| %>
 						　　<li class="product" style="border: 4px solid #999;">
 								<div>
@@ -50,6 +66,7 @@
 								</div>
 							</li>
 						<% end %>
+						<% end %>
 						<%= paginate @products %>
 					</ul>
 					<!-- ---------------------------------------------------- -->
@@ -58,4 +75,3 @@
 	  	 </div>
 	</div>
 </div>
-<%#= paginate @products %>
