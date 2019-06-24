@@ -2,7 +2,7 @@ class Admins::GenresController < ApplicationController
   def create
   	@genre = Genre.new(genre_params)
   	if @genre.save
-       flash[:notice] = "You have creatad genre successfully."
+       flash[:notice] = "追加しました"
        redirect_to home_select_path
     else
       render :new

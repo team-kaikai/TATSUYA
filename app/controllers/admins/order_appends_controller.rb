@@ -5,10 +5,12 @@ class Admins::OrderAppendsController < ApplicationController
   end
 
   def index
-  	@order_appends = OrderAppend.all
-  	#@enduser = EndUser.find(enduser_id)
-  	@order_details = OrderDetail.all
-    # @order_detail = order_appends.order_details
+
+  	@order_appends = OrderAppend.all.order(created_at: :desc)
+  	# @enduser = EndUser.find(enduser_id)
+  	@order_details = OrderDetail.all.order(created_at: :desc)
+    # @order_detail = order_appends.order_detailss
+
   end
 
   def update
