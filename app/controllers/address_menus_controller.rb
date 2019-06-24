@@ -5,6 +5,7 @@ class AddressMenusController < ApplicationController
   	 if @address_menus.save
         flash[:notice] = "追加しました"
   	    redirect_to new_end_user_address_menus_path(current_end_user.id)
+
      else
         @enduser = EndUser.find(params[:end_user_id])
         render :new

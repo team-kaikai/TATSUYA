@@ -5,10 +5,12 @@ class Admins::OrderAppendsController < ApplicationController
   end
 
   def index
+
   	@order_appends = OrderAppend.all.order(created_at: :desc)
   	# @enduser = EndUser.find(enduser_id)
   	@order_details = OrderDetail.all.order(created_at: :desc)
     # @order_detail = order_appends.order_detailss
+
   end
 
   def update
@@ -17,6 +19,9 @@ class Admins::OrderAppendsController < ApplicationController
   	#redirect_to admins_order_append_path(@order_append.id)
   	redirect_to  admins_order_appends_path
   end
+
+
+    # @order_append.with_deleted.find(@order_append.id)
 
   private
   	def order_append_params
