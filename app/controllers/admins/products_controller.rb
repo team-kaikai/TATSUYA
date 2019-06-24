@@ -32,12 +32,18 @@ class Admins::ProductsController < ApplicationController
   end
 
   def index
-    @products = Product.all
-    # 検索オブジェクト
-    @search = Product.ransack(params[:q])
+    @products = Product.all.order(created_at: :desc)
+
+     # 検索オブジェクト
+     @search = Product.ransack(params[:q])
+
+    if params[:q] 
     # 検索結果
-    @products = @search.result
+     @products = @search.result
     #ランキング実装用
+    end
+
+   
     @all_ranks = Product.find(Favorite.group(:product_id).order('count(product_id)desc').limit(5).pluck(:product_id))
   end
 
