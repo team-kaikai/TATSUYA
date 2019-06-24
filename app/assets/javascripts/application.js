@@ -18,3 +18,11 @@
 //= require jquery.jscroll.min.js
 //= require turbolinks
 //= require_tree .
+
+
+$(function(){
+	$('.jscroll').jscroll({
+		contentSelector: '.skill-list',
+		nextSelector: 'span.next:last a'
+	});
+});
