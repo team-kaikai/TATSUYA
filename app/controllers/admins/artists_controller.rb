@@ -2,7 +2,7 @@ class Admins::ArtistsController < ApplicationController
   def create
   	@artist =Artist.new(artist_params)
   	if @artist.save
-        flash[:notice] = "You have creatad artist successfully."
+        flash[:notice] = "追加しました"
         redirect_to home_select_path
     else
       render :new
