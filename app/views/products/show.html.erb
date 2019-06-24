@@ -18,8 +18,10 @@
 
 					<%= form_for [@product, @cart], url: product_carts_path(@product) do |f| %>
 						<!-- <span style="font-size: 15px;">個数:</span> --><%#= f.number_field :quantity %>
-						<span style="font-size: 15px;">個数:</span>
-						<p>数量<%= f.select :quantity,@limit %></p>
+					<% if @product.stock > 0 %>
+						<p style="font-size: 15px;">個数:
+						<span style="font-size: 15px; padding-left: 30px;"><%= f.select :quantity, @limit %></span></p>
+					<% end %>
 
 						<%= f.hidden_field :product_id, value: @product.id %>
 						<div class="row" style="padding: 10px">
@@ -41,11 +43,13 @@
 				      					<%= @product.favorites.count %> いいね
 				    		<% end %>
 						</div>
-						<% if @product.status == "販売中" %>
+							<% if end_user_signed_in? %>
+						<% if @product.status == "販売中" && @product.stock > 0 %>
 				      		<%= f.submit "カートに追加する", class: "btn btn-default pull-right" %>
 				      	<% else%>
 				      		<p style="font-size: 25px;color: red">現在購入できません</p>
 			      		<% end %>
+			      			<% end %>
 				    <% end %>
 				</div>
 			</div>
@@ -77,7 +81,7 @@
 		</div>
 	</div>
 </div>
-
+<% if end_user_signed_in? %>
 <div class="add-review-wrapper" style="padding-top: 20px;">
 	<div class="container" style="border: 3px solid #dddddd; border-radius: 10px; height: auto;">
 		<h2>レビュー追加</h2>
@@ -91,6 +95,7 @@
 		<% end %>
 	</div>
 </div>
+<% end %>
 
 <div class="review-wrapper">
 	<div class="container">
