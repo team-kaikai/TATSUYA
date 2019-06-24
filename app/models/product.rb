@@ -26,9 +26,10 @@ class Product < ApplicationRecord
 
 
 	validates :album_name, {presence: true}
-	validates :price,length:{in: 1..2 }
-	validates :body, {presence: true, length: {maximum: 200}}
-	validates :stock,length:{in: 1..2 }
+	validates :price,presence: true
+	# validates :body, length: {maximum: 200}
+	validates :stock,presence: true
+	validates :body, length: {maximum: 200}
 
 	def total_price
 		product.price * quantity

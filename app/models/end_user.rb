@@ -13,6 +13,9 @@ class EndUser < ApplicationRecord
   has_many :comments, dependent: :destroy,class_name: "Comment",foreign_key: "enduser_id"
 
   acts_as_paranoid
+  # def end_user
+  #   EndUser.unscoped{super}
+  # end
 
    # attr_writer :first_postal_code, :last_postal_code
 
