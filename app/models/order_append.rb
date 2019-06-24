@@ -5,6 +5,9 @@ class OrderAppend < ApplicationRecord
 	has_many :order_details
 	belongs_to :end_user, class_name: "EndUser", foreign_key: "enduser_id"
 
+	# 論理削除された値を持ってくるため
+	# 確実にdeleteさせたい場合は、 EndUser.with_deleted.find(6)　このようにかく
+
 	# validates :name,presence: true
  #    validates :address,length:{ in: 10..20}
 
