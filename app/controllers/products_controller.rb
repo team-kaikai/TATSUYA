@@ -1,7 +1,6 @@
 class ProductsController < ApplicationController
   def index
   	#@products = Product.all.order(created_at: :desc).page(params[:page]).per(9)
-  	# @products = Product.all.order(created_at: :desc)
     # 検索オブジェクト
     @search = Product.ransack(params[:q])
     # 検索結果
