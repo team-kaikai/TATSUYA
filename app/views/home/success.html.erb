@@ -8,6 +8,7 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.bundle.min.js"></script>
   </head>
 
   <body>
@@ -25,3 +26,91 @@
   </body>
 </html>
 
+<!-- チャート描画キャンバス -->
+<div><canvas id="myChart"></canvas></div>
+
+<!-- 各ボタン -->
+
+
+<script>
+
+// 色の設定
+var colorSet = {
+  red: 'rgb(255, 99, 132)',
+  orange: 'rgb(255, 159, 64)',
+  yellow: 'rgb(255, 205, 86)',
+  green: 'rgb(75, 192, 192)',
+  blue: 'rgb(54, 162, 235)',
+  purple: 'rgb(153, 102, 255)',
+  grey: 'rgb(201, 203, 207)'
+};
+
+// 乱数生成(0～100)
+var rnd100 = function(){
+  return Math.round(Math.random() * 100);
+};
+
+// 色のRGB変換
+var color = Chart.helpers.color;
+
+/*
+ * チャートの初期設定
+ */
+var config = {
+  type: 'radar',
+  data: {
+    labels: ["月曜", "火曜", "水曜", "木曜", "金曜", "土曜", "日曜"],
+    datasets: [{
+      label: "運動量",
+      backgroundColor: color(colorSet.red).alpha(0.5).rgbString(),
+      borderColor: colorSet.red,
+      pointBackgroundColor: colorSet.red,
+      data: [40, 50, 60, 70, 80, 90, 100]
+    },{
+      label: "摂取量",
+      backgroundColor: color(colorSet.blue).alpha(0.5).rgbString(),
+      borderColor: colorSet.blue,
+      pointBackgroundColor: colorSet.blue,
+      data: [100, 90, 80, 70, 60, 50, 40]
+    },]
+  },
+  options: {
+    animation:false,
+    showTooltips: false,
+    legend: { position: 'bottom' },
+    title: {
+      display: true,
+      fontSize:20,
+      fontColor:'#666',
+      text: '一週間チャート'
+    },
+    scale: {
+      display: true,
+      pointLabels: {
+        fontSize: 15,
+        fontColor: colorSet.yellow
+      },
+      ticks: {
+        display: true,
+        fontSize: 12,
+        fontColor: colorSet.green,
+        min: 0,
+        max: 100,
+        beginAtZero: true
+      },
+      gridLines: {
+        display: true,
+        color: colorSet.yellow
+      }
+    }
+  }
+};
+
+/*
+ * チャートの作成
+ */
+var myRadar = new Chart($("#myChart"), config);
+
+
+
+</script>
