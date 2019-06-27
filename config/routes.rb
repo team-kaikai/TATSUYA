@@ -22,7 +22,7 @@ Rails.application.routes.draw do
 
 
   root 'home#top'
-
+  get 'get_genre' => 'products#get_genre'
 
   get 'home/success' => 'home/success'
   get 'home/master' => 'home/master'

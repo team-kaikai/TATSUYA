@@ -33,7 +33,7 @@
 		<div class="row">
 			<div class="col" style="margin: 50px 0; text-align: center">
 			  	<button>
-					<%= link_to "住所情報を新規追加する",new_end_user_address_menus_path(current_end_user)  %>
+					<%= link_to "住所情報を新規追加する",new_end_user_address_menus_path(current_end_user),class: "btn btn-primary"  %>
 				</button>
 			</div>
 		</div>
@@ -68,7 +68,7 @@
 		</div>
 		<div class="row">
 			<div class="col" style="margin: 50px 0; text-align: center">
-					<%= f.submit "購入", :class=>"purchase_btn"%>
+					<%= f.submit "購入", :class=>"purchase_btn btn btn-info"%>
 				</div>
 			</div>
 		</div>
