@@ -36,15 +36,15 @@
 
 	  				<ul class="skill-list jscroll">
 		  				<% @products.each do |product| %>
-						　　<li class="product" style="border: 4px solid white; box-shadow: 0 0 5px gray;">
+						<li class="product" style="border: 4px solid white; box-shadow: 0 0 5px gray;">
 								<div>
 									<%= link_to product_path(product) do %>
 									<%= attachment_image_tag product, :profile_image, :fill, 200, 200,format:"jpeg",fallback: "no_image.jpg",size:'200x200' ,class: "rounded" %>
 									<% end %>
 								<div style="padding-left: 7%; padding-bottom: 5%;">
-									　<p style="margin-bottom: 0px; padding-top: 10px;"><%= product.artist.name %></p>
-									　<p style="margin-bottom: 0px;"><%= product.album_name %></p>
-									　<p style="margin-bottom: 0px;"><%= product.price %>円</p>
+									<p style="margin-bottom: 0px; padding-top: 10px; font-weight: bold;"><%= product.artist.name %></p>
+									<p style="margin-bottom: 0px;"><%= product.album_name %></p>
+									<p style="margin-bottom: 0px;"><%= product.price %>円</p>
 								</div>
 								</div>
 							</li>
