@@ -1,4 +1,4 @@
-<div class="productindex-wrapper">
+<div class="productindex-wrapper" style="color: #888888">
 	<div class="container" style="width:100%;">
 	  <h1 style="text-align: center;">TATSUYA</h1>
 	   <div class="row" style="text-align: center;">
@@ -15,7 +15,7 @@
 	   </div>
 
 	  	 <div clss="row">
-	  		<div class="col-xs-2" style="padding-top: 1%; margin-top: 10px;  border-right:3px solid #999; border-left:3px solid #999;">
+	  		<div class="col-xs-2" style="padding-top: 1%; margin-top: 10px;  border-right:3px solid #999;">
 	  		  <h3>ランキング</h3>
 	  		  <% @all_ranks.each.with_index(1) do |rank,i| %>
 	  			<div class="row" style="display: inline-block; text-align: center;margin: 0 auto;padding-left:8%;">
@@ -35,27 +35,11 @@
 	  				<!-- ---------------------------------------------------- -->
 
 	  				<ul class="skill-list jscroll">
-	  				<!--	<%# if @search.result != nil %>
-	  					<%# @ransacks.each do |ransack| %>
-						　　<li class="product" style="border: 4px solid #999;">
-								<div>
-									<%#= link_to product_path(ransack) do %>
-									<%#= attachment_image_tag ransack, :profile_image, :fill, 200, 200,format:"jpeg",fallback: "no_image.jpg",size:'200x200' %>
-									<%# end %>
-								<div style="padding-left: 7%; padding-bottom: 5%;">
-									　<p style="margin-bottom: 0px; padding-top: 10px;"><%#= ransack.artist.name %></p>
-									　<p style="margin-bottom: 0px;"><%#= ransack.album_name %></p>
-									　<p style="margin-bottom: 0px;"><%#= ransack.price %>円</p>
-								</div>
-								</div>
-							</li>
-						<%# end %>
-						<%# elsif %> -->
 		  				<% @products.each do |product| %>
-						　　<li class="product" style="border: 4px solid #999;">
+						　　<li class="product" style="border: 4px solid white; box-shadow: 0 0 5px gray;">
 								<div>
 									<%= link_to product_path(product) do %>
-									<%= attachment_image_tag product, :profile_image, :fill, 200, 200,format:"jpeg",fallback: "no_image.jpg",size:'200x200' %>
+									<%= attachment_image_tag product, :profile_image, :fill, 200, 200,format:"jpeg",fallback: "no_image.jpg",size:'200x200' ,class: "rounded" %>
 									<% end %>
 								<div style="padding-left: 7%; padding-bottom: 5%;">
 									　<p style="margin-bottom: 0px; padding-top: 10px;"><%= product.artist.name %></p>
@@ -66,7 +50,6 @@
 							</li>
 						<% end %>
 						<%= paginate @products %>
-					<!--	<%# end %>  -->
 					</ul>
 					<!-- ---------------------------------------------------- -->
 				</ul>

@@ -31,9 +31,9 @@
 										<p>単価<%= cart.product.price %></p>
 								<%#= cart.select :quantity, [["1",1],["2",2],["3",3],["4",4]] %>
 															<!-- 左が見せる値右がデータベースに入れる値 -->
-									<%= f.submit "数量変更を反映させる" %>
+									<%= f.submit "数量変更を反映させる",class: "btn btn-info" %>
 									<% end %>
-									<%= link_to "削除", cart_path(cart.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+									<%= link_to "削除", cart_path(cart.id), method: :delete, "data-confirm" => "本当に削除しますか？",class: "btn btn-danger" %>
 							</div>
 							</td>
 							<%# @cart.line_items.each do |item| %>

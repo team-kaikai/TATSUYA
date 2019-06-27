@@ -129,14 +129,14 @@
 	padding: 50px;
 }
 
-.btn{
+/*.btn{
     border-radius: 5px;
     background-color: green;
     padding: 20px;
     color: white;
     width: 150px;
     text-decoration: none;
-}
+}*/
 
 .flip-horizontal{
 	transform: scale(-1, 1);
@@ -162,6 +162,7 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+	color: #999999;
 }
 
 .clearfix::after {
@@ -310,7 +311,7 @@ nav{
 	content: "";
 }
 .product {
-	margin: 15px;
+	margin: 8px;
 	float: left;
 	list-style: none;
 }
@@ -466,4 +467,20 @@ ul.skill-list {
 nav.pagination {
 	display: none;
 }
+
+/*---------product/index-------------*/
+
+.productindex-wrapper {
+	/*background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);*/
+	background: linear-gradient(-45deg,rgba(130,130,210,0.6),rgba(130,240,260,0.2)),
+}
+
+.rounded {
+	border-radius: 30px;
+}
+
+
+
+
+
 
