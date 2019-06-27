@@ -17,7 +17,6 @@
 //= require cocoon
 //= require jquery.jscroll.min.js
 //= require turbolinks
-//= require dropzone
 //= require_tree .
 
 
