@@ -12,9 +12,9 @@ class ProductsController < ApplicationController
     #@products = Product.page(params[:page]).per(9)
     if params[:q]
       #@search = Product.ransack(params[:q])
-      @products = @search.result.page(params[:page]).per(9)
+      @products = @search.result.page(params[:page]).per(10)
     else
-      @products = Product.all.order(created_at: :desc).page(params[:page]).per(9)
+      @products = Product.all.order(created_at: :desc).page(params[:page]).per(10)
     end
   end
 
